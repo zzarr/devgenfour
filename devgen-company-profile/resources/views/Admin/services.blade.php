@@ -6,10 +6,11 @@
             <div class="page-title-box">
                 <div class="float-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item ">Dashboard</li>
+                        <li class="breadcrumb-item active">Services</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Dashboard</h4>
+                <h4 class="page-title">Services</h4>
             </div><!--end page-title-box-->
         </div><!--end col-->
     </div>
@@ -20,7 +21,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Customers Details</h4>
+                    <h4 class="card-title">Services Details</h4>
                 </div><!--end card-header-->
                 <div class="card-body">
                     <div class="table-responsive">

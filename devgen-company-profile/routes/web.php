@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\ServicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::get('/', function () {
 });
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard_admin');
+
+Route::get('/admin/services', [ServicesController::class, 'index'])->name('services_admin');

@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('services_admin') }}" class="nav-link">
                                 <i class="mdi mdi-wrench menu-icon"></i>
                                 <span>Managemen Service</span>
                             </a>

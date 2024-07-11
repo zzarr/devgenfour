@@ -39,43 +39,43 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="ti ti-info-circle menu-icon"></i>
-                                <span>Managemen About us</span>
+                                <span>Manajemen About us</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="mdi mdi-wrench menu-icon"></i>
-                                <span>Managemen Service</span>
+                                <span>Manajemen Service</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="ti ti-question-mark menu-icon"></i>
-                                <span>Managemen why choose us</span>
+                                <span>Manajemen Why Choose Us</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="project" class="nav-link">
                                 <i class="ti ti-code menu-icon"></i>
-                                <span>Managemen project</span>
+                                <span>Manajemen Project</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="mdi mdi-charity menu-icon"></i>
-                                <span>Managemen Partner</span>
+                                <span>Manajemen Partner</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="ti ti-friends menu-icon"></i>
-                                <span>Managemen Team</span>
+                                <span>Manajemen Team</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="ti ti-settings menu-icon"></i>
-                                <span>App setting</span>
+                                <span>App Setting</span>
                             </a>
                         </li>
                     </ul>

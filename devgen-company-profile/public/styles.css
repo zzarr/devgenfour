@@ -1,0 +1,279 @@
+/* Reset Browser Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* keselurhan interface */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #b6a9a9;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background: #007bff;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero Section Styles */
+#hero {
+    background: url("hero-background.jpg") no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#hero .btn {
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#hero .btn:hover {
+    background: #0056b3;
+}
+
+/* Services Section Styles */
+#services {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+#services h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.service {
+    display: inline-block;
+    width: 30%;
+    margin: 20px;
+}
+
+.service i {
+    font-size: 3em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.service h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Projects Section Styles */
+#projects {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#projects h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.project {
+    display: inline-block;
+    width: 45%;
+    margin: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.project p {
+    margin-bottom: 20px;
+}
+
+.project .btn {
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.project .btn:hover {
+    background: #0056b3;
+}
+
+/* Why Choose Us Section Styles */
+#why-choose-us {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#why-choose-us h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.reasons-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.reason {
+    max-width: 250px;
+    margin: 20px;
+    text-align: center;
+}
+
+.reason i {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.reason h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.reason p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Partners Section Styles */
+#partners {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+#partners h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.partner-slider {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.partner-slider img {
+    max-width: 150px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.partner-slider img:hover {
+    transform: scale(1.1);
+}
+
+/* Team Section Styles */
+#team {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#team h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.team-member {
+    display: inline-block;
+    width: 30%;
+    margin: 20px;
+    text-align: center;
+}
+
+.team-member img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Footer Section Styles */
+footer {
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+}
+
+footer img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service,
+    .project,
+    .team-member {
+        width: 90%;
+        margin: 20px auto;
+    }
+}

@@ -20,7 +20,8 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.partneradd');
+        
     }
 
     /**
@@ -36,15 +37,16 @@ class PartnerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        return view('Admin.partneredit');
+        
     }
 
     /**

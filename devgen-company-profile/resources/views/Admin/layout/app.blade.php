@@ -31,7 +31,7 @@
                     <ul class="navbar-nav">
                         <li class="menu-label mt-0">M<span>ain</span></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#sidebarDashboards">
+                            <a class="nav-link" href="{{ route('dashboard_admin') }}">
                                 <i class="ti ti-compass menu-icon"></i>
                                 <span>Dashboards</span>
                             </a>
@@ -49,25 +49,25 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('choose_admin') }}" class="nav-link">
                                 <i class="ti ti-question-mark menu-icon"></i>
                                 <span>Manajemen Why Choose Us</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="project" class="nav-link">
+                            <a href="{{ route('project_admin') }}" class="nav-link">
                                 <i class="ti ti-code menu-icon"></i>
                                 <span>Manajemen Project</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('partner_admin') }}" class="nav-link">
                                 <i class="mdi mdi-charity menu-icon"></i>
                                 <span>Manajemen Partner</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('team_admin') }}" class="nav-link">
                                 <i class="ti ti-friends menu-icon"></i>
                                 <span>Manajemen Team</span>
                             </a>
@@ -98,13 +98,13 @@
                         <i class="ti ti-menu-2"></i>
                     </button>
                 </li>
-                <li class="hide-phone app-search">
+                <!-- <li class="hide-phone app-search">
                     <form role="search" action="#" method="get">
                         <input type="search" name="search" class="form-control top-search mb-0"
                             placeholder="Type text...">
                         <button type="submit"><i class="ti ti-search"></i></button>
                     </form>
-                </li>
+                </li> -->
             </ul>
         </nav>
     </div>

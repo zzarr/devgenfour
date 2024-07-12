@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class LandingPageController extends Controller
+class LandingpageController extends Controller
 {
     public function index()
     {
-        return view('landing-page/why_choose_us');
+        return view('home');
     }
 }

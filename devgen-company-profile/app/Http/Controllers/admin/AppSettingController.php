@@ -5,16 +5,14 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ServicesController extends Controller
+class AppSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-
     {
-        $page = 'Services';
-        return view('admin.services', compact('page'));
+        //
     }
 
     /**
@@ -22,7 +20,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('');
+        //
     }
 
     /**

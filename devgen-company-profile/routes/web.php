@@ -5,6 +5,12 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProjectController;
 
 use App\Http\Controllers\admin\ServicesController;
+use App\Http\Controllers\admin\ServicesController;
+use App\Http\Controllers\admin\ChooseController;
+use App\Http\Controllers\admin\ProjectController;
+use App\Http\Controllers\admin\PartnerController;
+use App\Http\Controllers\admin\TeamController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +32,7 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('das
 
 
 Route::get('/admin/services', [ServicesController::class, 'index'])->name('services_admin');
+Route::get('/admin/choose', [ChooseController::class, 'index'])->name('choose_admin');
+Route::get('/admin/project', [ProjectController::class, 'index'])->name('project_admin');
+Route::get('/admin/partner', [PartnerController::class, 'index'])->name('partner_admin');
+Route::get('/admin/team', [TeamController::class, 'index'])->name('team_admin');

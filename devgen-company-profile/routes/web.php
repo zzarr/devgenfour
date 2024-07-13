@@ -8,6 +8,10 @@ use App\Http\Controllers\admin\ChooseController;
 use App\Http\Controllers\admin\PartnerController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\AppSettingController;
+use App\Http\Controllers\LandingpageController;
+
+
+
 
 
 /*
@@ -26,13 +30,14 @@ Route::get('/', function () {
 });
 
 
+// landing page
 
+Route::get('/home', [LandingPageController::class, 'index']);
 
-
-
-
+// landing page end
 
 /*================================ Admin Routes ======================== */
+
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard_admin');
 Route::get('/admin/project', [ProjectController::class, 'index'])->name('project_admin');
 

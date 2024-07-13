@@ -12,7 +12,7 @@ class AppSettingController extends Controller
      */
     public function index()
     {
-        //
+        return view('Admin.app_setting');
     }
 
     /**

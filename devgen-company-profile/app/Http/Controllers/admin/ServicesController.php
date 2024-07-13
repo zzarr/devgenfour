@@ -22,7 +22,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('');
+        return view('admin.servicesadd');
     }
 
     /**

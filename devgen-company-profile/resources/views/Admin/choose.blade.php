@@ -21,10 +21,12 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Choose</h4>
+                <h4 class="card-title">List Choose</h4>
             </div><!--end card-header-->
             <div class="card-body">
+            <a href="{{ route('addchoose_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
                 <div class="table-responsive">
+                    
                     <table class="table" id="datatable_1">
                         <thead class="thead-light">
                             <tr>
@@ -33,6 +35,7 @@
                                 <th>City</th>
                                 <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
                                 <th>Completion</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +45,10 @@
                                 <td>Curicó</td>
                                 <td>2005/02/11</td>
                                 <td>37%</td>
+                                <td>
+                                <a href="{{ route('editchoose_admin') }}" type="button" class="btn btn-outline-warning btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
+                                <button type="button" class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm"><i class="ti ti-trash"></i></button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

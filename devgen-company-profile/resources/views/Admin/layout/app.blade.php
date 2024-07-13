@@ -73,7 +73,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('app_setting_admin') }}" class="nav-link">
                                 <i class="ti ti-settings menu-icon"></i>
                                 <span>App Setting</span>
                             </a>
@@ -115,8 +115,14 @@
             <div class="container-fluid">
                 @yield('content')
             </div>
-        </div>
+            <footer class="footer text-center text-sm-start">
 
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> @Devgenfour <span class="text-muted d-none d-sm-inline-block float-end">Crafted
+                    with <i class="mdi mdi-heart text-danger"></i> by Solid Team</span>
+            </footer>
+        </div>
     </div>
 
     <!-- JS -->

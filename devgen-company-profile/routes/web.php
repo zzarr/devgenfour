@@ -9,10 +9,7 @@ use App\Http\Controllers\admin\PartnerController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\AppSettingController;
 use App\Http\Controllers\LandingpageController;
-
-
-
-
+use App\Http\Controllers\ProjectlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +30,7 @@ Route::get('/', function () {
 // landing page
 
 Route::get('/home', [LandingPageController::class, 'index']);
-
+Route::get('/project/{id}', [ProjectlController::class, 'show'])->name('showproject');
 // landing page end
 
 /*================================ Admin Routes ======================== */

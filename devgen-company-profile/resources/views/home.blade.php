@@ -32,20 +32,11 @@
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="assets/css/responsive.css" />
 
-        <title>Fria - IT Startup & Technology Services HTML Template</title>
+        <title>Devgenfour</title>
 
-        <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     </head>
 
     <body>
-        <!-- Start Preloader Area -->
-        <div class="preloader">
-            <div class="preloader">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        <!-- End Preloader Area -->
 
         <!-- Start Navbar Area -->
         <div class="navbar-area">
@@ -55,12 +46,12 @@
                         <div class="logo">
                             <a href="index.html">
                                 <img
-                                    src=""
+                                    src="img/dev.png"
                                     class="black-logo"
                                     alt="image"
                                 />
                                 <img
-                                    src=""
+                                    src="img/dev.png"
                                     class="white-logo"
                                     alt="image"
                                 />
@@ -116,7 +107,7 @@
                                     
 
                                 <li class="nav-item">
-                                    <a href="contact.html" class="nav-link">
+                                    <a href="#" class="nav-link">
                                         Contact
                                     </a>
                                 </li>
@@ -124,7 +115,6 @@
 
                             <div class="others-options">
                                 <div class="option-item">
-                                    <i class="search-btn flaticon-search"></i>
                                     <i class="close-btn flaticon-cancel"></i>
                                     <div class="search-overlay search-popup">
                                         <div class="search-box">
@@ -148,12 +138,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="burger-menu">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
                             </div>
                         </div>
                     </nav>
@@ -163,178 +147,7 @@
         <!-- End Navbar Area -->
 
         <!-- Sidebar Modal -->
-        <div class="sidebar-modal">
-            <div class="sidebar-modal-inner">
-                <div class="sidebar-about-area">
-                    <div class="title">
-                        <h2>About Us</h2>
-                        <p>
-                            We believe brand interaction is key in
-                            communication. Real innovations and a positive
-                            customer experience are the heart of successful
-                            communication. No fake products and services. The
-                            customer is king, their lives and needs are the
-                            inspiration.
-                        </p>
-                    </div>
-                </div>
 
-                <div class="sidebar-contact-feed">
-                    <h2>Contact</h2>
-                    <div class="contact-form">
-                        <form id="contactForm">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            id="name"
-                                            class="form-control"
-                                            required
-                                            data-error="Please enter your name"
-                                            placeholder="Your Name"
-                                        />
-                                        <div
-                                            class="help-block with-errors"
-                                        ></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            id="email"
-                                            class="form-control"
-                                            required
-                                            data-error="Please enter your email"
-                                            placeholder="Your Email"
-                                        />
-                                        <div
-                                            class="help-block with-errors"
-                                        ></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <input
-                                            type="text"
-                                            name="phone_number"
-                                            id="phone_number"
-                                            required
-                                            data-error="Please enter your number"
-                                            class="form-control"
-                                            placeholder="Your Phone"
-                                        />
-                                        <div
-                                            class="help-block with-errors"
-                                        ></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <input
-                                            type="text"
-                                            name="msg_subject"
-                                            id="msg_subject"
-                                            class="form-control"
-                                            required
-                                            data-error="Please enter your subject"
-                                            placeholder="Your Subject"
-                                        />
-                                        <div
-                                            class="help-block with-errors"
-                                        ></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <textarea
-                                            name="message"
-                                            class="form-control"
-                                            id="message"
-                                            cols="30"
-                                            rows="6"
-                                            required
-                                            data-error="Write your message"
-                                            placeholder="Your Message"
-                                        ></textarea>
-                                        <div
-                                            class="help-block with-errors"
-                                        ></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="send-btn">
-                                        <button
-                                            type="submit"
-                                            class="send-btn-one"
-                                        >
-                                            Send Message
-                                        </button>
-
-                                        <div
-                                            id="msgSubmit"
-                                            class="h3 text-center hidden"
-                                        ></div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="sidebar-contact-area">
-                    <div class="contact-info">
-                        <div class="contact-info-content">
-                            <h2>
-                                <a href="tel:+0881306298615">
-                                    +088 130 629 8615
-                                </a>
-                                <span>OR</span>
-                                <a href="mailto:fria@gmail.com">
-                                    fria@gmail.com
-                                </a>
-                            </h2>
-
-                            <ul class="social">
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="flaticon-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="flaticon-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="flaticon-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="flaticon-pinterest"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <span class="close-btn sidebar-modal-close-btn">
-                    <i class="flaticon-cancel"></i>
-                </span>
-            </div>
-        </div>
         <!-- End Sidebar Modal -->
 
         <!-- Start Banner Area -->
@@ -345,7 +158,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6">
                                 <div class="main-banner-content">
-                                    <h1>Be Unique With Fria IT Startup</h1>
+                                    <h1>DEVGENFOUR</h1>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur
                                         adipiscing incididunt ut laboredolore
@@ -353,57 +166,20 @@
                                         adipiscing.
                                     </p>
                                     <div class="banner-btn">
-                                        <a href="#" class="default-btn"
-                                            >Get Started</a
-                                        >
-                                        <a
-                                            href="contact.html"
-                                            class="optional-btn"
-                                            >Contact Us</a
-                                        >
+                                        <a href="#" class="optional-btn" > Contact Us</a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
-                                <div class="banner-image">
+                                <div>
                                     <img
-                                        src="assets/img/home-two/1.png"
-                                        class="wow fadeInUp"
-                                        data-wow-delay="0.6s"
-                                        alt="image"
-                                    />
-                                    <img
-                                        src="assets/img/home-two/2.png"
-                                        class="wow fadeInDown"
-                                        data-wow-delay="0.6s"
-                                        alt="image"
-                                    />
-                                    <img
-                                        src="assets/img/home-two/3.png"
-                                        class="wow fadeInUp"
-                                        data-wow-delay="0.6s"
-                                        alt="image"
-                                    />
-                                    <img
-                                        src="assets/img/home-two/4.png"
+                                        src="img/home.png"
                                         class="wow zoomIn"
-                                        data-wow-delay="0.6s"
-                                        alt="image"
-                                    />
-                                    <img
-                                        src="assets/img/home-two/5.png"
-                                        class="wow fadeInDown"
                                         data-wow-delay="0.6s"
                                         alt="image"
                                     />
 
-                                    <img
-                                        src="assets/img/home-two/main.png"
-                                        class="wow zoomIn"
-                                        data-wow-delay="0.6s"
-                                        alt="image"
-                                    />
                                 </div>
                             </div>
                         </div>
@@ -860,11 +636,11 @@
                             </div>
 
                             <div class="projects-content">
-                                <a href="single-projects.html">
-                                    <h3>App Update & Rebrand</h3>
+                                <a href="{{ route('showproject', ['id' => 1]) }}">
+                                    <h3>Project 1</h3>
                                 </a>
 
-                                <a href="single-projects.html">
+                                <a href="{{ route('showproject', ['id' => 1]) }}">
                                     <span>Research and startup</span>
                                 </a>
                             </div>
@@ -881,10 +657,10 @@
                             </div>
 
                             <div class="projects-content">
-                                <a href="single-projects.html">
-                                    <h3>IT Consultancy</h3>
+                                <a href="{{ route('showproject', ['id' => 2]) }}">
+                                    <h3>project 2</h3>
                                 </a>
-                                <a href="single-projects.html">
+                                <a href="{{ route('showproject', ['id' => 2]) }}">
                                     <span>Research and startup</span>
                                 </a>
                             </div>
@@ -1030,101 +806,101 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-team">
+                    <div class="col-lg-3 ">
+                        <div class="card mb-4 shadow-sm text-center">
                             <div class="image">
-                                <img src="assets/img/team/1.jpg" alt="image" />
+                                <img src="img/team1.jpg" alt="image" />
                             </div>
 
                             <div class="content">
-                                <h3>David Jon Korola</h3>
-                                <span>Web Developer</span>
-
-                                <ul class="social">
-                                    <li>
-                                        <a href="#">
-                                            <i class="flaticon-facebook"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            <i class="flaticon-twitter"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            <i class="flaticon-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <h3>NAMA</h3>
+                                <span>DIVISI</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-team">
+                    <div class="col-lg-3">
+                        <div class="card mb-4 shadow-sm text-center">
                             <div class="image">
-                                <img src="assets/img/team/2.jpg" alt="image" />
+                                <img src="img/team1.jpg" alt="image" />
                             </div>
 
                             <div class="content">
-                                <h3>Alex Maxwel</h3>
-                                <span>Software Engineer</span>
-
-                                <ul class="social">
-                                    <li>
-                                        <a href="#">
-                                            <i class="flaticon-facebook"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            <i class="flaticon-twitter"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            <i class="flaticon-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <h3>NAMA</h3>
+                                <span>DIVISI</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
-                        <div class="single-team">
+                    <div class="col-lg-3">
+                        <div class="card mb-4 shadow-sm text-center">
                             <div class="image">
-                                <img src="assets/img/team/3.jpg" alt="image" />
+                                <img src="img/team1.jpg" alt="image" />
                             </div>
 
                             <div class="content">
-                                <h3>Louis Pasteur</h3>
-                                <span>App Developer</span>
+                                <h3>NAMA</h3>
+                                <span>DIVISI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="image">
+                                <img src="img/team1.jpg" alt="image" />
+                            </div>
 
-                                <ul class="social">
-                                    <li>
-                                        <a href="#">
-                                            <i class="flaticon-facebook"></i>
-                                        </a>
-                                    </li>
+                            <div class="content">
+                                <h3>NAMA</h3>
+                                <span>DIVISI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="image">
+                                <img src="img/team1.jpg" alt="image" />
+                            </div>
 
-                                    <li>
-                                        <a href="#">
-                                            <i class="flaticon-twitter"></i>
-                                        </a>
-                                    </li>
+                            <div class="content">
+                                <h3>NAMA</h3>
+                                <span>DIVISI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="image">
+                                <img src="img/team1.jpg" alt="image" />
+                            </div>
 
-                                    <li>
-                                        <a href="#">
-                                            <i class="flaticon-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                            <div class="content">
+                                <h3>NAMA</h3>
+                                <span>DIVISI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="image">
+                                <img src="img/team1.jpg" alt="image" />
+                            </div>
+
+                            <div class="content">
+                                <h3>NAMA</h3>
+                                <span>DIVISI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="image">
+                                <img src="img/team1.jpg" alt="image" />
+                            </div>
+
+                            <div class="content">
+                                <h3>NAMA</h3>
+                                <span>DIVISI</span>
                             </div>
                         </div>
                     </div>
@@ -1142,119 +918,39 @@
         <!-- End Blog Area -->
 
         <!-- Start Clients Area -->
-        <section class="clients-section bg-background ptb-100">
-            <div class="container">
-                <div class="section-title">
-                    <h2>What Our Clients Says</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incidiunt labore et dolore magna
-                        aliqua. Quis ipsum suspendisse ultrices gravida.
-                    </p>
-                    <div class="bar"></div>
-                </div>
 
-                <div class="clients-slider owl-carousel owl-theme">
-                    <div class="clients-item">
-                        <div class="icon">
-                            <i class="flaticon-left-quotes-sign"></i>
-                        </div>
-
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Quis ipsum suspendisse ultrices
-                            gravida. Risus commodo viverra maecenas accumsan
-                            lacus vel facilisis. Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry. Lorem
-                            Ipsum has been the industry's standard dummy text
-                            ever since the 1500s, when an unknown printer took a
-                            galley
-                        </p>
-
-                        <div class="clients-content">
-                            <h3>Moris Jacker</h3>
-                            <span>Web Developer</span>
-                        </div>
-                    </div>
-
-                    <div class="clients-item">
-                        <div class="icon">
-                            <i class="flaticon-left-quotes-sign"></i>
-                        </div>
-
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Quis ipsum suspendisse ultrices
-                            gravida. Risus commodo viverra maecenas accumsan
-                            lacus vel facilisis. Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry. Lorem
-                            Ipsum has been the industry's standard dummy text
-                            ever since the 1500s, when an unknown printer took a
-                            galley
-                        </p>
-
-                        <div class="clients-content">
-                            <h3>Alex Maxwel</h3>
-                            <span>Agent Management</span>
-                        </div>
-                    </div>
-
-                    <div class="clients-item">
-                        <div class="icon">
-                            <i class="flaticon-left-quotes-sign"></i>
-                        </div>
-
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Quis ipsum suspendisse ultrices
-                            gravida. Risus commodo viverra maecenas accumsan
-                            lacus vel facilisis. Lorem Ipsum is simply dummy
-                            text of the printing and typesetting industry. Lorem
-                            Ipsum has been the industry's standard dummy text
-                            ever since the 1500s, when an unknown printer took a
-                            galley
-                        </p>
-
-                        <div class="clients-content">
-                            <h3>Edmond Halley</h3>
-                            <span>Web Designer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- End Clients Area -->
 
         <!-- Start Partner Section -->
         <div class="partner-section ptb-100">
             <div class="container">
+                <div class="section-title">
+                <h2>Media Partner</h2>
+                </div>
                 <div class="partner-slider owl-carousel owl-theme">
                     <div class="partner-item">
                         <a href="#">
-                            <img src="assets/img/partner/1.png" alt="partner" />
+                            <img src="img/polindra.png" alt="partner" />
                         </a>
                     </div>
                     <div class="partner-item">
                         <a href="#">
-                            <img src="assets/img/partner/2.png" alt="partner" />
+                            <img src="img/polindra.png" alt="partner" />
                         </a>
                     </div>
                     <div class="partner-item">
                         <a href="#">
-                            <img src="assets/img/partner/3.png" alt="partner" />
+                            <img src="img/polindra.png" alt="partner" />
                         </a>
                     </div>
                     <div class="partner-item">
                         <a href="#">
-                            <img src="assets/img/partner/4.png" alt="partner" />
+                            <img src="img/polindra.png"alt="partner" />
                         </a>
                     </div>
                     <div class="partner-item">
                         <a href="#">
-                            <img src="assets/img/partner/5.png" alt="partner" />
+                            <img src="img/polindra.png" alt="partner" />
                         </a>
                     </div>
                 </div>
@@ -1265,167 +961,27 @@
         <!-- Start Footer Area -->
         <section class="footer-section pt-100 pb-70">
             <div class="container">
-                <div class="subscribe-area">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="subscribe-content">
-                                <h2>Join Our Newsletter</h2>
-                                <p>
-                                    News letter dolor sit amet, consectetur
-                                    adipiscing elit, sed do eiusmod tempor
-                                    incididunt.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6">
-                            <form class="newsletter-form">
-                                <input
-                                    type="email"
-                                    class="input-newsletter"
-                                    placeholder="Enter your email"
-                                    name="EMAIL"
-                                    required
-                                    autocomplete="off"
-                                />
-                                <button type="submit">Subscribe Now</button>
-
-                                <div
-                                    id="validator-newsletter"
-                                    class="form-result"
-                                ></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <div class="footer-heading">
-                                <h3>About Us</h3>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt
-                            </p>
-                            <ul class="footer-social">
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-facebook"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-twitter"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-pinterest"></i>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-md-3">
+                        <img src="img/dev.png" alt="Company Logo" class="footer-logo">
                     </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <div class="footer-heading">
-                                <h3>Important Links</h3>
-                            </div>
-
-                            <ul class="footer-quick-links">
-                                <li>
-                                    <a href="about.html">About Us</a>
-                                </li>
-                                <li>
-                                    <a href="projects-1.html">Project</a>
-                                </li>
-                                <li>
-                                    <a href="services-1.html">Services</a>
-                                </li>
-                                <li>
-                                    <a href="blog-1.html">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-md-3">
+                        <h5>Contact Us</h5>
+                        <p>123 Main Street, City, Country</p>
+                        <p>Phone: +123 456 7890</p>
+                        <p>Email: info@company.com</p>
                     </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <div class="footer-heading">
-                                <h3>Featured Service</h3>
-                            </div>
-                            <ul class="footer-quick-links">
-                                <li>
-                                    <a href="#">IT Management</a>
-                                </li>
-                                <li>
-                                    <a href="#">Development</a>
-                                </li>
-                                <li>
-                                    <a href="services-1.html">Services</a>
-                                </li>
-                                <li>
-                                    <a href="#">UI/UX Design</a>
-                                </li>
-                                <li>
-                                    <a href="#">Support Engineer</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-md-3">
+                        <h5>Follow Us</h5>
+                        <a href="https://www.instagram.com/legi_afatah/" target="_blank" class="text-black">Instagram</a>
                     </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <div class="footer-heading">
-                                <h3>Contact</h3>
-                            </div>
-
-                            <div class="footer-info-contact">
-                                <i class="flaticon-phone-call"></i>
-                                <h3>Phone</h3>
-                                <span
-                                    ><a href="tel:+882-569-756"
-                                        >+123(456)123</a
-                                    ></span
-                                >
-                            </div>
-
-                            <div class="footer-info-contact">
-                                <i class="flaticon-envelope"></i>
-                                <h3>Email</h3>
-                                <span
-                                    ><a href="mailto:hello@fria.com"
-                                        >hello@fria.com</a
-                                    ></span
-                                >
-                            </div>
-
-                            <div class="footer-info-contact">
-                                <i class="flaticon-pin"></i>
-                                <h3>Address</h3>
-                                <span
-                                    >32 st Kilda Road, Melbourne VIC, 3004
-                                    Australia</span
-                                >
-                            </div>
-                        </div>
+                    <div class="col-md-3">
+                        <h5>Our Location</h5>
+                        <span
+                        >Graha Asri Perdana blok D No 5, RT.039/RW.008, Lohbener, Kec. Lohbener, Kabupaten Indramayu, Jawa Barat 45252</span>
                     </div>
                 </div>
+
             </div>
         </section>
         <!-- End Footer Area -->
@@ -1441,13 +997,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                Fria All Rights Reserved by
-                                <a
-                                    href="https://envytheme.com/"
-                                    target="_blank"
-                                >
-                                    EnvyTheme
-                                </a>
+                                Fria All Rights Reserved
                             </p>
                         </div>
 
@@ -1511,5 +1061,8 @@
         <script src="assets/js/wow.min.js"></script>
         <!-- Custom JS -->
         <script src="assets/js/main.js"></script>
+
+     
+
     </body>
 </html>

@@ -47,7 +47,7 @@
                                         <td>
                                             <div class="button-items">
                                                 <button type="button"
-                                                    class="btn btn-outline-warning btn-icon-circle btn-icon-circle-sm"><i
+                                                    class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i
                                                         class="ti ti-pencil"></i></button>
                                                 <button type="button"
                                                     class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm"><i

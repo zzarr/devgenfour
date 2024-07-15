@@ -39,14 +39,27 @@ Route::get('/home', [LandingPageController::class, 'index']);
 /*================================ Admin Routes ======================== */
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard_admin');
+
 Route::get('/admin/project', [ProjectController::class, 'index'])->name('project_admin');
+Route::get('/admin/project_add', [ProjectController::class, 'create'])->name('addproject_admin');
+Route::post('/admin/project_add', [ProjectController::class, 'store'])->name('storeproject_admin');
+Route::get('/admin/project_edit', [ProjectController::class, 'edit'])->name('editproject_admin');
+Route::get('/admin/project_delete', [ProjectController::class, 'destroy'])->name('deleteproject_admin');
+
 
 
 Route::get('/admin/services', [ServicesController::class, 'index'])->name('services_admin');
 Route::get('/admin/services_add', [ServicesController::class, 'create'])->name('addservices_admin');
+Route::post('/admin/services_add', [ServicesController::class, 'store'])->name('storeservices_admin');
+Route::get('/admin/services_delete', [ServicesController::class, 'destroy'])->name('deleteservices_admin');
+Route::get('/admin/services_edit', [ServicesController::class, 'edit'])->name('editservices_admin');
+
 Route::get('/admin/choose', [ChooseController::class, 'index'])->name('choose_admin');
 Route::get('/admin/choose_add', [ChooseController::class, 'create'])->name('addchoose_admin');
+Route::post('/admin/choose_add', [ChooseController::class, 'store'])->name('storechoose_admin');
 Route::get('/admin/choose_edit', [ChooseController::class, 'edit'])->name('editchoose_admin');
+
+
 Route::get('/admin/project', [ProjectController::class, 'index'])->name('project_admin');
 Route::get('/admin/project_add', [ProjectController::class, 'create'])->name('addproject_admin');
 Route::get('/admin/project_edit', [ProjectController::class, 'edit'])->name('editproject_admin');

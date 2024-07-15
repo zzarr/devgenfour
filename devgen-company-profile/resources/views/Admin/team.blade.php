@@ -46,7 +46,7 @@
                                 <td>2005/02/11</td>
                                 <td>37%</td>
                                 <td>
-                                <a href="{{ route('editteam_admin') }}" type="button" class="btn btn-outline-warning btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
+                                <a href="{{ route('editteam_admin') }}" type="button" class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
                                 <button type="button" class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm"><i class="ti ti-trash"></i></button>
                                 </td>
                             </tr>

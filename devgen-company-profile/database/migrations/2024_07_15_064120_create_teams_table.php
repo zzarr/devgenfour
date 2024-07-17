@@ -12,6 +12,7 @@ class CreateTeamsTable extends Migration
             $table->string('id_team')->primary();
             $table->string('name');
             $table->string('jabatan');
+            $table->string('foto');
             $table->timestamps();
         });
     }

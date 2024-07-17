@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AppSettingController extends Controller
 {
@@ -12,7 +13,8 @@ class AppSettingController extends Controller
      */
     public function index()
     {
-        return view('Admin.app_setting');
+        $settings = DB::table('app_settings')->first();;
+        return view('Admin.app_setting', compact('settings'));
     }
 
     /**

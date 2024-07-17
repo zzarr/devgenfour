@@ -1,65 +1,79 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Choose;
+use Yajra\DataTables\Facades\DataTables;
 
 class ChooseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
+        // Debug log
+        \Log::info('ChooseController@index called');
+    
+        if ($request->ajax()) {
+            $choose = Choose::all();
+            return DataTables::of($choose)
+                ->addColumn('action', function($row) {
+                    $btn = '<a href="'.route('choose.edit', $row->id).'" class="edit btn btn-primary btn-sm">Edit</a>';
+                    $btn .= '<form action="'.route('choose.destroy', $row->id).'" method="POST" style="display:inline;">
+                            '.csrf_field().'
+                            '.method_field("DELETE").'
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    
         return view('Admin.choose');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('Admin.chooseadd');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        choose::create($request->all());
+
+        return redirect()->route('choose.index')
+            ->with('success', 'Choose created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit()
+    public function edit(Choose $choose)
     {
         return view('Admin.chooseedit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Choose $choose)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $choose->update($request->all());
+
+        return redirect()->route('choose.index')
+            ->with('success', 'Choose updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Choose $choose)
     {
-        //
+        $choose->delete();
+
+        return redirect()->route('choose.index')
+            ->with('success', 'Choose deleted successfully');
     }
 }

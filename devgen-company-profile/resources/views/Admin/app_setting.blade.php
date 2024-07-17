@@ -28,7 +28,7 @@
             <div class="form-group mb-3 row">
                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Deskripsi</label>
                 <div class="col-lg-9 col-xl-8">
-                    <textarea class="form-control" type="img" value="Dodson"></textarea>
+                    <textarea id="summernote" class="form-control" type="img" value="Dodson" height="200"></textarea>
                 </div>
             </div>
             <div class="form-group mb-3 row">

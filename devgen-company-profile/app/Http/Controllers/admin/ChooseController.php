@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -9,28 +8,14 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ChooseController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        // Debug log
-        \Log::info('ChooseController@index called');
-    
-        if ($request->ajax()) {
-            $choose = Choose::all();
-            return DataTables::of($choose)
-                ->addColumn('action', function($row) {
-                    $btn = '<a href="'.route('choose.edit', $row->id).'" class="edit btn btn-primary btn-sm">Edit</a>';
-                    $btn .= '<form action="'.route('choose.destroy', $row->id).'" method="POST" style="display:inline;">
-                            '.csrf_field().'
-                            '.method_field("DELETE").'
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>';
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-    
         return view('Admin.choose');
+    }
+
+    public function datatable(Request $request){
+        $data = Choose::all();
+        return DataTables::of($data)->make();
     }
 
     public function create()

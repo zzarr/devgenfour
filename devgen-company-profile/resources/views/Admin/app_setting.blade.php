@@ -35,7 +35,7 @@
                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">logo </label>
                 <div class="col-lg-9 col-xl-8">
                     <div class="input-group mb-3">
-                        <input name="images[]" type="file" class="dropify" data-height="100" />
+                        <input name="images" type="file" class="dropify" data-height="100" />
                     </div>
                 </div>
             </div>

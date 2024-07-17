@@ -34,6 +34,7 @@
 
     <!-- JS -->
     @include('Admin.layout.script-admin')
+    @stack('script')
 </body>
 
 </html>

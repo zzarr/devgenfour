@@ -1,13 +1,9 @@
-<!-- resources/views/project.blade.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx" class="theme-light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $project['title'] }}</title>
-    <!-- Tambahkan link Font Awesome untuk icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
+    @include('layout.head-landingpage')
+ <style>
+
         /* CSS Custom */
         body {
             font-family: Arial, sans-serif;
@@ -96,15 +92,18 @@
         }
     </style>
 </head>
+
+
 <body>
-    <div class="container">
-        <div class="project-header">
-            <h1>Projects</h1>
-            <nav>
-                <a href="{{ url('/home') }}">Home</a>
-                <span>&gt;</span>
-                <a href=#>Single Projects</a>
-            </nav>
+    @include('layout.navbar')
+    <div>
+        <div class="project-header" style="background-color: rgb(143, 218, 251); width: 100%; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
+            <h1 style="color: white;">Projects</h1>
+            <div style="display: flex; justify-content: center; align-items: center; color: black;">
+                <a href="{{ url('/home') }}" style="margin-right: 5px;">Home</a>
+                <span style="margin-right: 5px;">&gt;</span>
+                <a href="#">Single Projects</a>
+            </div>
         </div>
 
         <div class="project-images">
@@ -124,18 +123,9 @@
                 <li><i class="fas fa-check"></i> Define Your Choices: No fake products and services. The customer is king; their lives and needs are the inspiration.</li>
             </ul>
             <p>Nostrud no eos, no impedit dissentias mea...</p>
-            <div class="project-meta">
-                <p><strong>Client:</strong> {{ $project['client'] }}</p>
-                <p><strong>Category:</strong> {{ $project['category'] }}</p>
-                <p><strong>Date:</strong> {{ $project['date'] }}</p>
-                <div class="project-share">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-pinterest"></i></a>
-                </div>
-            </div>
-            <a href="#" class="btn">Live Preview</a>
         </div>
     </div>
+    @include('layout.footer-section')
+    @include('layout.script-landingpage')
 </body>
 </html>

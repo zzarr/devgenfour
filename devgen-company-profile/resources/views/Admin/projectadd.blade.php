@@ -17,7 +17,7 @@
     <div class="card">
         <div class="col-lg-12">
             <div class="card-body">
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('storeproject_admin') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">
                         <label for="title" class="col-sm-2 col-form-label text-end ">Title</label>
@@ -34,19 +34,13 @@
                     <div class="mb-3 row">
                         <label for="telephone" class="col-sm-2 col-form-label text-end ">thumnail</label>
                         <div class="col-sm-10">
-                            <input name="images" type="file" class="dropify" data-height="100" />
+                            <input name="thumbnail" type="file" class="dropify" data-height="100" />
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="password" class="col-sm-2 col-form-label text-end ">Project image</label>
                         <div class="col-sm-10">
-                            <input name="images" type="file" class="dropify" data-height="100" multiple />
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="number" class="col-sm-2 col-form-label text-end ">Number</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="number" name="number" id="number" required />
+                            <input name="images[]" type="file" class="dropify" data-height="100" multiple />
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -57,17 +51,15 @@
 @endsection
 
 @push('script')
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
-            $('#summernote').summernote({
-                height: 300, // set editor height
-                width: 500,
-                minHeight: null, // set minimum height of editor
-                maxHeight: null, // set maximum height of editor
-                focus: true // set focus to editable area after initializing summernote
-            });
-
+            $('#summernote').summernote();
             $('.dropify').dropify();
         });
     </script>
+@endpush
+
+@push('css')
+    <link href="{{ asset('summer-note/summernote-bs4.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}">
 @endpush

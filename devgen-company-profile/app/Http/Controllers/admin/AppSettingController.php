@@ -52,10 +52,43 @@ class AppSettingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Validasi input untuk memastikan data yang dimasukkan sesuai dengan harapan
+        $request->validate([
+            'name_app' => 'required|string|max:255',
+            'desc' => 'nullable|string',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'no_contact' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
+            'instagram' => 'nullable|string|max:255',
+            'alamat' => 'nullable|string',
+            'gmaap_coordinat' => 'nullable|string',
+        ]);
+
+        // Mengumpulkan data dari request, kecuali field '_token', '_method', dan 'logo'
+        $data = $request->except(['_token', '_method', 'logo']);
+
+        // Jika ada file logo yang diunggah, kelola upload file
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $filename = "logo." . $file->getClientOriginalExtension();
+            $file->move(public_path('img'), $filename);
+
+            // Tambahkan nama file ke array data
+            $data['logo'] = $filename;
+        } else {
+            // Jika tidak ada logo yang diunggah, tetap gunakan logo yang sudah ada
+            $data['logo'] = DB::table('app_settings')->where('id_setting', $id)->value('logo');
+        }
+
+        // Update data di database
+        DB::table('app_settings')->where('id_setting', $id)->update($data);
+
+        // Redirect ke route 'app_setting_admin' dengan pesan sukses
+        return redirect()->route('app_setting_admin')->with('success', 'Data berhasil diubah');
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -23,43 +23,43 @@
                         <h4 class="card-title">Services Details</h4>
                     </div><!--end card-header-->
                     <div class="card-body">
-                        {!! $dataTable->table(['class' => 'table table-bordered']) !!}
 
-                        <!-- <div class="table-responsive">
-                                                <a href="{{ route('addservices_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i>
-                                                    Add</a>
-                                                <table class="table" id="datatable_1">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Ext.</th>
-                                                            <th>City</th>
-                                                            <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                                                            <th>Completion</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Unity Pugh</td>
-                                                            <td>9958</td>
-                                                            <td>Curicó</td>
-                                                            <td>2005/02/11</td>
-                                                            <td>37%</td>
-                                                            <td>
-                                                                <div class="button-items">
-                                                                    <button type="button"
-                                                                        class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i
-                                                                            class="ti ti-pencil"></i></button>
-                                                                    <button type="button"
-                                                                        class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm"><i
-                                                                            class="ti ti-trash"></i></button>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div> end table-responsive-->
+
+                        <div class="table-responsive">
+                            <a href="{{ route('addservices_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i>
+                                Add</a>
+                            <table class="table" id="datatable_1">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Ext.</th>
+                                        <th>City</th>
+                                        <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
+                                        <th>Completion</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Unity Pugh</td>
+                                        <td>9958</td>
+                                        <td>Curicó</td>
+                                        <td>2005/02/11</td>
+                                        <td>37%</td>
+                                        <td>
+                                            <div class="button-items">
+                                                <button type="button"
+                                                    class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i
+                                                        class="ti ti-pencil"></i></button>
+                                                <button type="button"
+                                                    class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm"><i
+                                                        class="ti ti-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- end table-responsive-->
                     </div><!--end card-body-->
                 </div><!--end card-->
             </div><!--end col-12-->
@@ -67,8 +67,5 @@
     </div>
 @endsection
 
-@push('scripts')
-    <script>
-        {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
-    </script>
+@push('script')
 @endpush

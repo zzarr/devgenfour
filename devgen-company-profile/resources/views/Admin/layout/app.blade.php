@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     @include('Admin.layout.head-admin')
+    @stack('css')
     <title>Document</title>
 </head>
 
@@ -24,9 +26,12 @@
                 @yield('content')
             </div>
             <footer class="footer text-center text-sm-start">
+                @
                 <script>
                     document.write(new Date().getFullYear())
-                </script> @Devgenfour <span class="text-muted d-none d-sm-inline-block float-end">Crafted
+                </script> Devgenfour
+
+                <span class="text-muted d-none d-sm-inline-block float-end">Crafted
                     with <i class="mdi mdi-heart text-danger"></i> by Solid Team</span>
             </footer>
         </div>

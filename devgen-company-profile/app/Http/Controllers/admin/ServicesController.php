@@ -4,17 +4,17 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\DataTables\ServicesDataTable;
+
 
 class ServicesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(ServicesDataTable $dataTable)
+    public function index()
     {
         $page = 'Services';
-        return $dataTable->render('Admin.services', compact('page'));
+        return view('Admin.services', compact('page'));
     }
 
     /**

@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="{{ asset('summer-note/summernote-bs4.min.css') }}" rel="stylesheet">
+
 
 
 <!-- Yajra -->

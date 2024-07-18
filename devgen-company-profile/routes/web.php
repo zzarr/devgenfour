@@ -26,7 +26,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 // landing page
 
 Route::get('/home', [LandingPageController::class, 'index']);
@@ -37,14 +36,14 @@ Route::get('/project/{id}', [ProjectlController::class, 'show'])->name('showproj
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard_admin');
 
+Route::get('admin/project/datatables', [ProjectController::class, 'datatable'])->name('project_admin.datatable');
 Route::get('/admin/project', [ProjectController::class, 'index'])->name('project_admin');
 Route::get('/admin/project_add', [ProjectController::class, 'create'])->name('addproject_admin');
 Route::post('/admin/project_add', [ProjectController::class, 'store'])->name('storeproject_admin');
 Route::get('/admin/project_edit', [ProjectController::class, 'edit'])->name('editproject_admin');
 Route::get('/admin/project_delete', [ProjectController::class, 'destroy'])->name('deleteproject_admin');
 
-
-
+Route::get('admin/services/datatables', [ServicesController::class, 'datatable'])->name('services_admin.datatable');
 Route::get('/admin/services', [ServicesController::class, 'index'])->name('services_admin');
 Route::get('/admin/services_add', [ServicesController::class, 'create'])->name('addservices_admin');
 Route::post('/admin/services_add', [ServicesController::class, 'store'])->name('storeservices_admin');
@@ -61,18 +60,15 @@ Route::get('/admin/services_edit', [ServicesController::class, 'edit'])->name('e
 //     Route::delete('/choose_delete/{choose}', [ChooseController::class, 'destroy'])->name('deletechoose_admin');
 // });
 
-Route::resource('choose', ChooseController::class);
-Route::get('/choose/datatable', [ChooseController::class, 'datatable'])->name('choose_admin.datatable');
+Route::get('admin/choose/datatables', [ChooseController::class, 'datatable'])->name('choose_admin.datatable');
+Route::resource('/admin/choose', ChooseController::class);
 
-
-Route::get('/admin/project', [ProjectController::class, 'index'])->name('project_admin');
-Route::get('/admin/project_add', [ProjectController::class, 'create'])->name('addproject_admin');
-Route::get('/admin/project_edit', [ProjectController::class, 'edit'])->name('editproject_admin');
-
+Route::get('admin/partner/datatables', [PartnerController::class, 'datatable'])->name('partner_admin.datatable');
 Route::get('/admin/partner', [PartnerController::class, 'index'])->name('partner_admin');
 Route::get('/admin/partner_add', [PartnerController::class, 'create'])->name('addpartner_admin');
 Route::get('/admin/partner_edit', [PartnerController::class, 'edit'])->name('editpartner_admin');
 
+Route::get('admin/team/datatables', [TeamController::class, 'datatable'])->name('team_admin.datatable');
 Route::get('/admin/team', [TeamController::class, 'index'])->name('team_admin');
 Route::get('/admin/team_add', [TeamController::class, 'create'])->name('addteam_admin');
 Route::get('/admin/team_edit', [TeamController::class, 'edit'])->name('editteam_admin');

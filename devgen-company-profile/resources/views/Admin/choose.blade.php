@@ -1,23 +1,17 @@
-@extends('admin.layout.app')
-
-@section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-@endsection
+@extends('Admin.layout.app')
 
 @section('content')
-<div class="row">
-    <div class="col-sm-12">
-        <h4 class="page-title">Choose Management</h4>
-    </div>
-</div>
-
-<div class="row">
+<div class="row row-sm">
     <div class="col-lg-12">
         <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Choose List</h3>
+            </div>
             <div class="card-body">
-                <a href="{{ route('choose.index') }}" class="btn btn-primary mb-2">Add Choose</a>
-                <div class="table-responsive">
-                    <table id="choose-table" class="table table-hover text-nowrap">
+            <a href="{{ route('choose.create') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
+
+                <div class="table">
+                <table id="datatable" class="border-top-0 table table-bordered border-bottom">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -36,34 +30,55 @@
 </div>
 @endsection
 
-@section('scripts')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+@push('script')
 <script>
-    var table;
-    
     $(document).ready(function() {
-        table = $('#choose-table').DataTable({
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        table = $("#datatable").DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('choose_admin.datatable') }}",
-            columns: [
-                { data: null, name: 'no' },
-                { data: 'id', name: 'id', render: function(data, type, full, meta) {
-                        return `<a href="{{ route('choose.edit', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                                <a data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>`.replace(':id', data);
-                    }
-                },
-                { data: 'title', name: 'title' },
-                { data: 'description', name: 'description' }
-            ],
+            
             columnDefs: [
                 {
                     targets: 0,
                     render: function(data, type, full, meta) {
                         return meta.row + 1;
                     }
-                }
+                },
+                {
+                    targets: 1,
+                    render: function(data, type, full, meta) {
+                        let btn = `
+                            <div class="btn-list">
+                                <a href="{{ route('choose.edit', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                                <a data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
+                            </div>
+                        `;
+                        btn = btn.replaceAll(':id', data);
+                        return btn;
+                    },
+                },
+                {
+                    targets: 3,
+                    render: function(data, type, full, meta) {
+                        if (data && data.length > 150) {
+                            return data.substr(0, 150) + '...';
+                        }
+                        return data;
+                    }
+                },
+            ],
+            columns: [
+                { data: 'id' },
+                { data: 'id' },
+                { data: 'title' },
+                { data: 'description' }
             ],
             language: {
                 searchPlaceholder: 'Search...',
@@ -72,4 +87,4 @@
         });
     });
 </script>
-@endsection
+@endpush

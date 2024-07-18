@@ -13,10 +13,22 @@ class ChooseController extends Controller
         return view('Admin.choose');
     }
 
-    public function datatable(Request $request){
-        $data = Choose::all();
+    public function datatable(Request $request)
+
+    {
+        $data = Choose::query();
         return DataTables::of($data)->make();
     }
+    // {
+    //     if ($request->ajax()) {
+    //         $data = Choose::latest()->get();
+    //         return DataTables::of($data)
+    //             ->addColumn('action', function($row) {
+    //                 return $row->id;
+    //             })
+    //             ->make(true);
+    //     }
+    // }
 
     public function create()
     {
@@ -30,32 +42,41 @@ class ChooseController extends Controller
             'description' => 'required',
         ]);
 
-        choose::create($request->all());
+        Choose::create($request->all());
 
         return redirect()->route('choose.index')
             ->with('success', 'Choose created successfully.');
     }
 
-    public function edit(Choose $choose)
+    public function show($id) // If you're using resource routes, this method needs to be defined
     {
-        return view('Admin.chooseedit');
+        $choose = Choose::findOrFail($id);
+        return view('Admin.choose_show', compact('choose'));
     }
 
-    public function update(Request $request, Choose $choose)
+    public function edit($id)
+    {
+        $choose = Choose::findOrFail($id);
+        return view('Admin.chooseedit', compact('choose'));
+    }
+
+    public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required',
             'description' => 'required',
         ]);
 
+        $choose = Choose::findOrFail($id);
         $choose->update($request->all());
 
         return redirect()->route('choose.index')
             ->with('success', 'Choose updated successfully');
     }
 
-    public function destroy(Choose $choose)
+    public function destroy($id)
     {
+        $choose = Choose::findOrFail($id);
         $choose->delete();
 
         return redirect()->route('choose.index')

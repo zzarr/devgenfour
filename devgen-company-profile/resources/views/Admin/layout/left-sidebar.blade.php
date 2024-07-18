@@ -37,8 +37,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('choose.index') }}" class="nav-link">
-                        <a href="{{ route('choose_admin') }}" class="nav-link text-black">
+                        <a href="{{ route('choose.index') }}" class="nav-link text-black">
                             <i class="ti ti-question-mark menu-icon"></i>
                             <span>Manajemen Why Choose Us</span>
                         </a>

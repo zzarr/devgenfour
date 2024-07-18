@@ -47,8 +47,10 @@ Route::get('admin/services/datatables', [ServicesController::class, 'datatable']
 Route::get('/admin/services', [ServicesController::class, 'index'])->name('services_admin');
 Route::get('/admin/services_add', [ServicesController::class, 'create'])->name('addservices_admin');
 Route::post('/admin/services_add', [ServicesController::class, 'store'])->name('storeservices_admin');
+Route::get('/admin/services_edit/{id}', [ServicesController::class, 'edit'])->name('editservices_admin');
+Route::post('/admin/services_update/{id}', [ServicesController::class, 'update'])->name('updateservices_admin');
 Route::get('/admin/services_delete', [ServicesController::class, 'destroy'])->name('deleteservices_admin');
-Route::get('/admin/services_edit', [ServicesController::class, 'edit'])->name('editservices_admin');
+
 
 // Route::prefix('admin')->name('admin.')->group(function() {
 //     Route::get('/choose', [ChooseController::class, 'index'])->name('choose_admin');
@@ -67,14 +69,17 @@ Route::get('admin/partner/datatables', [PartnerController::class, 'datatable'])-
 Route::get('/admin/partner', [PartnerController::class, 'index'])->name('partner_admin');
 Route::get('/admin/partner_add', [PartnerController::class, 'create'])->name('addpartner_admin');
 Route::post('/admin/partner_store', [PartnerController::class, 'store'])->name('storepartner_admin');
-Route::get('/admin/partner_edit', [PartnerController::class, 'edit'])->name('editpartner_admin');
+Route::get('/admin/partner_edit/{id}', [PartnerController::class, 'edit'])->name('editpartner_admin');
+Route::post('/admin/partner_update/{id}', [PartnerController::class, 'update'])->name('updatepartner_admin');
+Route::get('/admin/partner_delete/{id}', [PartnerController::class, 'destroy'])->name('deletepartner_admin');
 
 Route::get('admin/team/datatables', [TeamController::class, 'datatable'])->name('team_admin.datatable');
 Route::get('/admin/team', [TeamController::class, 'index'])->name('team_admin');
 Route::get('/admin/team_add', [TeamController::class, 'create'])->name('addteam_admin');
 Route::post('/admin/team_store', [TeamController::class, 'store'])->name('storeteam_admin');;
-Route::get('/admin/team_edit', [TeamController::class, 'edit'])->name('editteam_admin');
-
+Route::get('/admin/team_edit/{id}', [TeamController::class, 'edit'])->name('editteam_admin');
+Route::post('/admin/team_update/{id}', [TeamController::class, 'update'])->name('updateteam_admin');
+Route::get('/admin/team_delete/{id}', [TeamController::class, 'destroy'])->name('deleteteam_admin');
 
 Route::get('/admin/app_setting', [AppSettingController::class, 'index'])->name('app_setting_admin');
 Route::post('/admin/app-settings/{id}', [AppSettingController::class, 'update'])->name('app-settings_update');

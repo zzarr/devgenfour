@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
@@ -14,7 +15,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('Admin.project');
+        $projects = DB::table('projects')->get();
+        return view('Admin.project', compact('projects'));
     }
 
     /**
@@ -35,7 +37,7 @@ class ProjectController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
@@ -44,9 +46,11 @@ class ProjectController extends Controller
         // Mengelola upload file thumbnail
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
-            $filename = $request->title . '_' . $file->getClientOriginalName();
+            $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('project/thumbnail'), $filename);
             $data['thumbnail'] = $filename;
+        } else {
+            $data['thumbnail'] = null;
         }
 
         // Insert data ke tabel projects
@@ -67,7 +71,6 @@ class ProjectController extends Controller
                 $file->move(public_path('project/image'), $filename);
 
                 DB::table('project_imgs')->insert([
-
                     'id_project' => $data['id_project'],
                     'image_name' => $filename,
                     'created_at' => now(),
@@ -82,32 +85,86 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $project = DB::table('projects')->where('id_project', $id)->first();
+        $images = DB::table('project_imgs')->where('id_project', $id)->get();
+        return view('Admin.projectshow', compact('project', 'images'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('Admin.projectedit');
+        $project = DB::table('projects')->where('id_project', $id)->first();
+        $images = DB::table('project_imgs')->where('id_project', $id)->get();
+        return view('Admin.projectedit', compact('project', 'images'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Validasi input untuk memastikan data yang dimasukkan sesuai dengan harapan
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
+
+        // Mengelola upload file thumbnail
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->file('thumbnail');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('project/thumbnail'), $filename);
+            $data['thumbnail'] = $filename;
+        } else {
+            $data['thumbnail'] = DB::table('projects')->where('id_project', $id)->value('thumbnail');
+        }
+
+        // Update data ke tabel projects
+        DB::table('projects')->where('id_project', $id)->update([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'thumbnail' => $data['thumbnail'],
+            'updated_at' => now(),
+        ]);
+
+        // Mengelola upload file gambar tambahan
+        if ($request->hasFile('images')) {
+            $files = $request->file('images');
+            foreach ($files as $file) {
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('project/image'), $filename);
+
+                DB::table('project_imgs')->insert([
+                    'id_project' => $id,
+                    'image_name' => $filename,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+        }
+
+        return redirect()->route('project_admin')->with('success', 'Project berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Hapus data dari tabel project_imgs
+        DB::table('project_imgs')->where('id_project', $id)->delete();
+
+        // Hapus data dari tabel projects
+        DB::table('projects')->where('id_project', $id)->delete();
+
+        return redirect()->route('project_admin')->with('success', 'Project berhasil dihapus');
     }
 }

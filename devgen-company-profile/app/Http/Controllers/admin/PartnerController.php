@@ -4,21 +4,31 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Partners;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class PartnerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view('Admin.partner');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function datatable(Request $request)
+    {
+        $data = Partners::query();
+        return DataTables::of($data)
+            ->addColumn('image', function($row) {
+                return asset('partners/'.$row->image);
+            })
+            ->addColumn('action', function($row) {
+                $editUrl = route('editpartner_admin', $row->id_partner);
+                return '<a href="'.$editUrl.'" class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>';
+            })
+            ->rawColumns(['image', 'action'])
+            ->make(true);
+    }
     public function create()
     {
         return view('Admin.partneradd');

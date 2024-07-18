@@ -1,8 +1,7 @@
 @extends('Admin.layout.app')
 @section('content')
     <!-- Page-Title -->
-<!-- Page-Title -->
-<div class="row">
+    <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
                 <div class="float-end">
@@ -15,46 +14,85 @@
         </div><!--end col-->
     </div>
     <!-- end page title end breadcrumb -->
-    <!-- end page title end breadcrumb -->
 
     <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">List Partner</h4>
-            </div><!--end card-header-->
-            <div class="card-body">
-            <a href="{{ route('addpartner_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
-                <div class="table-responsive">
-                    
-                    <table class="table" id="datatable_1">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Name</th>
-                                <th>Ext.</th>
-                                <th>City</th>
-                                <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                                <th>Completion</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Unity Pugh</td>
-                                <td>9958</td>
-                                <td>Curicó</td>
-                                <td>2005/02/11</td>
-                                <td>37%</td>
-                                <td>
-                                <a href="{{ route('editpartner_admin') }}" type="button" class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
-                                <button type="button" class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm"><i class="ti ti-trash"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div><!--end table-responsive-->
-            </div><!--end card-body-->
-        </div><!--end card-->
-    </div><!--end col-12-->
-</div><!--end row-->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">List Partner</h4>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <a href="{{ route('addpartner_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
+                    <div class="table-responsive">
+                        <table class="table" id="datatable">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Image</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div><!--end table-responsive-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-12-->
+    </div><!--end row-->
 @endsection
+
+@push('script')
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        table = $("#datatable").DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('partner_admin.datatable') }}",
+
+            columnDefs: [
+                {
+                    targets: 0,
+                    render: function(data, type, full, meta) {
+                        return meta.row + 1;
+                    }
+                },
+                {
+                    targets: 1,
+                    render: function(data, type, full, meta) {
+                        return '<img src="'+data+'" alt="Partner Image" width="100%" height="100%">';
+                    }
+                },
+                {
+                    targets: 2,
+                    render: function(data, type, full, meta) {
+                        let btn = `
+                            <div class="btn-list">
+                                <a href="{{ route('editpartner_admin', ':id_partner') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                                <a data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
+                            </div>
+                        `;
+                        btn = btn.replaceAll(':id_partner', data);
+                        return btn;
+                    },
+                }
+
+            ],
+            columns: [
+                { data: 'id_partner' },
+                { data: 'image' },
+                { data: 'id_partner' }
+            ],
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+            }
+        });
+    });
+</script>
+@endpush

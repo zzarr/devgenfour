@@ -19,16 +19,6 @@ class ChooseController extends Controller
         $data = Choose::query();
         return DataTables::of($data)->make();
     }
-    // {
-    //     if ($request->ajax()) {
-    //         $data = Choose::latest()->get();
-    //         return DataTables::of($data)
-    //             ->addColumn('action', function($row) {
-    //                 return $row->id;
-    //             })
-    //             ->make(true);
-    //     }
-    // }
 
     public function create()
     {

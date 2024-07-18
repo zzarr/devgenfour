@@ -12,7 +12,8 @@
 
                 <div class="table">
                 <table id="datatable" class="border-top-0 table table-bordered border-bottom">
-                        <thead>
+                <thead class="thead-light">
+
                             <tr>
                                 <th>No</th>
                                 <th>Action</th>

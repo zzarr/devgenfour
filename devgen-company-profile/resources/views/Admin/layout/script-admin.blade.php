@@ -32,9 +32,3 @@
 
 <!-- App js -->
 <script src="{{ asset('metrica/dist/assets/js/app.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $('#summernote').summernote();
-        $('.dropify').dropify();
-    });
-</script>

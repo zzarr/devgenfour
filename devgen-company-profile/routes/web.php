@@ -66,12 +66,15 @@ Route::resource('/admin/choose', ChooseController::class);
 Route::get('admin/partner/datatables', [PartnerController::class, 'datatable'])->name('partner_admin.datatable');
 Route::get('/admin/partner', [PartnerController::class, 'index'])->name('partner_admin');
 Route::get('/admin/partner_add', [PartnerController::class, 'create'])->name('addpartner_admin');
+Route::post('/admin/partner_store', [PartnerController::class, 'store'])->name('storepartner_admin');
 Route::get('/admin/partner_edit', [PartnerController::class, 'edit'])->name('editpartner_admin');
 
 Route::get('admin/team/datatables', [TeamController::class, 'datatable'])->name('team_admin.datatable');
 Route::get('/admin/team', [TeamController::class, 'index'])->name('team_admin');
 Route::get('/admin/team_add', [TeamController::class, 'create'])->name('addteam_admin');
+Route::post('/admin/team_store', [TeamController::class, 'store'])->name('storeteam_admin');;
 Route::get('/admin/team_edit', [TeamController::class, 'edit'])->name('editteam_admin');
 
 
 Route::get('/admin/app_setting', [AppSettingController::class, 'index'])->name('app_setting_admin');
+Route::post('/admin/app-settings/{id}', [AppSettingController::class, 'update'])->name('app-settings_update');

@@ -20,7 +20,7 @@
     <div class="card">
         <div class="card-body">
             <form action="" method="post">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="mb-3 row">
                         <label for="example-text-input" class="col-sm-2 col-form-label text-end">Text</label>
                         <div class="col-sm-10">

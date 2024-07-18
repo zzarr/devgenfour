@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PartnerController extends Controller
 {
@@ -21,7 +22,6 @@ class PartnerController extends Controller
     public function create()
     {
         return view('Admin.partneradd');
-        
     }
 
     /**
@@ -29,7 +29,22 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except(['_token', '_method',  'image']);
+        // Mengelola upload file image
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('partners'), $filename);
+            $data['image'] = $filename;
+        }
+
+        DB::table('partners')->insert([
+            'image' => $data['image'],
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('partner_admin')->with('success', 'Partner berhasil ditambahkan');
     }
 
     /**
@@ -37,7 +52,6 @@ class PartnerController extends Controller
      */
     public function show(string $id)
     {
-        
     }
 
     /**
@@ -46,7 +60,6 @@ class PartnerController extends Controller
     public function edit()
     {
         return view('Admin.partneredit');
-        
     }
 
     /**

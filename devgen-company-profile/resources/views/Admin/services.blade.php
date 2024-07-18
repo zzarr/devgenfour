@@ -23,6 +23,8 @@
                         <h4 class="card-title">Services Details</h4>
                     </div><!--end card-header-->
                     <div class="card-body">
+
+
                         <div class="table-responsive">
                             <a href="{{ route('addservices_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i>
                                 Add</a>
@@ -57,10 +59,13 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div><!--end table-responsive-->
+                        </div><!-- end table-responsive-->
                     </div><!--end card-body-->
                 </div><!--end card-->
             </div><!--end col-12-->
         </div><!--end row-->
     </div>
 @endsection
+
+@push('script')
+@endpush

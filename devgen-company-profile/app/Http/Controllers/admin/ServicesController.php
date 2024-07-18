@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class ServicesController extends Controller
 {
@@ -22,7 +22,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('admin.servicesadd');
+        return view('Admin.servicesadd');
     }
 
     /**
@@ -30,38 +30,58 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'icon' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+        ]);
+
+        DB::table('services')->insert([
+            'icon' => $request->icon,
+            'title' => $request->title,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('services.index')->with('success', 'Service berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $service = DB::table('services')->where('id_services', $id)->first();
+        return view('Admin.servicesedit', compact('service'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'icon' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+        ]);
+
+        DB::table('services')->where('id_services', $id)->update([
+            'icon' => $request->icon,
+            'title' => $request->title,
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('services.index')->with('success', 'Service berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        DB::table('services')->where('id_services', $id)->delete();
+        return redirect()->route('services.index')->with('success', 'Service berhasil dihapus');
     }
 }

@@ -45,12 +45,12 @@
                                                 class="thumb-lg rounded"></td>
                                         <td>
                                             <div class="button-items">
-                                                <a type="button"
-                                                    class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"
-                                                    href=""><i class="ti ti-pencil"></i></a>
-                                                <a type="button"
+                                                <a href="{{ route('editteam_admin', $team->id_team) }}"
+                                                    class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i
+                                                        class="ti ti-pencil"></i></a>
+                                                <button type="button"
                                                     class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm"><i
-                                                        class="ti ti-trash"></i></a>
+                                                        class="ti ti-trash"></i></button>
                                             </div>
                                         </td>
                                     </tr>

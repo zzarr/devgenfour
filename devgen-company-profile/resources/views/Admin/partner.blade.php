@@ -42,57 +42,61 @@
 @endsection
 
 @push('script')
-<script>
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-        table = $("#datatable").DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('partner_admin.datatable') }}",
+            table = $("#datatable").DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('partner_admin.datatable') }}",
 
-            columnDefs: [
-                {
-                    targets: 0,
-                    render: function(data, type, full, meta) {
-                        return meta.row + 1;
-                    }
-                },
-                {
-                    targets: 1,
-                    render: function(data, type, full, meta) {
-                        return '<img src="'+data+'" alt="Partner Image" width="100%">';
-                    }
-                },
-                {
-                    targets: 2,
-                    render: function(data, type, full, meta) {
-                        let btn = `
+                columnDefs: [{
+                        targets: 0,
+                        render: function(data, type, full, meta) {
+                            return meta.row + 1;
+                        }
+                    },
+                    {
+                        targets: 1,
+                        render: function(data, type, full, meta) {
+                            return '<img src="' + data + '" alt="Partner Image" width="100%">';
+                        }
+                    },
+                    {
+                        targets: 2,
+                        render: function(data, type, full, meta) {
+                            let btn = `
                             <div class="btn-list">
                                 <a href="{{ route('editpartner_admin', ':id_partner') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
                                 <a data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                             </div>
                         `;
-                        btn = btn.replaceAll(':id_partner', data);
-                        return btn;
-                    },
-                }
+                            btn = btn.replaceAll(':id_partner', data);
+                            return btn;
+                        },
+                    }
 
-            ],
-            columns: [
-                { data: 'id_partner' },
-                { data: 'image' },
-                { data: 'id_partner' }
-            ],
-            language: {
-                searchPlaceholder: 'Search...',
-                sSearch: '',
-            }
+                ],
+                columns: [{
+                        data: 'id_partner'
+                    },
+                    {
+                        data: 'image'
+                    },
+                    {
+                        data: 'id_partner'
+                    }
+                ],
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endpush

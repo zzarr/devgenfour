@@ -40,8 +40,8 @@ Route::get('admin/project/datatables', [ProjectController::class, 'datatable'])-
 Route::get('/admin/project', [ProjectController::class, 'index'])->name('project_admin');
 Route::get('/admin/project_add', [ProjectController::class, 'create'])->name('addproject_admin');
 Route::post('/admin/project_add', [ProjectController::class, 'store'])->name('storeproject_admin');
-Route::get('/admin/project_edit', [ProjectController::class, 'edit'])->name('editproject_admin');
-Route::get('/admin/project_delete', [ProjectController::class, 'destroy'])->name('deleteproject_admin');
+Route::get('/admin/project_edit/{id}', [ProjectController::class, 'edit'])->name('editproject_admin');
+Route::get('/admin/project_delete/{id}', [ProjectController::class, 'destroy'])->name('deleteproject_admin');
 
 Route::get('admin/services/datatables', [ServicesController::class, 'datatable'])->name('services_admin.datatable');
 Route::get('/admin/services', [ServicesController::class, 'index'])->name('services_admin');

@@ -8,6 +8,7 @@ use App\Models\ProjectImg;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -20,17 +21,17 @@ class ProjectController extends Controller
         $projects = Project::query();
 
         return DataTables::of($projects)
-            ->addColumn('thumbnail', function($project) {
-                return '<img src="'.asset('project/thumbnail/'.$project->thumbnail).'" alt="Thumbnail" width="100">';
+            ->addColumn('thumbnail', function ($projects) {
+                return '<img src="' . asset('project/thumbnail/' . $projects->thumbnail) . '" alt="Thumbnail" width="100">';
             })
-            ->addColumn('action', function($project) {
-                return '<a href="'.route('editproject_admin', $project->id_project).'" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                        <button data-toggle="modal" data-target="#modal-hapus'.$project->id_project.'" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</button>';
+            ->addColumn('action', function ($projects) {
+                return '<a href="' . route('editproject_admin', $projects->id_project) . '" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                        <button data-toggle="modal" data-target="#modal-hapus' . $projects->id_project . '" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</button>';
             })
             ->rawColumns(['thumbnail', 'action'])
             ->make(true);
     }
-    
+
 
     public function create()
     {
@@ -47,7 +48,7 @@ class ProjectController extends Controller
         ]);
 
         $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
-        $data['id_project'] = (string) \Str::uuid();
+        $data['id_project'] = (string) Str::uuid();
 
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');

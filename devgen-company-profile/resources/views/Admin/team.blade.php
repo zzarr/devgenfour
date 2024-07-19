@@ -68,7 +68,7 @@
                             let btn = `
                             <div class="btn-list">
                                 <a href="{{ route('editteam_admin', ':id_team') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                                <a data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
+                                <a href="#" data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                             </div>
                         `;
                             btn = btn.replaceAll(':id_team', String(data));

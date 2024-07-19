@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,6 +10,10 @@ class Project extends Model
     use HasFactory;
 
     protected $primaryKey = 'id_project'; // Assuming this is your primary key
+    public $incrementing = false;
+
+
+    protected $keyType = 'string';
 
     protected $fillable = [
         'title', 'description', 'thumbnail',

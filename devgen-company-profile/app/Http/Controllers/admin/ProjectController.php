@@ -26,7 +26,7 @@ class ProjectController extends Controller
             })
             ->addColumn('action', function ($projects) {
                 return '<a href="' . route('editproject_admin', $projects->id_project) . '" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                        <button data-toggle="modal" data-target="#modal-hapus' . $projects->id_project . '" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</button>';
+                        <a  data-target="#modal-hapus" href="' . route('deleteproject_admin', $projects->id_project) . '" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>';
             })
             ->rawColumns(['thumbnail', 'action'])
             ->make(true);

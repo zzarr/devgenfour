@@ -6,18 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
+use App\Models\Team;
 
 class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        $teams = DB::table('teams')->get();
-        return view('Admin.team', compact('teams'));
+        return view('Admin.team');
     }
 
+    public function datatable(Request $request)
+    {
+        $data = Team::query();
+        return DataTables::of($data)->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      */

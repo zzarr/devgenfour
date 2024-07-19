@@ -1,38 +1,44 @@
 <?php
 
-
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Project;
+use App\Models\ProjectImg;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $projects = DB::table('projects')->get();
-        return view('Admin.project', compact('projects'));
+        return view('Admin.project');
     }
+    public function datatable(Request $request)
+    {
+        $projects = Project::query();
 
-    /**
-     * Show the form for creating a new resource.
-     */
+        return DataTables::of($projects)
+            ->addColumn('thumbnail', function($project) {
+                return '<img src="'.asset('project/thumbnail/'.$project->thumbnail).'" alt="Thumbnail" width="100">';
+            })
+            ->addColumn('action', function($project) {
+                return '<a href="'.route('editproject_admin', $project->id_project).'" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                        <button data-toggle="modal" data-target="#modal-hapus'.$project->id_project.'" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</button>';
+            })
+            ->rawColumns(['thumbnail', 'action'])
+            ->make(true);
+    }
+    
+
     public function create()
     {
         return view('Admin.projectadd');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // Validasi input untuk memastikan data yang dimasukkan sesuai dengan harapan
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -41,9 +47,8 @@ class ProjectController extends Controller
         ]);
 
         $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
-        $data['id_project'] = (string) Str::uuid();
+        $data['id_project'] = (string) \Str::uuid();
 
-        // Mengelola upload file thumbnail
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
             $filename = time() . '_' . $file->getClientOriginalName();
@@ -53,28 +58,17 @@ class ProjectController extends Controller
             $data['thumbnail'] = null;
         }
 
-        // Insert data ke tabel projects
-        DB::table('projects')->insert([
-            'id_project' => $data['id_project'],
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'thumbnail' => $data['thumbnail'],
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        Project::create($data);
 
-        // Mengelola upload file gambar tambahan
         if ($request->hasFile('images')) {
             $files = $request->file('images');
             foreach ($files as $file) {
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('project/image'), $filename);
 
-                DB::table('project_imgs')->insert([
+                \App\Models\ProjectImg::create([
                     'id_project' => $data['id_project'],
                     'image_name' => $filename,
-                    'created_at' => now(),
-                    'updated_at' => now(),
                 ]);
             }
         }
@@ -82,32 +76,15 @@ class ProjectController extends Controller
         return redirect()->route('project_admin')->with('success', 'Project berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        $project = DB::table('projects')->where('id_project', $id)->first();
-        $images = DB::table('project_imgs')->where('id_project', $id)->get();
-        return view('Admin.projectshow', compact('project', 'images'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
-        $project = DB::table('projects')->where('id_project', $id)->first();
-        $images = DB::table('project_imgs')->where('id_project', $id)->get();
+        $project = Project::findOrFail($id);
+        $images = \App\Models\ProjectImg::where('id_project', $id)->get();
         return view('Admin.projectedit', compact('project', 'images'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
-        // Validasi input untuk memastikan data yang dimasukkan sesuai dengan harapan
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -116,37 +93,28 @@ class ProjectController extends Controller
         ]);
 
         $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
+        $project = Project::findOrFail($id);
 
-        // Mengelola upload file thumbnail
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('project/thumbnail'), $filename);
             $data['thumbnail'] = $filename;
         } else {
-            $data['thumbnail'] = DB::table('projects')->where('id_project', $id)->value('thumbnail');
+            $data['thumbnail'] = $project->thumbnail;
         }
 
-        // Update data ke tabel projects
-        DB::table('projects')->where('id_project', $id)->update([
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'thumbnail' => $data['thumbnail'],
-            'updated_at' => now(),
-        ]);
+        $project->update($data);
 
-        // Mengelola upload file gambar tambahan
         if ($request->hasFile('images')) {
             $files = $request->file('images');
             foreach ($files as $file) {
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('project/image'), $filename);
 
-                DB::table('project_imgs')->insert([
+                \App\Models\ProjectImg::create([
                     'id_project' => $id,
                     'image_name' => $filename,
-                    'created_at' => now(),
-                    'updated_at' => now(),
                 ]);
             }
         }
@@ -154,16 +122,10 @@ class ProjectController extends Controller
         return redirect()->route('project_admin')->with('success', 'Project berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
-        // Hapus data dari tabel project_imgs
-        DB::table('project_imgs')->where('id_project', $id)->delete();
-
-        // Hapus data dari tabel projects
-        DB::table('projects')->where('id_project', $id)->delete();
+        Project::findOrFail($id)->delete();
+        \App\Models\ProjectImg::where('id_project', $id)->delete();
 
         return redirect()->route('project_admin')->with('success', 'Project berhasil dihapus');
     }

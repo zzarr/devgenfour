@@ -23,40 +23,19 @@
                         <h4 class="card-title">Services Details</h4>
                     </div><!--end card-header-->
                     <div class="card-body">
-
-
-                        <div class="table-responsive">
-                            <a href="{{ route('addservices_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i>
-                                Add</a>
-                            <table class="table" id="datatable_1">
+                        <a href="{{ route('addservices_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
+                        <div class="table">
+                            <table class="table" id="datatable">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Ext.</th>
-                                        <th>City</th>
-                                        <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                                        <th>Completion</th>
-                                        <th>Action</th>
+                                        <th class="column-no">No</th>
+                                        <th>Icon</th>
+                                        <th>Title</th>
+                                        <th class="column-action">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Unity Pugh</td>
-                                        <td>9958</td>
-                                        <td>Curicó</td>
-                                        <td>2005/02/11</td>
-                                        <td>37%</td>
-                                        <td>
-                                            <div class="button-items">
-                                                <button type="button"
-                                                    class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i
-                                                        class="ti ti-pencil"></i></button>
-                                                <button type="button"
-                                                    class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm"><i
-                                                        class="ti ti-trash"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <!-- Data will be loaded by DataTables -->
                                 </tbody>
                             </table>
                         </div><!-- end table-responsive-->
@@ -68,4 +47,61 @@
 @endsection
 
 @push('script')
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        table = $("#datatable").DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('services_admin.datatable') }}",
+            columnDefs: [
+                {
+                    targets: 0,
+                    className: 'column-no',
+                    render: function(data, type, full, meta) {
+                        return meta.row + 1;
+                    }
+                },
+                {
+                    targets: 3,
+                    className: 'column-action',
+                    render: function(data, type, full, meta) {
+                        let btn = `
+                            <div class="btn-list">
+                                <a href="{{ route('editservices_admin', ':id_services') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                                <a href="{{ route('deleteservices_admin', ':id_services') }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                            </div>
+                        `;
+                        btn = btn.replaceAll(':id_services', data);
+                        return btn;
+                    },
+                }
+            ],
+            columns: [
+                { data: 'id_services' },
+                { data: 'icon' },
+                { data: 'title' },
+                { data: 'id_services' }
+            ],
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+            }
+        });
+    });
+</script>
 @endpush
+
+<style>
+    .column-no {
+        width: 50px; /* Adjust this value as needed */
+    }
+    .column-action {
+        width: 150px; /* Adjust this value as needed */
+    }
+</style>

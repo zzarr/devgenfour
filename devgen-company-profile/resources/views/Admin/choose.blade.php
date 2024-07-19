@@ -8,11 +8,10 @@
                 <h3 class="card-title">Choose List</h3>
             </div>
             <div class="card-body">
-            <a href="{{ route('choose.create') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
-
+                <a href="{{ route('addchoose_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
                 <div class="table">
-                <table id="datatable" class="border-top-0 table table-bordered border-bottom">
-                        <thead>
+                    <table id="datatable" class="border-top-0 table table-bordered border-bottom">
+                        <thead class="thead-light">
                             <tr>
                                 <th>No</th>
                                 <th>Action</th>
@@ -39,7 +38,7 @@
             }
         });
 
-        table = $("#datatable").DataTable({
+        let table = $("#datatable").DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('choose_admin.datatable') }}",
@@ -56,8 +55,8 @@
                     render: function(data, type, full, meta) {
                         let btn = `
                             <div class="btn-list">
-                                <a href="{{ route('choose.edit', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                                <a data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
+                                <a href="{{ route('editchoose_admin', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                                <button class="btn btn-danger btn-delete" data-id=":id"><i class="fas fa-trash-alt"></i> Delete</button>
                             </div>
                         `;
                         btn = btn.replaceAll(':id', data);
@@ -83,6 +82,23 @@
             language: {
                 searchPlaceholder: 'Search...',
                 sSearch: '',
+            }
+        });
+
+        // Delete button click event
+        $('#datatable').on('click', '.btn-delete', function() {
+            let deleteId = $(this).data('id');
+            if (confirm('Are you sure you want to delete this item?')) {
+                $.ajax({
+                    url: "{{ url('admin/choose') }}/" + deleteId,
+                    type: 'DELETE',
+                    success: function(result) {
+                        table.ajax.reload(null, false);
+                    },
+                    error: function(xhr) {
+                        alert('Error deleting record: ' + xhr.statusText);
+                    }
+                });
             }
         });
     });

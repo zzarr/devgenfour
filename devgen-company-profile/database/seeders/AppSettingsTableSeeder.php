@@ -20,6 +20,8 @@ class AppSettingsTableSeeder extends Seeder
             'gmaap_coordinat' => '12.3456, -65.4321',
             'created_at' => now(),
             'updated_at' => now(),
+            
         ]);
+        
     }
 }

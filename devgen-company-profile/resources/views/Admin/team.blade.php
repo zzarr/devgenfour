@@ -1,7 +1,6 @@
 @extends('Admin.layout.app')
 @section('content')
     <!-- Page-Title -->
-    <!-- Page-Title -->
     <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
@@ -15,7 +14,6 @@
         </div><!--end col-->
     </div>
     <!-- end page title end breadcrumb -->
-    <!-- end page title end breadcrumb -->
 
     <div class="row">
         <div class="col-12">
@@ -26,36 +24,16 @@
                 <div class="card-body">
                     <a href="{{ route('addteam_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
                     <div class="table-responsive">
-
                         <table class="table" id="datatable_1">
                             <thead class="thead-light">
                                 <tr>
+                                    <th>No</th>
+                                    <th>Action</th>
                                     <th>Name</th>
                                     <th>Jabatan</th>
                                     <th>Foto</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($teams as $team)
-                                    <tr>
-                                        <td>{{ $team->name }}</td>
-                                        <td>{{ $team->jabatan }}</td>
-                                        <td><img src="{{ asset('team/' . $team->foto) }}" alt="user"
-                                                class="thumb-lg rounded"></td>
-                                        <td>
-                                            <div class="button-items">
-                                                <a href="{{ route('editteam_admin', $team->id_team) }}"
-                                                    class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i
-                                                        class="ti ti-pencil"></i></a>
-                                                <button type="button"
-                                                    class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm"><i
-                                                        class="ti ti-trash"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
                         </table>
                     </div><!--end table-responsive-->
                 </div><!--end card-body-->
@@ -63,3 +41,60 @@
         </div><!--end col-12-->
     </div><!--end row-->
 @endsection
+
+@push('script')
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        table = $("#datatable_1").DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('team_admin.datatable') }}",
+            
+            columnDefs: [
+                {
+                    targets: 0,
+                    render: function(data, type, full, meta) {
+                        return meta.row + 1;
+                    }
+                },
+                {
+                    targets: 1,
+                    render: function(data, type, full, meta) {
+                        let btn = 
+                            '<div class="btn-list">' +
+                                '<a href="{{ route('editteam_admin', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>' +
+                                '<a data-toggle="modal" data-target="#modal-hapus'+data+'" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>' +
+                            '</div>';
+                        btn = btn.replaceAll(':id', data);
+                        return btn;
+                    }
+                },
+                {
+                    targets: 4,
+                    render: function(data, type, full, meta) {
+                        let url = '{{ asset("team/") }}/' + data;
+                        return '<img src="' + url + '" alt="team" class="thumb-lg rounded">';
+                    }
+                },
+            ],
+            columns: [
+                { data: 'id_team' },
+                { data: 'id_team' },
+                { data: 'name' },
+                { data: 'jabatan' },
+                { data: 'foto' }
+            ],
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+            }
+        });
+    });
+</script>
+@endpush

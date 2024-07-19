@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('choose.store') }}" method="POST">
+                    <form action="{{ route('addchoose_admin') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="title">Title</label>

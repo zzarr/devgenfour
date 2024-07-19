@@ -40,7 +40,7 @@ Route::get('admin/project/datatables', [ProjectController::class, 'datatable'])-
 Route::get('/admin/project', [ProjectController::class, 'index'])->name('project_admin');
 Route::get('/admin/project_add', [ProjectController::class, 'create'])->name('addproject_admin');
 Route::post('/admin/project_add', [ProjectController::class, 'store'])->name('storeproject_admin');
-Route::get('/admin/project_edit', [ProjectController::class, 'edit'])->name('editproject_admin');
+Route::get('/admin/project_edit/{id}', [ProjectController::class, 'edit'])->name('editproject_admin');
 Route::get('/admin/project_delete', [ProjectController::class, 'destroy'])->name('deleteproject_admin');
 
 Route::get('admin/services/datatables', [ServicesController::class, 'datatable'])->name('services_admin.datatable');
@@ -48,22 +48,19 @@ Route::get('/admin/services', [ServicesController::class, 'index'])->name('servi
 Route::get('/admin/services_add', [ServicesController::class, 'create'])->name('addservices_admin');
 Route::post('/admin/services_add', [ServicesController::class, 'store'])->name('storeservices_admin');
 Route::get('/admin/services_edit/{id}', [ServicesController::class, 'edit'])->name('editservices_admin');
-Route::post('/admin/services_update/{id}', [ServicesController::class, 'update'])->name('updateservices_admin');
-Route::get('/admin/services_delete', [ServicesController::class, 'destroy'])->name('deleteservices_admin');
+Route::put('/admin/services_update/{id}', [ServicesController::class, 'update'])->name('updateservices_admin');
+Route::delete('/admin/services_delete/{id}', [ServicesController::class, 'destroy'])->name('deleteservices_admin');
 
-
-// Route::prefix('admin')->name('admin.')->group(function() {
-//     Route::get('/choose', [ChooseController::class, 'index'])->name('choose_admin');
-//     Route::get('/choose/datatable', [ChooseController::class, 'datatable'])->name('choose_admin.datatable');
-//     Route::get('/choose_add', [ChooseController::class, 'create'])->name('addchoose_admin');
-//     Route::post('/choose_add', [ChooseController::class, 'store'])->name('storechoose_admin');
-//     Route::get('/choose_edit/{choose}', [ChooseController::class, 'edit'])->name('editchoose_admin');
-//     Route::put('/choose_edit/{choose}', [ChooseController::class, 'update'])->name('updatechoose_admin');
-//     Route::delete('/choose_delete/{choose}', [ChooseController::class, 'destroy'])->name('deletechoose_admin');
-// });
 
 Route::get('admin/choose/datatables', [ChooseController::class, 'datatable'])->name('choose_admin.datatable');
-Route::resource('/admin/choose', ChooseController::class);
+Route::get('/admin/choose', [ChooseController::class, 'index'])->name('choose_admin');
+Route::get('/admin/choose_add', [ChooseController::class, 'create'])->name('addchoose_admin');
+Route::post('/admin/choose_add', [ChooseController::class, 'store'])->name('storechoose_admin');
+Route::get('/admin/choose_edit/{id}', [ChooseController::class, 'edit'])->name('editchoose_admin');
+Route::put('/admin/choose_update/{id}', [ChooseController::class, 'update'])->name('updatechoose_admin');
+Route::delete('/admin/choose/{id}', [ChooseController::class, 'destroy'])->name('deletechoose_admin');
+
+// Route::resource('/admin/choose', ChooseController::class);
 
 Route::get('admin/partner/datatables', [PartnerController::class, 'datatable'])->name('partner_admin.datatable');
 Route::get('/admin/partner', [PartnerController::class, 'index'])->name('partner_admin');

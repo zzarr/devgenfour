@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Services;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class ServicesController extends Controller
 {
@@ -13,8 +14,16 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $page = 'Services';
-        return view('Admin.services', compact('page'));
+        return view('Admin.services');
+    }
+
+    /**
+     * Get data for DataTables.
+     */
+    public function datatable(Request $request)
+    {
+        $data = Services::query();
+        return DataTables::of($data)->make(true);
     }
 
     /**
@@ -35,25 +44,20 @@ class ServicesController extends Controller
             'title' => 'required|string|max:255',
         ]);
 
-        DB::table('services')->insert([
+        Services::create([
             'icon' => $request->icon,
             'title' => $request->title,
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
-        return redirect()->route('services.index')->with('success', 'Service berhasil ditambahkan');
+        return redirect()->route('services_admin')->with('success', 'Service berhasil ditambahkan');
     }
-
-
-
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
     {
-        $service = DB::table('services')->where('id_services', $id)->first();
+        $service = Services::findOrFail($id);
         return view('Admin.servicesedit', compact('service'));
     }
 
@@ -67,13 +71,13 @@ class ServicesController extends Controller
             'title' => 'required|string|max:255',
         ]);
 
-        DB::table('services')->where('id_services', $id)->update([
+        $service = Services::findOrFail($id);
+        $service->update([
             'icon' => $request->icon,
             'title' => $request->title,
-            'updated_at' => now(),
         ]);
 
-        return redirect()->route('services.index')->with('success', 'Service berhasil diperbarui');
+        return redirect()->route('services_admin')->with('success', 'Service berhasil diperbarui');
     }
 
     /**
@@ -81,7 +85,8 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('services')->where('id_services', $id)->delete();
-        return redirect()->route('services.index')->with('success', 'Service berhasil dihapus');
+        $service = Services::findOrFail($id);
+        $service->delete();
+        return redirect()->route('services_admin')->with('success', 'Service berhasil dihapus');
     }
 }

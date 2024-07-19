@@ -14,6 +14,7 @@ class TeamsTableSeeder extends Seeder
             'id_team' => Str::uuid()->toString(),
             'name' => 'John Doe',
             'jabatan' => 'Team Leader',
+            'foto' => 'dummy_thumbnail1',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

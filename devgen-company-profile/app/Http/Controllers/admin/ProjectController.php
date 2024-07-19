@@ -79,9 +79,9 @@ class ProjectController extends Controller
 
     public function edit($id)
     {
-        $project = Project::findOrFail($id);
-        $images = \App\Models\ProjectImg::where('id_project', $id)->get();
-        return view('Admin.projectedit', compact('project', 'images'));
+        $projects = Project::findOrFail($id);
+        $images = ProjectImg::where('id_project', $id)->get();
+        return view('Admin.projectedit', compact('projects', 'images'));
     }
 
     public function update(Request $request, $id)

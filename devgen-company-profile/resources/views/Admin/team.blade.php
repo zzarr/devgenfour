@@ -43,58 +43,67 @@
 @endsection
 
 @push('script')
-<script>
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-        table = $("#datatable_1").DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('team_admin.datatable') }}",
-            
-            columnDefs: [
-                {
-                    targets: 0,
-                    render: function(data, type, full, meta) {
-                        return meta.row + 1;
+            table = $("#datatable_1").DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('team_admin.datatable') }}",
+
+                columnDefs: [{
+                        targets: 0,
+                        render: function(data, type, full, meta) {
+                            return meta.row + 1;
+                        }
+                    },
+                    {
+                        targets: 1,
+                        render: function(data, type, full, meta) {
+                            let btn = `
+                            <div class="btn-list">
+                                <a href="{{ route('editteam_admin', ':id_team') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                                <a href="#" data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
+                            </div>
+                        `;
+                            btn = btn.replaceAll(':id_team', String(data));
+                            return btn;
+                        },
+                    },
+                    {
+                        targets: 4,
+                        render: function(data, type, full, meta) {
+                            let url = '{{ asset('team/') }}/' + data;
+                            return '<img src="' + url + '" alt="team" class="thumb-lg rounded">';
+                        }
+                    },
+                ],
+                columns: [{
+                        data: 'id_team'
+                    },
+                    {
+                        data: 'id_team'
+                    },
+                    {
+                        data: 'name'
+                    },
+                    {
+                        data: 'jabatan'
+                    },
+                    {
+                        data: 'foto'
                     }
-                },
-                {
-                    targets: 1,
-                    render: function(data, type, full, meta) {
-                        let btn = 
-                            '<div class="btn-list">' +
-                                '<a href="{{ route('editteam_admin', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>' +
-                                '<a data-toggle="modal" data-target="#modal-hapus'+data+'" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>' +
-                            '</div>';
-                        btn = btn.replaceAll(':id', data);
-                        return btn;
-                    }
-                },
-                {
-                    targets: 4,
-                    render: function(data, type, full, meta) {
-                        let url = '{{ asset("team/") }}/' + data;
-                        return '<img src="' + url + '" alt="team" class="thumb-lg rounded">';
-                    }
-                },
-            ],
-            columns: [
-                { data: 'id_team' },
-                { data: 'id_team' },
-                { data: 'name' },
-                { data: 'jabatan' },
-                { data: 'foto' }
-            ],
-            language: {
-                searchPlaceholder: 'Search...',
-                sSearch: '',
-            }
+                ],
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endpush

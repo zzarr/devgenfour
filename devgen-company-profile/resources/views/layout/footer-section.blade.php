@@ -2,25 +2,23 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img src="img/dev.png" alt="Company Logo" class="footer-logo">
+                <img src="{{ asset($appSetting->logo) }}" alt="Company Logo" class="footer-logo">
             </div>
             <div class="col-md-3">
                 <h5>Contact Us</h5>
-                <p>123 Main Street, City, Country</p>
-                <p>Phone: +123 456 7890</p>
-                <p>Email: info@company.com</p>
+                <p>{{ $appSetting->alamat }}</p>
+                <p>Phone: {{ $appSetting->no_contact }}</p>
+                <p>Email: {{ $appSetting->email }}</p>
             </div>
             <div class="col-md-3">
                 <h5>Follow Us</h5>
-                <a href="https://www.instagram.com/legi_afatah/" target="_blank" class="text-black">Instagram</a>
+                <a href="{{ $appSetting->instagram }}" target="_blank" class="text-black">instagram</a>
             </div>
             <div class="col-md-3">
                 <h5>Our Location</h5>
-                <span
-                >Graha Asri Perdana blok D No 5, RT.039/RW.008, Lohbener, Kec. Lohbener, Kabupaten Indramayu, Jawa Barat 45252</span>
+                <span>{{ $appSetting->gmaap_coordinat }}</span>
             </div>
         </div>
-
     </div>
 </section>
 <!-- End Footer Area -->
@@ -36,21 +34,17 @@
                         <script>
                             document.write(new Date().getFullYear());
                         </script>
-                        Fria All Rights Reserved
+                        {{ $appSetting->name_app }} All Rights Reserved
                     </p>
                 </div>
 
                 <div class="col-lg-6 col-md-6">
                     <ul>
                         <li>
-                            <a href="terms-condition.html"
-                                >Terms & Conditions</a
-                            >
+                            <a href="terms-condition.html">Terms & Conditions</a>
                         </li>
                         <li>
-                            <a href="privacy-policy.html"
-                                >Privacy Policy</a
-                            >
+                            <a href="privacy-policy.html">Privacy Policy</a>
                         </li>
                     </ul>
                 </div>

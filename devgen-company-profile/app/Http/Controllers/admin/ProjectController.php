@@ -8,6 +8,7 @@ use App\Models\ProjectImg;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -20,17 +21,17 @@ class ProjectController extends Controller
         $projects = Project::query();
 
         return DataTables::of($projects)
-            ->addColumn('thumbnail', function($project) {
-                return '<img src="'.asset('project/thumbnail/'.$project->thumbnail).'" alt="Thumbnail" width="100">';
+            ->addColumn('thumbnail', function ($projects) {
+                return '<img src="' . asset('project/thumbnail/' . $projects->thumbnail) . '" alt="Thumbnail" width="100">';
             })
-            ->addColumn('action', function($project) {
-                return '<a href="'.route('editproject_admin', $project->id_project).'" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                        <button data-toggle="modal" data-target="#modal-hapus'.$project->id_project.'" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</button>';
+            ->addColumn('action', function ($projects) {
+                return '<a href="' . route('editproject_admin', $projects->id_project) . '" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                        <a  data-target="#modal-hapus" href="' . route('deleteproject_admin', $projects->id_project) . '" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>';
             })
             ->rawColumns(['thumbnail', 'action'])
             ->make(true);
     }
-    
+
 
     public function create()
     {
@@ -47,7 +48,7 @@ class ProjectController extends Controller
         ]);
 
         $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
-        $data['id_project'] = (string) \Str::uuid();
+        $data['id_project'] = (string) Str::uuid();
 
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
@@ -58,7 +59,15 @@ class ProjectController extends Controller
             $data['thumbnail'] = null;
         }
 
-        Project::create($data);
+        DB::table('projects')->insert([
+            'id_project' => $data['id_project'],
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'thumbnail' => $data['thumbnail'],
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
 
         if ($request->hasFile('images')) {
             $files = $request->file('images');
@@ -78,9 +87,9 @@ class ProjectController extends Controller
 
     public function edit($id)
     {
-        $project = Project::findOrFail($id);
-        $images = \App\Models\ProjectImg::where('id_project', $id)->get();
-        return view('Admin.projectedit', compact('project', 'images'));
+        $projects = Project::findOrFail($id);
+        $images = ProjectImg::where('id_project', $id)->get();
+        return view('Admin.projectedit', compact('projects', 'images'));
     }
 
     public function update(Request $request, $id)

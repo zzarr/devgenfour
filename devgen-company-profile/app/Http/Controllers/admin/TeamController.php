@@ -22,8 +22,16 @@ class TeamController extends Controller
 
     public function datatable(Request $request)
     {
-        $data = Team::query();
-        return DataTables::of($data)->make(true);
+        $data = Team::select(['id_team', 'name', 'jabatan', 'foto']);
+        return DataTables::of($data)
+            ->addColumn('action', function ($row) {
+                $editUrl = route('editteam_admin', $row->id_team);
+                $deleteUrl = route('deleteteam_admin', $row->id_team);
+                return '<a href="' . $editUrl . '" class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
+                        <button data-url="' . $deleteUrl . '" class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm btn-delete"><i class="ti ti-trash"></i></button>';
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
     /**
      * Show the form for creating a new resource.

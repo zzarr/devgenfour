@@ -9,7 +9,7 @@
                         <li class="breadcrumb-item active">Project</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Add Project</h4>
+                <h4 class="page-title">Add Projec</h4>
             </div>
         </div>
     </div>

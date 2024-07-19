@@ -34,7 +34,7 @@ class ChooseController extends Controller
 
         Choose::create($request->all());
 
-        return redirect()->route('choose.index')
+        return redirect()->route('choose_admin')
             ->with('success', 'Choose created successfully.');
     }
 
@@ -60,7 +60,7 @@ class ChooseController extends Controller
         $choose = Choose::findOrFail($id);
         $choose->update($request->all());
 
-        return redirect()->route('choose.index')
+        return redirect()->route('choose_admin')
             ->with('success', 'Choose updated successfully');
     }
 
@@ -69,7 +69,6 @@ class ChooseController extends Controller
         $choose = Choose::findOrFail($id);
         $choose->delete();
 
-        return redirect()->route('choose.index')
-            ->with('success', 'Choose deleted successfully');
+        return response()->json(['success' => 'Item deleted successfully.']);
     }
 }

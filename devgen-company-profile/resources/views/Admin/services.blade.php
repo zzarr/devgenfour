@@ -1,4 +1,5 @@
 @extends('Admin.layout.app')
+
 @section('content')
     <!-- Page-Title -->
     <div class="row">
@@ -55,7 +56,7 @@
             }
         });
 
-        table = $("#datatable").DataTable({
+        let table = $("#datatable").DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('services_admin.datatable') }}",
@@ -74,10 +75,10 @@
                         let btn = `
                             <div class="btn-list">
                                 <a href="{{ route('editservices_admin', ':id_services') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                                <a href="{{ route('deleteservices_admin', ':id_services') }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                <button class="btn btn-danger btn-delete" data-id=":id_services"><i class="fas fa-trash-alt"></i> Delete</button>
                             </div>
                         `;
-                        btn = btn.replaceAll(':id_services', data);
+                        btn = btn.replaceAll(':id_services', full.id_services);
                         return btn;
                     },
                 }
@@ -91,6 +92,22 @@
             language: {
                 searchPlaceholder: 'Search...',
                 sSearch: '',
+            }
+        });
+
+        $('#datatable').on('click', '.btn-delete', function() {
+            let deleteId = $(this).data('id');
+            if (confirm('Are you sure you want to delete this item?')) {
+                $.ajax({
+                    url: "{{ url('admin/services') }}/" + deleteId,
+                    type: 'DELETE',
+                    success: function(result) {
+                        table.ajax.reload(null, false);
+                    },
+                    error: function(xhr) {
+                        alert('Error deleting record: ' + xhr.statusText);
+                    }
+                });
             }
         });
     });

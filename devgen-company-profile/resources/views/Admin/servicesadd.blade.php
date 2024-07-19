@@ -25,7 +25,7 @@
                     <div class="mb-3 row">
                         <label for="icon-input" class="col-sm-2 col-form-label text-end">Icon</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="icon" id="icon-input" required />
+                            <input type="file" name="icon" class="dropify" id="icon-input" data-default-file="" />
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -47,13 +47,11 @@
 @push('script')
     <script>
         $(document).ready(function() {
-            $('#summernote').summernote();
             $('.dropify').dropify();
         });
     </script>
 @endpush
 
 @push('css')
-    <link href="{{ asset('summer-note/summernote-bs4.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}">
 @endpush

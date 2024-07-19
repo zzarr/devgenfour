@@ -5,15 +5,12 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="main-banner-content">
-                            <h1>DEVGENFOUR</h1>
+                            <h1>{{ $appSetting->name_app }}</h1>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing incididunt ut laboredolore
-                                magna aliqua elsed tempomet, consectetur
-                                adipiscing.
+                                {!! $appSetting->desc !!} 
                             </p>
                             <div class="banner-btn">
-                                <a href="#" class="optional-btn" > Contact Us</a>
+                                <a href="mailto:{{ $appSetting->email }}" class="optional-btn"> Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -21,12 +18,11 @@
                     <div class="col-lg-6">
                         <div>
                             <img
-                                src="img/home.png"
+                                src="{{ asset($appSetting->logo) }}"
                                 class="wow zoomIn"
                                 data-wow-delay="0.6s"
                                 alt="image"
                             />
-
                         </div>
                     </div>
                 </div>

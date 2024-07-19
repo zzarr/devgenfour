@@ -34,6 +34,12 @@ Route::get('/home', [LandingPageController::class, 'index']);
 Route::get('/project/{id}', [ProjectlController::class, 'show'])->name('showproject');
 // landing page end
 
+//uji coba
+Route::get('admin/app-setting/{id}/edit', [LandingPageController::class, 'edit'])->name('app-settings.edit');
+Route::post('admin/app-setting/{id}', [LandingPageController::class, 'update'])->name('app-settings.update');
+//end
+
+
 /*================================ Admin Routes ======================== */
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard_admin');

@@ -7,7 +7,8 @@
         <!-- End Navbar Area -->
 
         <!-- Start Banner Area -->
-       @include('layout.hero-section')
+        
+       @include('layout.hero-section', ['appSetting' => $appSetting])
         <!-- End Banner Area -->
 
         <!-- Start Services Area -->

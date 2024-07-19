@@ -10,7 +10,7 @@
                                 {!! $appSetting->desc !!} 
                             </p>
                             <div class="banner-btn">
-                                <a href="mailto:{{ $appSetting->email }}" class="optional-btn"> Contact Us</a>
+                                <a href="https://wa.me/6283134926092:{{ $appSetting->no_contact }}" class="optional-btn"> Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -18,7 +18,7 @@
                     <div class="col-lg-6">
                         <div>
                             <img
-                                src="{{ asset($appSetting->logo) }}"
+                                src="{{ asset('img/' . $appSetting->logo) }}"
                                 class="wow zoomIn"
                                 data-wow-delay="0.6s"
                                 alt="image"

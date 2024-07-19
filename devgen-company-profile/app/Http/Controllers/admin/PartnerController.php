@@ -19,14 +19,14 @@ class PartnerController extends Controller
     {
         $data = Partners::query();
         return DataTables::of($data)
-            ->addColumn('image', function($row) {
-                return asset('partners/'.$row->image);
+            ->addColumn('image', function ($row) {
+                return asset('partners/' . $row->image);
             })
-            ->addColumn('action', function($row) {
+            ->addColumn('action', function ($row) {
                 $editUrl = route('editpartner_admin', $row->id_partner);
                 $deleteUrl = route('deletepartner_admin', $row->id_partner);
-                return '<a href="'.$editUrl.'" class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
-                        <button data-url="'.$deleteUrl.'" class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm btn-delete"><i class="ti ti-trash"></i></button>';
+                return '<a href="' . $editUrl . '" class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
+                        <button data-url="' . $deleteUrl . '" class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm btn-delete"><i class="ti ti-trash"></i></button>';
             })
             ->rawColumns(['image', 'action'])
             ->make(true);
@@ -51,6 +51,7 @@ class PartnerController extends Controller
         }
 
         DB::table('partners')->insert([
+            'name' => $data['nama'],
             'image' => $data['image'],
             'created_at' => now(),
             'updated_at' => now(),
@@ -105,8 +106,8 @@ class PartnerController extends Controller
     public function destroy($id)
     {
         $partner = Partners::findOrFail($id);
-        if (file_exists(public_path('partners/'.$partner->image))) {
-            unlink(public_path('partners/'.$partner->image));
+        if (file_exists(public_path('partners/' . $partner->image))) {
+            unlink(public_path('partners/' . $partner->image));
         }
         $partner->delete();
 

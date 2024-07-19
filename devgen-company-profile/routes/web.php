@@ -11,6 +11,8 @@ use App\Http\Controllers\admin\AppSettingController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\ProjectlController;
 
+use App\Http\Controllers\admin\AboutUsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,3 +83,6 @@ Route::get('/admin/team_delete/{id}', [TeamController::class, 'destroy'])->name(
 
 Route::get('/admin/app_setting', [AppSettingController::class, 'index'])->name('app_setting_admin');
 Route::post('/admin/app-settings/{id}', [AppSettingController::class, 'update'])->name('app-settings_update');
+
+Route::get('/admin/about', [AboutUsController::class, 'index'])->name('about_admin');
+Route::post('/admin/about/{id}', [AboutUsController::class, 'update'])->name('about_update');

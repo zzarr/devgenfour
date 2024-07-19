@@ -59,7 +59,15 @@ class ProjectController extends Controller
             $data['thumbnail'] = null;
         }
 
-        Project::create($data);
+        DB::table('projects')->insert([
+            'id_project' => $data['id_project'],
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'thumbnail' => $data['thumbnail'],
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
 
         if ($request->hasFile('images')) {
             $files = $request->file('images');

@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-black">
+                        <a href="{{ Route('about_admin') }}" class="nav-link text-black">
                             <i class="ti ti-info-circle menu-icon"></i>
                             <span>Manajemen About us</span>
                         </a>

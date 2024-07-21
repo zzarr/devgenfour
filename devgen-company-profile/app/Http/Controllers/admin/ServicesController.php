@@ -99,7 +99,7 @@ class ServicesController extends Controller
          // Jika ada file icon yang diunggah, kelola unggah file
          if ($request->hasFile('icon')) {
              $file = $request->file('icon');
-             $filename = "icon." . $file->getClientOriginalExtension();
+             $filename = time() . '.' . $file->getClientOriginalExtension();
             //  $filename = time() . '.' . $file->getClientOriginalExtension();
              $file->move(public_path('services'), $filename);
      
@@ -111,12 +111,15 @@ class ServicesController extends Controller
          }
      
          // Perbarui data di database
-        DB::table('services')->where('id_services', $id)->update($data);
-        //  Services::where('id_services', $id)->update($data);
+         $service = Services::find($id);
+
+         if ($service) {
+             $service->update($data);
      
          // Redirect ke route 'services_admin' dengan pesan sukses
          return redirect()->route('services_admin')->with('success', 'Service berhasil diubah');
      }
+    }
     /**
      * Remove the specified resource from storage.
      */

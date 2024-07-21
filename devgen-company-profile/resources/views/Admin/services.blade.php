@@ -7,11 +7,11 @@
             <div class="page-title-box">
                 <div class="float-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item ">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Services</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Services</h4>
+                <h4 class="page-title">Manajemen Services</h4>
             </div><!--end page-title-box-->
         </div><!--end col-->
     </div>
@@ -21,7 +21,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Services Details</h4>
+                        <h4 class="card-title">List Services</h4>
                     </div><!--end card-header-->
                     <div class="card-body">
                         <a href="{{ route('addservices_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
@@ -69,6 +69,12 @@
                     }
                 },
                 {
+                    targets: 1,
+                    render: function(data, type, full, meta) {
+                        return `<img src="/services/${data}" alt="Icon" height="100">`;
+                    },
+                },
+                {
                     targets: 3,
                     className: 'column-action',
                     render: function(data, type, full, meta) {
@@ -113,6 +119,7 @@
     });
 </script>
 @endpush
+
 
 <style>
     .column-no {

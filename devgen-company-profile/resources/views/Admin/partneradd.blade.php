@@ -24,15 +24,15 @@
                 <form method="POST" action="{{ route('storepartner_admin') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label text-end ">Nama</label>
-                        <div class="col-sm-10">
-                            <input name="nama" type="text" class="form-control" data-height="100" />
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label text-end ">Logo</label>
                         <div class="col-sm-10">
                             <input name="image" type="file" class="dropify" data-height="100" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label text-end ">Nama</label>
+                        <div class="col-sm-10">
+                            <input name="name" type="text" class="form-control" data-height="100" />
                         </div>
                     </div>
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectlController extends Controller
@@ -34,17 +34,16 @@ class ProjectlController extends Controller
 
     public function index()
     {
-        $projects = $this->projects;
-        return view('landing', compact('projects'));
+        $projects = Project::all();
+        return view('projects.index', compact('projects'));
     }
 
-    public function show($id)
+    public function show($id_project)
     {
-        if (!array_key_exists($id, $this->projects)) {
-            abort(404, 'Project not found');
-        }
 
-        $project = $this->projects[$id];
+        // $project = $this->projects[$id_project];
+        // return view('project', compact('project'));
+        $project = Project::findOrFail($id_project);
         return view('project', compact('project'));
     }
 }

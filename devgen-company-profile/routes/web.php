@@ -31,7 +31,8 @@ Route::get('/', function () {
 // landing page
 
 Route::get('/home', [LandingPageController::class, 'index']);
-Route::get('/project/{id}', [ProjectlController::class, 'show'])->name('showproject');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/projects/{id_project}', [ProjectlController::class, 'show'])->name('showproject');
 // landing page end
 
 //uji coba

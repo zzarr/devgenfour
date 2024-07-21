@@ -97,18 +97,34 @@
 <body>
     @include('layout.navbar')
     <div>
-        <div class="project-header" style="background-color: rgb(143, 218, 251); width: 100%; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
+        {{-- <div class="project-header" style="background-color: rgb(143, 218, 251); width: 100%; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
             <h1 style="color: white;">Projects</h1>
             <div style="display: flex; justify-content: center; align-items: center; color: black;">
                 <a href="{{ url('/home') }}" style="margin-right: 5px;">Home</a>
                 <span style="margin-right: 5px;">&gt;</span>
                 <a href="#">Single Projects</a>
             </div>
+        </div> --}}
+        <div class="page-title-area item-bg-1">
+            <div class="page-title-area">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-title-content">
+                            <h2>Projects</h2>
+                            <ul>
+                                <li><a href="{{ url('/home') }}">Home</a></li>
+                                <li>{{ $project['title'] }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="project-images">
             <div>
-                <img src="{{ $project['image1'] }}" alt="Project Image 1" class="img-fluid">
+                <img src="{{ asset('project/image/' . $project->image_name)}}">
             </div>
             <div>
                 <img src="{{ $project['image2'] }}" alt="Project Image 2" class="img-fluid">
@@ -117,15 +133,10 @@
 
         <div class="project-details">
             <h2>{{ $project['title'] }}</h2>
-            <p>{{ $project['description'] }}</p>
-            <ul>
-                <li><i class="fas fa-check"></i> Core Development: No fake products and services. The customer is king; their lives and needs are the inspiration.</li>
-                <li><i class="fas fa-check"></i> Define Your Choices: No fake products and services. The customer is king; their lives and needs are the inspiration.</li>
-            </ul>
-            <p>Nostrud no eos, no impedit dissentias mea...</p>
+            <p>{!! $project->description !!}</p>
         </div>
     </div>
-    @include('layout.footer-section')
-    @include('layout.script-landingpage')
+    {{-- @include('layout.footer-section')
+    @include('layout.script-landingpage') --}}
 </body>
 </html>

@@ -9,169 +9,22 @@
             </p>
             <div class="bar"></div>
         </div>
-
         <div class="row">
+            @foreach ($projects as $project)
             <div class="col-lg-3 p-0">
                 <div class="single-projects two">
                     <div class="projects-image">
-                        <img
-                            src="assets/img/projects/8.jpg"
-                            alt="image"
-                        />
+                        <img src="{{ asset('project/thumbnail/' . $project->thumbnail)}}" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
 
                     <div class="projects-content">
-                        <a href="{{ route('showproject', ['id' => 1]) }}">
-                            <h3>Project 1</h3>
-                        </a>
-
-                        <a href="{{ route('showproject', ['id' => 1]) }}">
-                            <span>Research and startup</span>
+                        <a href="{{ route('showproject', ['id_project' => $project->id_project]) }}">
+                            <h3>{{ $project->title }}</h3>
                         </a>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-3 p-0">
-                <div class="single-projects two">
-                    <div class="projects-image">
-                        <img
-                            src="assets/img/projects/9.jpg"
-                            alt="image"
-                        />
-                    </div>
-
-                    <div class="projects-content">
-                        <a href="{{ route('showproject', ['id' => 2]) }}">
-                            <h3>project 2</h3>
-                        </a>
-                        <a href="{{ route('showproject', ['id' => 2]) }}">
-                            <span>Research and startup</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 p-0">
-                <div class="single-projects two">
-                    <div class="projects-image">
-                        <img
-                            src="assets/img/projects/10.jpg"
-                            alt="image"
-                        />
-                    </div>
-
-                    <div class="projects-content">
-                        <a href="single-projects.html">
-                            <h3>Digital Marketing</h3>
-                        </a>
-
-                        <a href="single-projects.html">
-                            <span>Research and startup</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 p-0">
-                <div class="single-projects two">
-                    <div class="projects-image">
-                        <img
-                            src="assets/img/projects/11.jpg"
-                            alt="image"
-                        />
-                    </div>
-
-                    <div class="projects-content">
-                        <a href="single-projects.html">
-                            <h3>App Development</h3>
-                        </a>
-                        <a href="single-projects.html">
-                            <span>Research and startup</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 p-0">
-                <div class="single-projects two">
-                    <div class="projects-image">
-                        <img
-                            src="assets/img/projects/12.jpg"
-                            alt="image"
-                        />
-                    </div>
-
-                    <div class="projects-content">
-                        <a href="single-projects.html">
-                            <h3>IT Solutions</h3>
-                        </a>
-                        <a href="single-projects.html">
-                            <span>Research and startup</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 p-0">
-                <div class="single-projects two">
-                    <div class="projects-image">
-                        <img
-                            src="assets/img/projects/13.jpg"
-                            alt="image"
-                        />
-                    </div>
-
-                    <div class="projects-content">
-                        <a href="single-projects.html">
-                            <h3>Data Management</h3>
-                        </a>
-                        <a href="single-projects.html">
-                            <span>Research and startup</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 p-0">
-                <div class="single-projects two">
-                    <div class="projects-image">
-                        <img
-                            src="assets/img/projects/14.jpg"
-                            alt="image"
-                        />
-                    </div>
-
-                    <div class="projects-content">
-                        <a href="single-projects.html">
-                            <h3>E-commerce Development</h3>
-                        </a>
-                        <a href="single-projects.html">
-                            <span>Research and startup</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 p-0">
-                <div class="single-projects two">
-                    <div class="projects-image">
-                        <img
-                            src="assets/img/projects/15.jpg"
-                            alt="image"
-                        />
-                    </div>
-
-                    <div class="projects-content">
-                        <a href="single-projects.html">
-                            <h3>Creative Web Develop</h3>
-                        </a>
-                        <a href="single-projects.html">
-                            <span>Research and startup</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

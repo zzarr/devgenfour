@@ -2,7 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img src="{{ asset($appSetting->logo) }}" alt="Company Logo" class="footer-logo">
+                <div>
+                    <img
+                        src="{{ asset('img/' . $appSetting->logo) }}"
+                        class="wow zoomIn"
+                        data-wow-delay="0.6s"
+                        alt="image"
+                    />
+                </div>
             </div>
             <div class="col-md-3">
                 <h5>Contact Us</h5>

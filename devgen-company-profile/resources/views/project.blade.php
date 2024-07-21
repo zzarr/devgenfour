@@ -92,20 +92,11 @@
         }
     </style>
 </head>
-
-
+@include('layout.navbar')
 <body>
-    @include('layout.navbar')
-    <div>
-        {{-- <div class="project-header" style="background-color: rgb(143, 218, 251); width: 100%; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
-            <h1 style="color: white;">Projects</h1>
-            <div style="display: flex; justify-content: center; align-items: center; color: black;">
-                <a href="{{ url('/home') }}" style="margin-right: 5px;">Home</a>
-                <span style="margin-right: 5px;">&gt;</span>
-                <a href="#">Single Projects</a>
-            </div>
-        </div> --}}
-        <div class="page-title-area item-bg-1">
+    
+
+        <div class="page-title-area" style="background-image: url('{{ asset('project/thumbnail/' . $project->thumbnail) }}')">
             <div class="page-title-area">
             <div class="d-table">
                 <div class="d-table-cell">
@@ -122,21 +113,45 @@
             </div>
         </div>
 
-        <div class="project-images">
-            <div>
-                <img src="{{ asset('project/image/' . $project->image_name)}}">
-            </div>
-            <div>
-                <img src="{{ $project['image2'] }}" alt="Project Image 2" class="img-fluid">
-            </div>
-        </div>
+        <div class="container">
+            <div class="row">
+                @foreach ($projectimg as $p)
+                <div class="col-lg-6 col-md-6">
+                    <div class="project-details-image">
+                        <img src="{{ asset('project/image/' . $p->image_name) }}" style="width: 100%; height: auto;">
 
-        <div class="project-details">
-            <h2>{{ $project['title'] }}</h2>
-            <p>{!! $project->description !!}</p>
+                    </div>
+                </div>
+              @endforeach
+              
+              <div class="projects-details-desc">
+                  <h1 > {{ $project->title }}</h1>
+      
+                  <p>{!! $project->description !!}</p>
+              </div>
+               
+            </div>
         </div>
-    </div>
-    {{-- @include('layout.footer-section')
-    @include('layout.script-landingpage') --}}
+        
+       
+            <div class="row"> 
+                @foreach ($projects as $project)
+                <div class="col-lg-3">
+                    <div class="single-projects">
+                        <div class="projects-image">
+                            <img src="{{ asset('project/thumbnail/' . $project->thumbnail)}}" style="width: 100%; height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="projects-content">
+                            <a href="{{ route('showproject', ['id_project' => $project->id_project]) }}">
+                                <h3>{{ $project->title }}</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+        @include('layout.footer-section')
+        @include('layout.script-landingpage')
 </body>
 </html>

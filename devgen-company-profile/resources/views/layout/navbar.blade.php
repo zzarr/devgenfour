@@ -5,12 +5,12 @@
                 <div class="logo">
                     <a href="index.html">
                         <img
-                            src="img/dev.png"
+                            src="{{ asset('img/' . $appSetting->logo) }}"
                             class="black-logo"
                             alt="image"
                         />
                         <img
-                            src="img/dev.png"
+                            src="{{ asset('img/' . $appSetting->logo) }}"
                             class="white-logo"
                             alt="image"
                         />

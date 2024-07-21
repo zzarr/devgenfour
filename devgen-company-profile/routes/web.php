@@ -58,7 +58,8 @@ Route::get('/admin/services_add', [ServicesController::class, 'create'])->name('
 Route::post('/admin/services_add', [ServicesController::class, 'store'])->name('storeservices_admin');
 Route::get('/admin/services_edit/{id}', [ServicesController::class, 'edit'])->name('editservices_admin');
 Route::put('/admin/services_update/{id}', [ServicesController::class, 'update'])->name('updateservices_admin');
-Route::delete('/admin/services_delete/{id}', [ServicesController::class, 'destroy'])->name('deleteservices_admin');
+Route::delete('/admin/services/{id}', [ServicesController::class, 'destroy'])->name('deleteservices_admin');
+
 
 
 Route::get('admin/choose/datatables', [ChooseController::class, 'datatable'])->name('choose_admin.datatable');

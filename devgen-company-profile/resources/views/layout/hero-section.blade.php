@@ -10,7 +10,7 @@
                                 {!! $appSetting->desc !!} 
                             </p>
                             <div class="banner-btn">
-                                <a href="https://wa.me/6283134926092:{{ $appSetting->no_contact }}" class="optional-btn"> Contact Us</a>
+                                <a href="https://wa.me/?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda{{ $appSetting->no_contact }}" class="optional-btn"> Contact Us</a>
                             </div>
                         </div>
                     </div>

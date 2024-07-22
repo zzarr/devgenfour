@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('choose', function (Blueprint $table) {
             $table->id();
+            $table->string('icon');
             $table->String('title');
             $table->text('description');
             $table->timestamps();

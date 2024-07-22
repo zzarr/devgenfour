@@ -9,7 +9,7 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->string('id_project')->primary();
+            $table->string('id')->primary();
             $table->char('title');
             $table->text('description');
             $table->string('thumbnail');

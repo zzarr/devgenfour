@@ -12,6 +12,7 @@ class Choose extends Model
     protected $table = 'choose'; // Menentukan nama tabel yang benar
 
     protected $fillable = [
+        'icon',
         'title',
         'description',
     ];

@@ -42,7 +42,7 @@
                 >
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="{{ url('/home') }}" class="nav-link">
                                 Home
                             </a>
                             
@@ -54,19 +54,19 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#services-section" class="nav-link">
                                 Services
                             </a>
                             
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#project-section" class="nav-link">
                                 Projects
                             </a>
                             
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#footer-section" class="nav-link">
                                 Contact
                             </a>
                         </li>

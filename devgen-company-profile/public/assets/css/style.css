@@ -5364,6 +5364,9 @@ Projects Details Area CSS
 =================================================*/
 .project-details-image {
   margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .projects-details-desc {

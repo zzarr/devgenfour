@@ -1,4 +1,4 @@
-<section class="team-section pb-70">
+<section class="team-section pb-70" >
     <div class="container">
         <div class="section-title">
             <h2>Our Expert Team</h2>

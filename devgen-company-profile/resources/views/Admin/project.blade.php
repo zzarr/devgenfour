@@ -7,6 +7,7 @@
             <div class="page-title-box">
                 <div class="float-end">
                     <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Project</li>
                     </ol>
                 </div>

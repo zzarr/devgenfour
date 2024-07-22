@@ -1,4 +1,4 @@
-<section class="footer-section pt-100 pb-70">
+<section class="footer-section pt-100 pb-70" id="footer-section">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-3">
                 <h5>Contact Us</h5>
-                <p>{{ $appSetting->alamat }}</p>
+                
                 <p>Phone: {{ $appSetting->no_contact }}</p>
                 <p>Email: {{ $appSetting->email }}</p>
             </div>
@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-3">
                 <h5>Our Location</h5>
-                <span>{{ $appSetting->gmaap_coordinat }}</span>
+                <p>{{ $appSetting->alamat }}</p>
             </div>
         </div>
     </div>

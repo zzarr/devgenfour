@@ -102,10 +102,10 @@
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-title-content">
-                            <h2>Projects</h2>
+                            <h2>{{$project->title }}</h2>
                             <ul>
                                 <li><a href="{{ url('/home') }}">Home</a></li>
-                                <li>{{ $project['title'] }}</li>
+                                <li > {{$project->title }}</li>
                             </ul>
                         </div>
                     </div>
@@ -116,24 +116,22 @@
         <div class="container">
             <div class="row">
                 @foreach ($projectimg as $p)
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-4 col-md-4 d-flex " >
                     <div class="project-details-image">
                         <img src="{{ asset('project/image/' . $p->image_name) }}" style="width: 100%; height: auto;">
-
                     </div>
                 </div>
               @endforeach
-              
-              <div class="projects-details-desc">
-                  <h1 > {{ $project->title }}</h1>
-      
-                  <p>{!! $project->description !!}</p>
-              </div>
-               
             </div>
         </div>
         
-       
+        <div class="container-fluid">
+            <div class="section-title">
+                <h2> {{ $project->title }}</h2>
+                <p>{!! $project->description !!}</p>
+                <div class="bar"></div>
+            </div>
+            
             <div class="row"> 
                 @foreach ($projects as $project)
                 <div class="col-lg-3">

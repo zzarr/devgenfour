@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Partners extends Model
 {
     use HasFactory;
-    protected $table = 'partners'; // Menentukan nama tabel yang benar
-    protected $primaryKey = 'id_partner';
-
+    protected $table = 'partners';
     protected $fillable = [
-        'image',
+        'name',
+        'image'
     ];
 }

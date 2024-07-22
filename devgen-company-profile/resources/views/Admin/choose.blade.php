@@ -1,11 +1,25 @@
 @extends('Admin.layout.app')
 
 @section('content')
+
+<div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="float-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Choose</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Manajemen Choose</h4>
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div>
+
 <div class="row row-sm">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Choose List</h3>
             </div>
             <div class="card-body">
                 <a href="{{ route('addchoose_admin') }}" class="btn btn-primary"><i class="ti ti-plus"></i> Add</a>
@@ -14,9 +28,10 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>No</th>
-                                <th>Action</th>
+                                <th>Icon</th>
                                 <th>Title</th>
                                 <th>Description</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,7 +57,6 @@
             processing: true,
             serverSide: true,
             ajax: "{{ route('choose_admin.datatable') }}",
-            
             columnDefs: [
                 {
                     targets: 0,
@@ -52,6 +66,12 @@
                 },
                 {
                     targets: 1,
+                    render: function(data, type, full, meta) {
+                        return `<img src="/choose/${data}" alt="Icon" height="100">`;
+                    },
+                },
+                {
+                    targets: 4,
                     render: function(data, type, full, meta) {
                         let btn = `
                             <div class="btn-list">
@@ -63,21 +83,13 @@
                         return btn;
                     },
                 },
-                {
-                    targets: 3,
-                    render: function(data, type, full, meta) {
-                        if (data && data.length > 150) {
-                            return data.substr(0, 150) + '...';
-                        }
-                        return data;
-                    }
-                },
             ],
             columns: [
                 { data: 'id' },
-                { data: 'id' },
+                { data: 'icon' },
                 { data: 'title' },
-                { data: 'description' }
+                { data: 'description' },
+                { data: 'id' }
             ],
             language: {
                 searchPlaceholder: 'Search...',

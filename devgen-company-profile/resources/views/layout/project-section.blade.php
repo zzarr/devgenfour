@@ -1,4 +1,4 @@
-<section class="projects-section pt-100 pb-100">
+<section class="projects-section pt-100 pb-100" id="project-section">
     <div class="container-fluid">
         <div class="section-title">
             <h2>Projects</h2>

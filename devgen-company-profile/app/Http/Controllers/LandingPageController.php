@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Services;
 use App\Models\AppSetting;
 use Illuminate\Http\Request;
-use App\Models\Services;
+
 
 class LandingPageController extends Controller
 {

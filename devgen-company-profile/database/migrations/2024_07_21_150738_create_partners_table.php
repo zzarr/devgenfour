@@ -9,7 +9,7 @@ class CreatePartnersTable extends Migration
     public function up()
     {
         Schema::create('partners', function (Blueprint $table) {
-            $table->id('id_partner');
+            $table->id('id');
             $table->string('name');
             $table->string('image');
             $table->timestamps();

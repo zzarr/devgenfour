@@ -34,7 +34,7 @@ class AboutUsController extends Controller
         // Update data di database
         DB::table('about_us')->where('id_about_us', $id)->update([
             'title' => $data['title'],
-            'description' => $data['desc'],
+            'description' => $data['description'],
             'image' => $data['gambar'],
             'created_at' => now(),
             'updated_at' => now(),

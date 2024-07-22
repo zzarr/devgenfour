@@ -37,7 +37,7 @@
                         <label for="telephone" class="col-sm-2 col-form-label text-end ">thumnail</label>
                         <div class="col-sm-10">
                             <input name="thumbnail" type="file" class="dropify" data-height="100"
-                                data-default-file="{{ asset('project/tumbnail/' . $projects->thumbnail) }}" />
+                                data-default-file="{{ asset('project/thumbnail/' . $projects->thumbnail) }}" />
                         </div>
                     </div>
                     <div class="mb-3 row">

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Partners;
-use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class PartnerController extends Controller
@@ -16,20 +15,10 @@ class PartnerController extends Controller
     }
 
     public function datatable(Request $request)
+
     {
         $data = Partners::query();
-        return DataTables::of($data)
-            ->addColumn('image', function ($row) {
-                return asset('partners/' . $row->image);
-            })
-            ->addColumn('action', function ($row) {
-                $editUrl = route('editpartner_admin', $row->id_partner);
-                $deleteUrl = route('deletepartner_admin', $row->id_partner);
-                return '<a href="' . $editUrl . '" class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
-                        <button data-url="' . $deleteUrl . '" class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm btn-delete"><i class="ti ti-trash"></i></button>';
-            })
-            ->rawColumns(['image', 'action'])
-            ->make(true);
+        return DataTables::of($data)->make(true);
     }
     public function create()
     {
@@ -41,23 +30,32 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except(['_token', '_method',  'image']);
-        // Mengelola upload file image
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    
+        // Ensure the directory exists
+        if (!file_exists(public_path('partners'))) {
+            mkdir(public_path('partners'), 0755, true);
+        }
+    
+        // Handle file upload
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('partners'), $filename);
-            $data['image'] = $filename;
+        } else {
+            return redirect()->route('partner_admin')->with('error', 'File upload failed.');
         }
-
-        DB::table('partners')->insert([
-            'name' => $data['nama'],
-            'image' => $data['image'],
-            'created_at' => now(),
-            'updated_at' => now(),
+    
+        // Create the service
+        Partners::create([
+            'name' => $request->name,
+            'image' => $filename,
         ]);
-
-        return redirect()->route('partner_admin')->with('success', 'Partner berhasil ditambahkan');
+    
+        return redirect()->route('partner_admin')->with('success', 'partnerF berhasil ditambahkan');
     }
 
     /**
@@ -82,7 +80,8 @@ class PartnerController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'required|string|max:255',
+            'image' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $partner = Partners::findOrFail($id);
@@ -106,12 +105,15 @@ class PartnerController extends Controller
     public function destroy($id)
     {
         $partner = Partners::findOrFail($id);
-        if (file_exists(public_path('partners/' . $partner->image))) {
-            unlink(public_path('partners/' . $partner->image));
+    
+        $imagePath = public_path('partners/' . $partner->image);
+    
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
+    
         $partner->delete();
-
-        return redirect()->route('partner_admin')
-            ->with('success', 'Partner deleted successfully.');
+    
+        return response()->json(['success' => 'Item deleted successfully.']);
     }
 }

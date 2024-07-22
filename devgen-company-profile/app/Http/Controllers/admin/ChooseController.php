@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Choose;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class ChooseController extends Controller
@@ -25,17 +26,49 @@ class ChooseController extends Controller
         return view('Admin.chooseadd');
     }
 
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'title' => 'required',
+    //         'description' => 'required',
+    //     ]);
+
+    //     Choose::create($request->all());
+
+    //     return redirect()->route('choose_admin')
+    //         ->with('success', 'Choose created successfully.');
+    // }
+
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
         ]);
-
-        Choose::create($request->all());
-
-        return redirect()->route('choose_admin')
-            ->with('success', 'Choose created successfully.');
+    
+        // Ensure the directory exists
+        if (!file_exists(public_path('choose'))) {
+            mkdir(public_path('choose'), 0755, true);
+        }
+    
+        // Handle file upload
+        if ($request->hasFile('icon')) {
+            $file = $request->file('icon');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('choose'), $filename);
+        } else {
+            return redirect()->route('choose_admin')->with('error', 'File upload failed.');
+        }
+    
+        // Create the service
+        Choose::create([
+            'icon' => $filename,
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+    
+        return redirect()->route('choose_admin')->with('success', 'Choose berhasil ditambahkan');
     }
 
     public function show($id) // If you're using resource routes, this method needs to be defined
@@ -52,23 +85,41 @@ class ChooseController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Validasi input untuk memastikan data yang dimasukkan sesuai dengan harapan
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
         ]);
+    
+        $data = $request->except(['_token', '_method', 'icon']);
+    
+        if ($request->hasFile('icon')) {
+            $file = $request->file('icon');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('choose'), $filename);
+            $data['icon'] = $filename;
+        } else {
+            $data['icon'] = Choose::where('id', $id)->value('icon');
+        }
+    
+       DB::table('choose')->where('id', $id)->update($data);
 
-        $choose = Choose::findOrFail($id);
-        $choose->update($request->all());
-
-        return redirect()->route('choose_admin')
-            ->with('success', 'Choose updated successfully');
+        return redirect()->route('choose_admin')->with('success', 'Choose berhasil diubah');
     }
 
     public function destroy($id)
     {
         $choose = Choose::findOrFail($id);
+    
+        $imagePath = public_path('choose/' . $choose->icon);
+    
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    
         $choose->delete();
-
+    
         return response()->json(['success' => 'Item deleted successfully.']);
     }
 }

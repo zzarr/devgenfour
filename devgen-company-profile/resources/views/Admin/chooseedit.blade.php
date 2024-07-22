@@ -11,16 +11,20 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('updatechoose_admin', $choose->id) }}" method="POST">
+                    <form action="{{ route('updatechoose_admin', $choose->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+                        <div class="form-group">
+                            <label for="icon">Icon</label>
+                            <input type="file" class="dropify" id="icon" name="icon" data-default-file="{{ asset('choose/' . $choose->icon) }}" />
+                        </div>
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" class="form-control" id="title" name="title" value="{{ $choose->title }}" required>
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea class="form-control" id="description" name="description" rows="3" required>{{ $choose->description }}</textarea>
+                            <input type="text" class="form-control" id="description" name="description" value="{{ $choose->description }}" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -29,3 +33,15 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('.dropify').dropify();
+        });
+    </script>
+@endpush
+
+@push('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}">
+@endpush

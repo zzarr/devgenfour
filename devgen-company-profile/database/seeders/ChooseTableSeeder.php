@@ -11,6 +11,7 @@ class ChooseTableSeeder extends Seeder
     public function run()
     {
         DB::table('choose')->insert([
+            'icon' => 'icon.png',
             'title' => 'Choose Title 1',
             'description' => 'This is a dummy title for the why choose us section.',
             'created_at' => now(),

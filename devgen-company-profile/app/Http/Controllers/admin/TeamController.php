@@ -73,7 +73,14 @@ class TeamController extends Controller
         $data['updated_at'] = now();
 
         // Menambahkan data ke tabel 'teams'
-        DB::table('teams')->insert($data);
+        DB::table('teams')->insert([
+            'id_team' => $data['id_team'],
+            'name' => $data['nama'],
+            'jabatan' => $data['jabatan'],
+            'foto' => $data['foto'],
+            'created_at' => $data['created_at'],
+            'updated_at' => $data['updated_at'],
+        ]);
 
         // Redirect ke route 'team_admin' dengan pesan sukses
         return redirect()->route('team_admin')->with('success', 'Data berhasil ditambahkan');

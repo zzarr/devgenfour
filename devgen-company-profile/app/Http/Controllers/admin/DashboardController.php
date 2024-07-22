@@ -10,6 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('Admin.dashboard');
+        $visitorCount = \App\Models\Visitor::count();
+        return view('Admin.dashboard', compact('visitorCount'));
     }
 }

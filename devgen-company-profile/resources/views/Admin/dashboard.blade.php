@@ -23,7 +23,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col">
                             <p class="text-dark mb-1 fw-semibold">Visitor </p>
-                            <h4 class="my-1"></h4>
+                            <h4 class="my-1"> {{ $visitorCount }}</h4>
 
                         </div>
                         <div class="col-auto align-self-center">

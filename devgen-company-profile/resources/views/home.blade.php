@@ -7,7 +7,7 @@
         <!-- End Navbar Area -->
 
         <!-- Start Banner Area -->
-        
+
        @include('layout.hero-section', ['appSetting' => $appSetting])
         <!-- End Banner Area -->
 
@@ -49,7 +49,7 @@
 
         <!-- Jquery Slim JS -->
         @include('layout.script-landingpage')
-     
+
 
     </body>
 </html>

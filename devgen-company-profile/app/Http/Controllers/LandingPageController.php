@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Services;
 use App\Models\AppSetting;
+use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
     public function index()
     {
         $appSetting = AppSetting::first();
-        return view('home', compact('appSetting'));
+        $services = Services::first();
+        return view('home', compact('appSetting','services'));
     }
-    
+
     public function edit($id)
     {
-         
+
         return view('admin.app_setting', compact('settings'));
     }
 

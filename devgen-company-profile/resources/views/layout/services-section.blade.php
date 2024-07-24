@@ -1,4 +1,4 @@
-<section class="services-section bg-background pt-100 pb-70">
+<section id="services-section" class="services-section bg-background pt-100 pb-70">
     <div class="container">
         <div class="section-title">
             <h2>IT Agency Services</h2>
@@ -11,6 +11,7 @@
         </div>
 
         <div class="row">
+            @foreach ($partners as $image)
             <div class="col-lg-4 col-md-6">
                 <div class="single-services">
                     <div class="icon bg-deb0fe">

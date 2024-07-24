@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Services;
-use App\Models\AppSetting;
 use Illuminate\Http\Request;
+use App\Models\AppSetting;
+use App\Models\Project;
+use App\Models\Services;
+use App\Models\Partners;
+use App\Models\Team;
+
 
 
 class LandingPageController extends Controller
@@ -13,7 +17,10 @@ class LandingPageController extends Controller
     {
         $appSetting = AppSetting::first();
         $services = Services::first();
-        return view('home', compact('appSetting','services'));
+        $projects = Project::all();
+        $partners = Partners::all();
+        $team = Team::all();
+        return view('home', compact('appSetting', 'projects','services','partners','team'));
     }
 
     public function edit($id)

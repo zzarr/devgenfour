@@ -37,7 +37,7 @@ Route::get('/projects/{id_project}', [ProjectlController::class, 'show'])->name(
 // landing page end
 
 
-//end
+
 
 
 /*================================ Admin Routes ======================== */

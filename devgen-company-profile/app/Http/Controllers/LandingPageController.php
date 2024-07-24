@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AppSetting;
 use App\Models\Project;
-use App\Models\Services;
-
+use App\Models\AboutUs;
 
 class LandingPageController extends Controller
 {
@@ -14,12 +13,13 @@ class LandingPageController extends Controller
     {
         $appSetting = AppSetting::first();
         $projects = Project::all();
-        return view('home', compact('appSetting', 'projects'));
+        $aboutUs = AboutUs::first(); 
+        
+        return view('home', compact('appSetting', 'projects', 'aboutUs'));
     }
     
     public function edit($id)
     {
-         
         return view('admin.app_setting', compact('settings'));
     }
 

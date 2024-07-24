@@ -10,7 +10,6 @@ use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\AppSettingController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\ProjectlController;
-
 use App\Http\Controllers\admin\AboutUsController;
 
 /*
@@ -33,6 +32,9 @@ Route::get('/', function () {
 Route::get('/home', [LandingPageController::class, 'index']);
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{id_project}', [ProjectlController::class, 'show'])->name('showproject');
+
+// route about coba
+Route::get('/about', [AboutUsController::class, 'index'])->name('about');
 // landing page end
 
 //uji coba

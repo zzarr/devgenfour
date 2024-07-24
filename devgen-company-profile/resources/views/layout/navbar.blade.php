@@ -48,7 +48,7 @@
                             
 
                         <li class="nav-item">
-                            <a href="about.html" class="nav-link">
+                            <a href="{{ url('/about') }}" class="nav-link">
                                 About
                             </a>
                         </li>

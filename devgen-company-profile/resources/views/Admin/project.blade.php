@@ -46,40 +46,71 @@
 @endsection
 
 @push('script')
-    <script>
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            table = $("#datatable").DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{{ route('project_admin.datatable') }}",
-
-                columns: [{
-                        data: 'id'
-                    },
-                    {
-                        data: 'thumbnail'
-                    },
-                    {
-                        data: 'title'
-                    },
-                    {
-                        data: 'description'
-                    },
-                    {
-                        data: 'action'
-                    }
-                ],
-                language: {
-                    searchPlaceholder: 'Search...',
-                    sSearch: '',
-                }
-            });
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
-    </script>
+
+        table = $("#datatable").DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('project_admin.datatable') }}",
+
+            columnDefs: [
+                {
+                    targets: 1,
+                    render: function(data, type, full, meta) {
+                        return `<img src="/project/thumbnail/${data}" alt="Thumbnail" height="100">`;
+                    }
+                },
+                {
+                    targets: 4,
+                    render: function(data, type, full, meta) {
+                        let btn = `
+                            <div class="btn-list">
+                                <a href="{{ route('editproject_admin', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                                <button class="btn btn-danger btn-delete" data-id=":id"><i class="fas fa-trash-alt"></i> Delete</button>
+                            </div>
+                        `;
+                        btn = btn.replaceAll(':id', full.id);
+                        return btn;
+                    },
+                }
+            ],
+            columns: [
+                { data: 'id' },
+                { data: 'thumbnail' }, // Ensure this matches the data returned
+                { data: 'title' },
+                { data: 'description' },
+                { data: 'id' } // For action column
+            ],
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+            }
+        });
+
+        $('#datatable').on('click', '.btn-delete', function() {
+            let deleteId = $(this).data('id');
+            if (confirm('Are you sure you want to delete this item?')) {
+                $.ajax({
+                    url: "{{ url('admin/project') }}/" + deleteId,
+                    type: 'POST',
+                    data: {
+                        _method: 'DELETE' // Spoofing the DELETE method
+                    },
+                    success: function(result) {
+                        table.ajax.reload(null, false);
+                    },
+                    error: function(xhr) {
+                        alert('Error deleting record: ' + xhr.statusText);
+                    }
+                });
+            }
+        });
+    });
+</script>
 @endpush

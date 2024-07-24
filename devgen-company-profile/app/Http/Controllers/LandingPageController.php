@@ -13,30 +13,13 @@ class LandingPageController extends Controller
     {
         $appSetting = AppSetting::first();
         $projects = Project::all();
-        $aboutUs = AboutUs::first(); 
-        
+        $aboutUs = AboutUs::first();
+
         return view('home', compact('appSetting', 'projects', 'aboutUs'));
     }
-    
-    public function edit($id)
+
+    public function about()
     {
-        return view('admin.app_setting', compact('settings'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $settings = AppSetting::find($id);
-
-        // Handle file upload
-        if ($request->hasFile('logo')) {
-            $file = $request->file('logo');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('img'), $filename);
-            $settings->logo = $filename;
-        }
-
-        $settings->update($request->all());
-
-        return redirect()->back()->with('success', 'Settings updated successfully');
+        return view('AboutUs');
     }
 }

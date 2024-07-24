@@ -35,11 +35,11 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects.ind
 Route::get('/projects/{id_project}', [ProjectlController::class, 'show'])->name('showproject');
 
 // route about coba
-Route::get('/about', [AboutUsController::class, 'index'])->name('about');
+Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
 // landing page end
 
 
-//end
+
 
 
 /*================================ Admin Routes ======================== */

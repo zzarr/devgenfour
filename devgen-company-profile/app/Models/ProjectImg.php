@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\ForeignKeyDefinition;
@@ -10,7 +12,7 @@ class ProjectImg extends Model
 
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id_project', 
+        'id_project',
         'image_name'
     ];
 

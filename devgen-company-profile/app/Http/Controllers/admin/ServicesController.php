@@ -107,7 +107,7 @@ class ServicesController extends Controller
              $data['icon'] = $filename;
          } else {
              // Jika tidak ada icon yang diunggah, tetap gunakan icon yang sudah ada
-             $data['icon'] = Services::where('id_services', $id)->value('icon');
+             $data['icon'] = Services::where('id', $id)->value('icon');
          }
      
          // Perbarui data di database

@@ -17,33 +17,35 @@
     <div class="card">
         <div class="col-lg-12">
             <div class="card-body">
-                <form method="POST" action="{{ route('updateproject_admin', $projects->id_project) }}"
-                    enctype="multipart/form-data">
+                <form method="POST" action="{{ route('updateproject_admin', $projects->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">
-                        <label for="title" class="col-sm-2 col-form-label text-end ">Title</label>
+                        <label for="title" class="col-sm-2 col-form-label text-end">Title</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="title" id="title"
-                                value="{{ $projects->title }}" required />
+                            <input class="form-control" type="text" name="title" id="title" value="{{ $projects->title }}" required />
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="description" class="col-sm-2 col-form-label text-end ">Deskripsi</label>
+                        <label for="description" class="col-sm-2 col-form-label text-end">Deskripsi</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="summernote" name="description" rows="10" required>{{ $projects->description }}</textarea>
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="telephone" class="col-sm-2 col-form-label text-end ">thumnail</label>
+                        <label for="thumbnail" class="col-sm-2 col-form-label text-end">Thumbnail</label>
                         <div class="col-sm-10">
-                            <input name="thumbnail" type="file" class="dropify" data-height="100"
-                                data-default-file="{{ asset('project/thumbnail/' . $projects->thumbnail) }}" />
+                            <input name="thumbnail" type="file" class="dropify" data-height="100" data-default-file="{{ asset('project/thumbnail/' . $projects->thumbnail) }}" />
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="password" class="col-sm-2 col-form-label text-end ">Project image</label>
+                        <label for="project_image" class="col-sm-2 col-form-label text-end">Project image</label>
                         <div class="col-sm-10">
-                            <input name="images[]" type="file" class="dropify" data-height="100" multiple />
+                            <div id="project-images">
+                                @foreach($images as $image)
+                                    <input name="images[]" type="file" class="dropify" data-height="100" data-default-file="{{ asset('project/image/' . $image->image_name) }}" />
+                                @endforeach
+                            </div>
+                            <button type="button" id="add-image" class="btn btn-secondary mt-2">Add Image</button>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -58,6 +60,11 @@
         $(document).ready(function() {
             $('#summernote').summernote();
             $('.dropify').dropify();
+
+            $('#add-image').click(function() {
+                $('#project-images').append('<input name="images[]" type="file" class="dropify" data-height="100" multiple />');
+                $('.dropify').dropify();
+            });
         });
     </script>
 @endpush

@@ -38,11 +38,14 @@ Route::get('/projects/{id_project}', [ProjectlController::class, 'show'])->name(
 Route::get('/about', function (){
     return view('layout.about-us-section');
 });
+
+// route about coba
+
 Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
 // landing page end
 
 
-//end
+
 
 
 /*================================ Admin Routes ======================== */

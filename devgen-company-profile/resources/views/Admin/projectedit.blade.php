@@ -17,7 +17,7 @@
     <div class="card">
         <div class="col-lg-12">
             <div class="card-body">
-                <form method="POST" action="{{ route('updateproject_admin', $projects->id_project) }}"
+                <form method="POST" action="{{ route('updateproject_admin', $projects->id) }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="telephone" class="col-sm-2 col-form-label text-end ">thumnail</label>
+                        <label for="telephone" class="col-sm-2 col-form-label text-end ">thumbnail</label>
                         <div class="col-sm-10">
                             <input name="thumbnail" type="file" class="dropify" data-height="100"
                                 data-default-file="{{ asset('project/thumbnail/' . $projects->thumbnail) }}" />

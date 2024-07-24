@@ -8,7 +8,7 @@ class ProjectImg extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_img';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'id_project', 
         'image_name'

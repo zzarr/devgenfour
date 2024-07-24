@@ -71,7 +71,7 @@
                                 <a href="#" data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                             </div>
                         `;
-                            btn = btn.replaceAll(':id_team', String(data));
+                            btn = btn.replaceAll(':id', String(data));
                             return btn;
                         },
                     },

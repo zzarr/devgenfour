@@ -22,16 +22,8 @@ class TeamController extends Controller
 
     public function datatable(Request $request)
     {
-        $data = Team::select(['id', 'name', 'jabatan', 'foto']);
-        return DataTables::of($data)
-            ->addColumn('action', function ($row) {
-                $editUrl = route('editteam_admin', $row->id);
-                $deleteUrl = route('deleteteam_admin', $row->id);
-                return '<a href="' . $editUrl . '" class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
-                        <button data-url="' . $deleteUrl . '" class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm btn-delete"><i class="ti ti-trash"></i></button>';
-            })
-            ->rawColumns(['action'])
-            ->make(true);
+        $data = Team::query();
+        return DataTables::of($data)->make(true);
     }
     /**
      * Show the form for creating a new resource.
@@ -48,7 +40,7 @@ class TeamController extends Controller
     {
         // Validasi input untuk memastikan data yang dimasukkan sesuai dengan harapan
         $request->validate([
-            'nama' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'jabatan' => 'nullable|string|max:255',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -73,7 +65,7 @@ class TeamController extends Controller
         $data['updated_at'] = now();
 
         Team::create([
-            'name' => $data['nama'],
+            'name' => $data['name'],
             'jabatan' => $data['jabatan'],
             'foto' => $data['foto'],
             'created_at' => $data['created_at'],
@@ -106,7 +98,7 @@ class TeamController extends Controller
     {
         // Validasi input untuk memastikan data yang dimasukkan sesuai dengan harapan
         $request->validate([
-            'nama' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'jabatan' => 'nullable|string|max:255',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -124,14 +116,14 @@ class TeamController extends Controller
             $data['foto'] = $filename;
         } else {
             // Jika tidak ada foto baru, ambil foto yang lama
-            $data['foto'] = DB::table('teams')->where('id_team', $id)->value('foto');
+            $data['foto'] = DB::table('teams')->where('id', $id)->value('foto');
         }
 
         $data['updated_at'] = now();
 
         // Update data ke tabel 'teams'
-        DB::table('teams')->where('id_team', $id)->update([
-            'name' => $data['nama'],
+        DB::table('teams')->where('id', $id)->update([
+            'name' => $data['name'],
             'jabatan' => $data['jabatan'],
             'foto' => $data['foto'],
             'updated_at' => $data['updated_at'],
@@ -147,9 +139,20 @@ class TeamController extends Controller
     public function destroy($id)
     {
         // Hapus data dari tabel 'teams'
-        DB::table('teams')->where('id_team', $id)->delete();
-
-        // Redirect ke route 'team_admin' dengan pesan sukses
-        return redirect()->route('team_admin')->with('success', 'Data berhasil dihapus');
+        $team = Team::findOrFail($id);
+    
+        // Get the path to the image file
+        $imagePath = public_path('team/' . $team->foto);
+    
+        // Delete the image file if it exists
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    
+        // Delete the service record
+        $team->delete();
+    
+        // Return a success response
+        return response()->json(['success' => 'Item deleted successfully.']);
     }
 }

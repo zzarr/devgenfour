@@ -9,7 +9,7 @@ class Team extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id'; // Assuming this is your primary key
+    protected $primaryKey = 'id';
     public $incrementing = false;
 
 

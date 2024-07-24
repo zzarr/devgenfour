@@ -48,7 +48,7 @@ class ProjectController extends Controller
         ]);
 
         $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
-        $data['id_project'] = (string) Str::uuid();
+        $data['id'] = (string) Str::uuid();
 
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
@@ -60,7 +60,7 @@ class ProjectController extends Controller
         }
 
         DB::table('projects')->insert([
-            'id_project' => $data['id_project'],
+            'id' => $data['id'],
             'title' => $data['title'],
             'description' => $data['description'],
             'thumbnail' => $data['thumbnail'],
@@ -75,8 +75,8 @@ class ProjectController extends Controller
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('project/image'), $filename);
 
-                \App\Models\ProjectImg::create([
-                    'id_project' => $data['id_project'],
+                ProjectImg::create([
+                    'id' => $data['id'],
                     'image_name' => $filename,
                 ]);
             }
@@ -122,7 +122,7 @@ class ProjectController extends Controller
                 $file->move(public_path('project/image'), $filename);
 
                 \App\Models\ProjectImg::create([
-                    'id_project' => $id,
+                    'id' => $id,
                     'image_name' => $filename,
                 ]);
             }

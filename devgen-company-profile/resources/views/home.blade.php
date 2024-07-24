@@ -10,6 +10,7 @@
         
        @include('layout.hero-section', ['appSetting' => $appSetting])
         <!-- End Banner Area -->
+        @include('layout.about-us-section')
 
         <!-- Start Services Area -->
         @include('layout.services-section')
@@ -20,7 +21,7 @@
         <!-- End Overview Area -->
 
         {{-- bagian saya --}}
-
+       
         <!-- Start Choose Area -->
         @include('layout.whychooseus-section')
         <!-- End Choose Area -->

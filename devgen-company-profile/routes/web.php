@@ -10,7 +10,6 @@ use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\AppSettingController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\ProjectlController;
-
 use App\Http\Controllers\admin\AboutUsController;
 
 /*
@@ -34,10 +33,13 @@ Route::get('/home', [LandingPageController::class, 'index'])->middleware('count.
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{id_project}', [ProjectlController::class, 'show'])->name('showproject');
+
+// route about coba
+Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
 // landing page end
 
 
-//end
+
 
 
 /*================================ Admin Routes ======================== */

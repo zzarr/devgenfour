@@ -9,9 +9,8 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id'; // Assuming this is your primary key
-    public $incrementing = false;
-    protected $keyType = 'string';
+
+
     protected $fillable = [
         'title', 'description', 'thumbnail',
     ];
@@ -19,6 +18,6 @@ class Project extends Model
     // Define the relationship to project_imgs if needed
     public function images()
     {
-        return $this->hasMany(ProjectImg::class, 'id_project', 'id');
+        return $this->hasMany(ProjectImg::class, 'id_project');
     }
 }

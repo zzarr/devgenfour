@@ -29,20 +29,8 @@ class LandingPageController extends Controller
         return view('admin.app_setting', compact('settings'));
     }
 
-    public function update(Request $request, $id)
+    public function about()
     {
-        $settings = AppSetting::find($id);
-
-        // Handle file upload
-        if ($request->hasFile('logo')) {
-            $file = $request->file('logo');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('img'), $filename);
-            $settings->logo = $filename;
-        }
-
-        $settings->update($request->all());
-
-        return redirect()->back()->with('success', 'Settings updated successfully');
+        return view('AboutUs');
     }
 }

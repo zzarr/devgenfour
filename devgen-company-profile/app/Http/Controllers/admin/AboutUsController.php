@@ -4,20 +4,22 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\AboutUs;
 
 class AboutUsController extends Controller
 {
     public function index()
     {
-        $about = DB::table('about_us')->first();
+        $about = AboutUs::first();
         return view('Admin.about', compact('about'));
     }
 
     public function update(Request $request, $id)
     {
-        // Mengumpulkan data dari request, kecuali field '_token', '_method', dan 'logo'
+        // Mengumpulkan data dari request, kecuali field '_token', '_method', dan 'gambar'
         $data = $request->except(['_token', '_method', 'gambar']);
+
+        $aboutUs = AboutUs::findOrFail($id);
 
         if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
@@ -28,11 +30,11 @@ class AboutUsController extends Controller
             $data['gambar'] = $filename;
         } else {
             // Jika tidak ada gambar yang diunggah, tetap gunakan gambar yang sudah ada
-            $data['gambar'] = DB::table('about_us')->where('id_about_us', $id)->value('gambar');
+            $data['gambar'] = $aboutUs->image;
         }
 
         // Update data di database
-        DB::table('about_us')->where('id_about_us', $id)->update([
+        $aboutUs->update([
             'title' => $data['title'],
             'description' => $data['description'],
             'image' => $data['gambar'],
@@ -40,7 +42,7 @@ class AboutUsController extends Controller
             'updated_at' => now(),
         ]);
 
-        // Redirect ke route 'app_setting_admin' dengan pesan sukses
+        // Redirect ke route 'about_admin' dengan pesan sukses
         return redirect()->route('about_admin')->with('success', 'Data berhasil diubah');
     }
 }

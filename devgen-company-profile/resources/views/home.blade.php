@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html lang="zxx" class="theme-light">
-   <head> @include('layout.head-landingpage')</head>
-    <body>
-        <!-- Start Navbar Area -->
-        @include('layout.navbar')
-        <!-- End Navbar Area -->
 
-        <!-- Start Banner Area -->
-        
-       @include('layout.hero-section', ['appSetting' => $appSetting])
-        <!-- End Banner Area -->
-        @include('layout.about-us-section')
+<head> @include('layout.head-landingpage')</head>
 
-        <!-- Start Services Area -->
-        @include('layout.services-section')
-        <!-- End Services Area -->
+<body>
+    <!-- Start Navbar Area -->
+    @include('layout.navbar')
+    <!-- End Navbar Area -->
 
-        <!-- Start Overview Area -->
-        @include('layout.overview-area-section')
-        <!-- End Overview Area -->
+    <!-- Start Banner Area -->
 
-        {{-- bagian saya --}}
-       
-        <!-- Start Choose Area -->
-        @include('layout.whychooseus-section')
-        <!-- End Choose Area -->
+    @include('layout.hero-section', ['appSetting' => $appSetting])
+    <!-- End Banner Area -->
 
-        {{-- bagian saya berakhir --}}
 
-        <!-- team expert section -->
-       @include('layout.team-expert-section')
-        <!-- End Fun Facts Section -->
+    <!-- Start Services Area -->
+    @include('layout.services-section')
+    <!-- End Services Area -->
 
-        <!-- Start Projects Area -->
-        @include('layout.project-section')
-        <!-- End Projects Area -->
+    <!-- Start Overview Area -->
+    @include('layout.overview-area-section')
+    <!-- End Overview Area -->
 
-        <!-- Start Team Area -->
-        @include('layout.team-area-section')
-        <!-- End Team Area -->
+    {{-- bagian saya --}}
 
-        <!-- Start Partner Section -->
-       @include('layout.mediapatner-section')
-        <!-- End Partner Section -->
+    <!-- Start Choose Area -->
+    @include('layout.whychooseus-section')
+    <!-- End Choose Area -->
 
-        <!-- Start Footer Area -->
-       @include('layout.footer-section')
-        <!-- End Copy Right Area -->
+    {{-- bagian saya berakhir --}}
 
-        <!-- Jquery Slim JS -->
-        @include('layout.script-landingpage')
-     
+    <!-- team expert section -->
+    @include('layout.team-expert-section')
+    <!-- End Fun Facts Section -->
 
-    </body>
+    <!-- Start Projects Area -->
+    @include('layout.project-section')
+    <!-- End Projects Area -->
+
+    <!-- Start Team Area -->
+    @include('layout.team-area-section')
+    <!-- End Team Area -->
+
+    <!-- Start Partner Section -->
+    @include('layout.mediapatner-section')
+    <!-- End Partner Section -->
+
+    <!-- Start Footer Area -->
+    @include('layout.footer-section')
+    <!-- End Copy Right Area -->
+
+    <!-- Jquery Slim JS -->
+    @include('layout.script-landingpage')
+
+
+</body>
+
 </html>

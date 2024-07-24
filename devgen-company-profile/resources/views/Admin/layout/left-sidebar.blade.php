@@ -26,7 +26,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-black" href="{{ route('about_admin') }}">
-                            <i class="ti ti- menu-icon"></i>
+                            <i class="ti ti-info-circle menu-icon"></i>
                             <span>Manajemen About Us</span>
                         </a>
                     </li>

@@ -9,7 +9,7 @@ class CreateAboutUsTable extends Migration
     public function up()
     {
         Schema::create('about_us', function (Blueprint $table) {
-            $table->string('id_about_us')->primary();
+            $table->id();
             $table->char('title');
             $table->text('description');
             $table->string('image');

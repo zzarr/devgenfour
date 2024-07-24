@@ -16,7 +16,7 @@
     </div>
     <!-- end page title end breadcrumb -->
     <!-- end page title end breadcrumb -->
-    <form method="POST" action="{{ route('app-settings_update', $settings->id_setting) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('app-settings_update', $settings->id) }}" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -37,7 +37,7 @@
                     <div class="col-lg-9 col-xl-8">
                         <div class="input-group mb-3">
                             <input name="logo" name="logo" type="file" class="dropify" id="input-file-now-custom-1"
-                                data-height="100" data-default-file="{{ asset('img/' . $settings->logo) }}" />
+                                data-height="100" data-default-file="{{ asset('' . $settings->logo) }}" />
                         </div>
                     </div>
                 </div>

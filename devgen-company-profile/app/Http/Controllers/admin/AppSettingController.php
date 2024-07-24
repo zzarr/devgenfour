@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\AppSetting;
 
 class AppSettingController extends Controller
 {
@@ -66,6 +67,9 @@ class AppSettingController extends Controller
             'gmaap_coordinat' => 'nullable|string',
         ]);
 
+        // Temukan setting dengan ID yang diberikan
+        $appSetting = AppSetting::findOrFail($id);
+
         // Mengumpulkan data dari request, kecuali field '_token', '_method', dan 'logo'
         $data = $request->except(['_token', '_method', 'logo']);
 
@@ -73,17 +77,17 @@ class AppSettingController extends Controller
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
             $filename = "logo." . $file->getClientOriginalExtension();
-            $file->move(public_path('img'), $filename);
+            $filePath = $file->move(public_path('img'), $filename);
 
-            // Tambahkan nama file ke array data
-            $data['logo'] = $filename;
+            // Tambahkan path lengkap ke array data
+            $data['logo'] = asset('img/' . $filename);
         } else {
             // Jika tidak ada logo yang diunggah, tetap gunakan logo yang sudah ada
-            $data['logo'] = DB::table('app_settings')->where('id_setting', $id)->value('logo');
+            $data['logo'] = $appSetting->logo;
         }
 
         // Update data di database
-        DB::table('app_settings')->where('id_setting', $id)->update($data);
+        $appSetting->update($data);
 
         // Redirect ke route 'app_setting_admin' dengan pesan sukses
         return redirect()->route('app_setting_admin')->with('success', 'Data berhasil diubah');

@@ -67,7 +67,7 @@
                         render: function(data, type, full, meta) {
                             let btn = `
                             <div class="btn-list">
-                                <a href="{{ route('editteam_admin', ':id_team') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                                <a href="{{ route('editteam_admin', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
                                 <a href="#" data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                             </div>
                         `;
@@ -84,10 +84,10 @@
                     },
                 ],
                 columns: [{
-                        data: 'id_team'
+                        data: 'id'
                     },
                     {
-                        data: 'id_team'
+                        data: 'id'
                     },
                     {
                         data: 'name'

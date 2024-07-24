@@ -22,11 +22,11 @@ class TeamController extends Controller
 
     public function datatable(Request $request)
     {
-        $data = Team::select(['id_team', 'name', 'jabatan', 'foto']);
+        $data = Team::select(['id', 'name', 'jabatan', 'foto']);
         return DataTables::of($data)
             ->addColumn('action', function ($row) {
-                $editUrl = route('editteam_admin', $row->id_team);
-                $deleteUrl = route('deleteteam_admin', $row->id_team);
+                $editUrl = route('editteam_admin', $row->id);
+                $deleteUrl = route('deleteteam_admin', $row->id);
                 return '<a href="' . $editUrl . '" class="btn btn-outline-info btn-icon-circle btn-icon-circle-sm"><i class="ti ti-pencil"></i></a>
                         <button data-url="' . $deleteUrl . '" class="btn btn-outline-danger btn-icon-circle btn-icon-circle-sm btn-delete"><i class="ti ti-trash"></i></button>';
             })
@@ -68,12 +68,18 @@ class TeamController extends Controller
             $data['foto'] = null;
         }
 
-        $data['id_team'] = Str::uuid()->toString();
+
         $data['created_at'] = now();
         $data['updated_at'] = now();
 
-        // Menambahkan data ke tabel 'teams'
-        DB::table('teams')->insert($data);
+        Team::create([
+            'name' => $data['nama'],
+            'jabatan' => $data['jabatan'],
+            'foto' => $data['foto'],
+            'created_at' => $data['created_at'],
+            'updated_at' => $data['updated_at'],
+        ]);
+
 
         // Redirect ke route 'team_admin' dengan pesan sukses
         return redirect()->route('team_admin')->with('success', 'Data berhasil ditambahkan');
@@ -89,7 +95,7 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        $team = DB::table('teams')->where('id_team', $id)->first();
+        $team = DB::table('teams')->where('id', $id)->first();
         return view('Admin.teamedit', compact('team'));
     }
 

@@ -11,7 +11,6 @@ class AboutUsTableSeeder extends Seeder
     public function run()
     {
         DB::table('about_us')->insert([
-            'id_about_us' => Str::uuid()->toString(),
             'title' => 'About Us',
             'description' => 'This is a dummy description for the about us section.',
             'image' => 'dummy_image.png',

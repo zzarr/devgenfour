@@ -9,7 +9,7 @@ class CreateTeamsTable extends Migration
     public function up()
     {
         Schema::create('teams', function (Blueprint $table) {
-            $table->string('id_team')->primary();
+            $table->id();
             $table->string('name');
             $table->string('jabatan');
             $table->string('foto');

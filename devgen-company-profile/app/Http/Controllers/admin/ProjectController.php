@@ -13,13 +13,23 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        return view('Admin.project');
+            $projects = Project::all();
+    foreach ($projects as $project) {
+        // Hapus tag <p> dan </p>
+        $project->description = str_replace(['<p>', '</p>'], '', $project->description);
+    }
+        return view('Admin.project', compact('projects')); // inisiasi fungsi untuk menghilangkan tag
     }
 
     public function datatable(Request $request)
     {
         $data = Project::query();
-        return DataTables::of($data)->make(true);
+        return datatables()
+        ->of($data)
+        ->editColumn('description', function ($project) {
+            return strip_tags($project->description, '<b><i><u>'); // Menghilangkan <p> tag
+        })
+        ->toJson();
     }
 
     public function create()

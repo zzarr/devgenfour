@@ -45,6 +45,7 @@
     </div><!--end row-->
 @endsection
 
+
 @push('script')
 <script>
     $(document).ready(function() {
@@ -65,6 +66,12 @@
                     render: function(data, type, full, meta) {
                         return `<img src="/project/thumbnail/${data}" alt="Thumbnail" height="100">`;
                     }
+                },
+                {
+                    targets: 3,
+                    render: function(data, type, full, meta) {
+                        return data;  //memanggil fungsi penghilang tag <p> </p>
+                    },
                 },
                 {
                     targets: 4,
@@ -110,7 +117,9 @@
                     }
                 });
             }
+            
         });
+        
     });
 </script>
 @endpush

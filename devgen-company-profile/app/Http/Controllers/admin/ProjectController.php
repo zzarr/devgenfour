@@ -25,8 +25,8 @@ class ProjectController extends Controller
                 return '<img src="' . asset('project/thumbnail/' . $projects->thumbnail) . '" alt="Thumbnail" width="100">';
             })
             ->addColumn('action', function ($projects) {
-                return '<a href="' . route('editproject_admin', $projects->id_project) . '" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                        <a  data-target="#modal-hapus" href="' . route('deleteproject_admin', $projects->id_project) . '" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>';
+                return '<a href="' . route('editproject_admin', $projects->id) . '" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+                        <a  data-target="#modal-hapus" href="' . route('deleteproject_admin', $projects->id) . '" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>';
             })
             ->rawColumns(['thumbnail', 'action'])
             ->make(true);
@@ -88,7 +88,7 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $projects = Project::findOrFail($id);
-        $images = ProjectImg::where('id_project', $id)->get();
+        $images = ProjectImg::where('id', $id)->get();
         return view('Admin.projectedit', compact('projects', 'images'));
     }
 
@@ -134,7 +134,7 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         Project::findOrFail($id)->delete();
-        \App\Models\ProjectImg::where('id_project', $id)->delete();
+        \App\Models\ProjectImg::where('id', $id)->delete();
 
         return redirect()->route('project_admin')->with('success', 'Project berhasil dihapus');
     }

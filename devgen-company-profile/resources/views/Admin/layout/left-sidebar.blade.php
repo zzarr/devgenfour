@@ -4,8 +4,10 @@
         <a href="{{ route('dashboard_admin') }}" class="logo">
 
             <span>
-                <img src="{{ asset('img/logo.png') }}" alt="logo-large" class="logo-lg logo-light" style="width: 150px; height: auto;">
-                <img src="{{ asset('img/logo.png') }}" alt="logo-large" class="logo-lg logo-dark" style="width: 150px; height: auto;">
+                <img src="{{ asset('img/logo.png') }}" alt="logo-large" class="logo-lg logo-light"
+                    style="width: 150px; height: auto;">
+                <img src="{{ asset('img/logo.png') }}" alt="logo-large" class="logo-lg logo-dark"
+                    style="width: 150px; height: auto;">
             </span>
         </a>
     </div>
@@ -21,7 +23,13 @@
                             <i class="ti ti-gauge menu-icon"></i>
                             <span>Dashboard</span>
                         </a>
-
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="{{ route('about_admin') }}">
+                            <i class="ti ti-info-circle menu-icon"></i>
+                            <span>Manajemen About Us</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{ route('services_admin') }}" class="nav-link text-black ">
                             <i class="mdi mdi-wrench menu-icon"></i>

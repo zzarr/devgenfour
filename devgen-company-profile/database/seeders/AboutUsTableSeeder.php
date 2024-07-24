@@ -14,6 +14,9 @@ class AboutUsTableSeeder extends Seeder
             'title' => 'Our Story',
             'description' => 'Welcome to our company. We are dedicated to providing the best service and experience.',
             'image' => 'default-image.jpg',
+            'title' => 'About Us',
+            'description' => 'This is a dummy description for the about us section.',
+            'image' => 'dummy_image.png',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

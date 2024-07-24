@@ -9,6 +9,7 @@ class Partners extends Model
 {
     use HasFactory;
     protected $table = 'partners';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'image'

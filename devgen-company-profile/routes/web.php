@@ -29,7 +29,8 @@ Route::get('/', function () {
 
 // landing page
 
-Route::get('/home', [LandingPageController::class, 'index']);
+Route::get('/home', [LandingPageController::class, 'index'])->middleware('count.visitor');
+
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{id_project}', [ProjectlController::class, 'show'])->name('showproject');
 
@@ -37,9 +38,7 @@ Route::get('/projects/{id_project}', [ProjectlController::class, 'show'])->name(
 Route::get('/about', [AboutUsController::class, 'index'])->name('about');
 // landing page end
 
-//uji coba
-Route::get('admin/app-setting/{id}/edit', [LandingPageController::class, 'edit'])->name('app-settings.edit');
-Route::post('admin/app-setting/{id}', [LandingPageController::class, 'update'])->name('app-settings.update');
+
 //end
 
 

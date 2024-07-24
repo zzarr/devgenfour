@@ -9,7 +9,7 @@ class CreateServicesTable extends Migration
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->id('id_services');
+            $table->id('id');
             $table->string('icon');
             $table->string('title');
             $table->timestamps();

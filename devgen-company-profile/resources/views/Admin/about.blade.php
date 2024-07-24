@@ -16,7 +16,7 @@
     </div>
     <!-- end page title end breadcrumb -->
     <!-- end page title end breadcrumb -->
-    <form method="POST" action="{{ route('about_update', $about->id_about_us) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('about_update', $about->id) }}" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-body">

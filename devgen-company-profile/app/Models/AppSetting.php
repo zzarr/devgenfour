@@ -11,7 +11,7 @@ class AppSetting extends Model
 
     protected $table = 'app_settings';
 
-    protected $primaryKey = 'id_setting';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
 
@@ -24,5 +24,4 @@ class AppSetting extends Model
         'alamat',
         'gmaap_coordinat',
     ];
-    
 }

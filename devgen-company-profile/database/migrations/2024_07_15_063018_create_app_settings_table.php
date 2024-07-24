@@ -9,7 +9,7 @@ class CreateAppSettingsTable extends Migration
     public function up()
     {
         Schema::create('app_settings', function (Blueprint $table) {
-            $table->id('id_setting');
+            $table->id('id');
             $table->string('name_app');
             $table->text('desc');
             $table->string('logo');

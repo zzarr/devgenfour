@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AppSetting;
+use App\Models\Project;
 use App\Models\Services;
+
 
 class LandingPageController extends Controller
 {
     public function index()
     {
         $appSetting = AppSetting::first();
-        return view('home', compact('appSetting'));
+        $projects = Project::all();
+        return view('home', compact('appSetting', 'projects'));
     }
     
     public function edit($id)

@@ -20,7 +20,7 @@
     <!-- end page title end breadcrumb -->
     <!-- end page title end breadcrumb -->
 
-    <form method="POST" action="{{ route('updateteam_admin', $team->id_team) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('updateteam_admin', $team->id) }}" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-body">

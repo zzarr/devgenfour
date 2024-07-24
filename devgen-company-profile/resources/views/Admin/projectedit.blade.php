@@ -17,7 +17,7 @@
     <div class="card">
         <div class="col-lg-12">
             <div class="card-body">
-                <form method="POST" action="{{ route('updateproject_admin', $projects->id_project) }}"
+                <form method="POST" action="{{ route('updateproject_admin', $projects->id) }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">

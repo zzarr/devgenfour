@@ -5,10 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\ProjectImg;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class ProjectController extends Controller
 {
@@ -16,6 +15,7 @@ class ProjectController extends Controller
     {
         return view('Admin.project');
     }
+
     public function datatable(Request $request)
     {
         $projects = Project::query();
@@ -26,12 +26,11 @@ class ProjectController extends Controller
             })
             ->addColumn('action', function ($projects) {
                 return '<a href="' . route('editproject_admin', $projects->id) . '" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                        <a  data-target="#modal-hapus" href="' . route('deleteproject_admin', $projects->id) . '" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>';
+                        <a data-target="#modal-hapus" href="' . route('deleteproject_admin', $projects->id) . '" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>';
             })
             ->rawColumns(['thumbnail', 'action'])
             ->make(true);
     }
-
 
     public function create()
     {
@@ -48,7 +47,6 @@ class ProjectController extends Controller
         ]);
 
         $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
-        $data['id_project'] = (string) Str::uuid();
 
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
@@ -59,15 +57,15 @@ class ProjectController extends Controller
             $data['thumbnail'] = null;
         }
 
-        DB::table('projects')->insert([
-            'id_project' => $data['id_project'],
+        // Insert project using Eloquent
+        $project = Project::create([
             'title' => $data['title'],
             'description' => $data['description'],
             'thumbnail' => $data['thumbnail'],
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
+        // Debug: Check the ID of the created project
+        Log::info('Created project ID: ' . $project->id);
 
         if ($request->hasFile('images')) {
             $files = $request->file('images');
@@ -75,8 +73,9 @@ class ProjectController extends Controller
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('project/image'), $filename);
 
-                \App\Models\ProjectImg::create([
-                    'id_project' => $data['id_project'],
+                // Use Eloquent to create project images
+                ProjectImg::create([
+                    'id_project' => $project->id,
                     'image_name' => $filename,
                 ]);
             }
@@ -88,7 +87,7 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $projects = Project::findOrFail($id);
-        $images = ProjectImg::where('id', $id)->get();
+        $images = ProjectImg::where('id_project', $id)->get(); // Corrected condition here
         return view('Admin.projectedit', compact('projects', 'images'));
     }
 
@@ -121,7 +120,7 @@ class ProjectController extends Controller
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('project/image'), $filename);
 
-                \App\Models\ProjectImg::create([
+                ProjectImg::create([
                     'id_project' => $id,
                     'image_name' => $filename,
                 ]);
@@ -133,8 +132,11 @@ class ProjectController extends Controller
 
     public function destroy($id)
     {
-        Project::findOrFail($id)->delete();
-        \App\Models\ProjectImg::where('id', $id)->delete();
+        $project = Project::findOrFail($id);
+        $project->delete();
+
+        // Delete related images
+        ProjectImg::where('id_project', $id)->delete();
 
         return redirect()->route('project_admin')->with('success', 'Project berhasil dihapus');
     }

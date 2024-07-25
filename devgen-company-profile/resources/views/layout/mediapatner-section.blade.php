@@ -11,26 +11,7 @@
                 </a>
             </div>
             @endforeach
-            <div class="partner-item">
-                <a href="#">
-                    <img src="img/polindra.png" alt="partner" />
-                </a>
-            </div>
-            <div class="partner-item">
-                <a href="#">
-                    <img src="img/polindra.png" alt="partner" />
-                </a>
-            </div>
-            <div class="partner-item">
-                <a href="#">
-                    <img src="img/polindra.png"alt="partner" />
-                </a>
-            </div>
-            <div class="partner-item">
-                <a href="#">
-                    <img src="img/polindra.png" alt="partner" />
-                </a>
-            </div>
+
         </div>
     </div>
 </div>

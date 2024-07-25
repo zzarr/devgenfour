@@ -18,13 +18,13 @@ class LandingPageController extends Controller
         $appSetting = AppSetting::first();
 
         $services = Services::first();
-
+        $service = Services::all();
         $numbers = AppSetting::all();
 
         $projects = Project::all();
         $partners = Partners::all();
         $team = Team::all();
-        return view('home', compact('appSetting', 'projects','services','partners','team'));
+        return view('home', compact('appSetting', 'projects','services','partners','team','numbers','service'));
     }
 
 

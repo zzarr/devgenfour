@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('updateservices_admin', $service->id_services) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('updateservices_admin', $service->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">

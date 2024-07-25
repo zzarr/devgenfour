@@ -84,7 +84,7 @@
                                 <button class="btn btn-danger btn-delete" data-id=":id"><i class="fas fa-trash-alt"></i> Delete</button>
                             </div>
                         `;
-                            btn = btn.replaceAll(':id_services', full.id_services);
+                            btn = btn.replaceAll(':id', full.id);
                             return btn;
                         },
                     }

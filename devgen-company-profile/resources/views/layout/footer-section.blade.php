@@ -13,9 +13,16 @@
             </div>
             <div class="col-md-3">
                 <h5>Contact Us</h5>
-                
-                <p>Phone: {{ $appSetting->no_contact }}</p>
+                @foreach ($numbers as $number)
+                @php
+                    $phoneNumber = $number->no_contact;
+                    if (substr($phoneNumber, 0, 1) === '0') {
+                        $phoneNumber = '+62' . substr($phoneNumber, 1);
+                    }
+                @endphp
+                <p>Phone: {{ $phoneNumber }}</p>
                 <p>Email: {{ $appSetting->email }}</p>
+                @endforeach
             </div>
             <div class="col-md-3">
                 <h5>Follow Us</h5>

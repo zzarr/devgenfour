@@ -13,23 +13,23 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        return view('Admin.project');
+            $projects = Project::all();
+    foreach ($projects as $project) {
+        // Hapus tag <p> dan </p>
+        $project->description = str_replace(['<p>', '</p>'], '', $project->description);
+    }
+        return view('Admin.project', compact('projects')); // inisiasi fungsi untuk menghilangkan tag
     }
 
     public function datatable(Request $request)
     {
-        $projects = Project::query();
-
-        return DataTables::of($projects)
-            ->addColumn('thumbnail', function ($projects) {
-                return '<img src="' . asset('project/thumbnail/' . $projects->thumbnail) . '" alt="Thumbnail" width="100">';
-            })
-            ->addColumn('action', function ($projects) {
-                return '<a href="' . route('editproject_admin', $projects->id) . '" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                        <a data-target="#modal-hapus" href="' . route('deleteproject_admin', $projects->id) . '" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>';
-            })
-            ->rawColumns(['thumbnail', 'action'])
-            ->make(true);
+        $data = Project::query();
+        return datatables()
+        ->of($data)
+        ->editColumn('description', function ($project) {
+            return strip_tags($project->description, '<b><i><u>'); // Menghilangkan <p> tag
+        })
+        ->toJson();
     }
 
     public function create()
@@ -92,43 +92,66 @@ class ProjectController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
 
-        $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
-        $project = Project::findOrFail($id);
+    $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
+    $project = Project::findOrFail($id);
 
-        if ($request->hasFile('thumbnail')) {
-            $file = $request->file('thumbnail');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('project/thumbnail'), $filename);
-            $data['thumbnail'] = $filename;
-        } else {
-            $data['thumbnail'] = $project->thumbnail;
-        }
-
-        $project->update($data);
-
-        if ($request->hasFile('images')) {
-            $files = $request->file('images');
-            foreach ($files as $file) {
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('project/image'), $filename);
-
-                ProjectImg::create([
-                    'id_project' => $id,
-                    'image_name' => $filename,
-                ]);
+    // Handle thumbnail update
+    if ($request->hasFile('thumbnail')) {
+        // Delete old thumbnail if exists
+        if ($project->thumbnail) {
+            $oldThumbnailPath = public_path('project/thumbnail/' . $project->thumbnail);
+            if (file_exists($oldThumbnailPath)) {
+                unlink($oldThumbnailPath);
             }
         }
 
-        return redirect()->route('project_admin')->with('success', 'Project berhasil diperbarui');
+        // Upload new thumbnail
+        $file = $request->file('thumbnail');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('project/thumbnail'), $filename);
+        $data['thumbnail'] = $filename;
+    } else {
+        $data['thumbnail'] = $project->thumbnail; // Preserve existing thumbnail if no new one is provided
     }
+
+    $project->update($data);
+
+    // Handle project images update
+    // Delete all existing images
+    $existingImages = ProjectImg::where('id_project', $id)->get();
+    foreach ($existingImages as $image) {
+        $imagePath = public_path('project/image/' . $image->image_name);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+        $image->delete();
+    }
+
+    // Upload new images
+    if ($request->hasFile('images')) {
+        $files = $request->file('images');
+        foreach ($files as $file) {
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('project/image'), $filename);
+
+            ProjectImg::create([
+                'id_project' => $id,
+                'image_name' => $filename,
+            ]);
+        }
+    }
+
+    return redirect()->route('project_admin')->with('success', 'Project berhasil diperbarui');
+}
+
 
     public function destroy($id)
     {

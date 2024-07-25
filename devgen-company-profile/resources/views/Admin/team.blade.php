@@ -28,10 +28,11 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Action</th>
+                                    <th>Foto</th>
                                     <th>Name</th>
                                     <th>Jabatan</th>
-                                    <th>Foto</th>
+                                    <th>Action</th>
+
                                 </tr>
                             </thead>
                         </table>
@@ -62,8 +63,16 @@
                             return meta.row + 1;
                         }
                     },
+
                     {
                         targets: 1,
+                        render: function(data, type, full, meta) {
+                            let url = '{{ asset('team/') }}/' + data;
+                            return '<img src="' + url + '" alt="team" class="thumb-lg rounded">';
+                        }
+                    },
+                    {
+                        targets: 4,
                         render: function(data, type, full, meta) {
                             let btn = `
                             <div class="btn-list">
@@ -71,24 +80,18 @@
                                 <a href="#" data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                             </div>
                         `;
-                            btn = btn.replaceAll(':id_team', String(data));
+                            btn = btn.replaceAll(':id', String(data));
                             return btn;
                         },
-                    },
-                    {
-                        targets: 4,
-                        render: function(data, type, full, meta) {
-                            let url = '{{ asset('team/') }}/' + data;
-                            return '<img src="' + url + '" alt="team" class="thumb-lg rounded">';
-                        }
                     },
                 ],
                 columns: [{
                         data: 'id'
                     },
                     {
-                        data: 'id'
+                        data: 'foto'
                     },
+
                     {
                         data: 'name'
                     },
@@ -96,8 +99,9 @@
                         data: 'jabatan'
                     },
                     {
-                        data: 'foto'
-                    }
+                        data: 'id'
+                    },
+
                 ],
                 language: {
                     searchPlaceholder: 'Search...',

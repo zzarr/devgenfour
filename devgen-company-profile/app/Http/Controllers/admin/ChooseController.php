@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Choose;
-use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class ChooseController extends Controller
@@ -25,19 +24,6 @@ class ChooseController extends Controller
     {
         return view('Admin.chooseadd');
     }
-
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'title' => 'required',
-    //         'description' => 'required',
-    //     ]);
-
-    //     Choose::create($request->all());
-
-    //     return redirect()->route('choose_admin')
-    //         ->with('success', 'Choose created successfully.');
-    // }
 
     public function store(Request $request)
     {
@@ -103,7 +89,7 @@ class ChooseController extends Controller
             $data['icon'] = Choose::where('id', $id)->value('icon');
         }
     
-       DB::table('choose')->where('id', $id)->update($data);
+        Choose::where('id', $id)->update($data);
 
         return redirect()->route('choose_admin')->with('success', 'Choose berhasil diubah');
     }

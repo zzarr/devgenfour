@@ -19,12 +19,11 @@
                         </div>
 
                         <div class="projects-content">
-                            <a href="{{ route('showproject', ['id_project' => $project->id]) }}">
+                            <a href="{{ route('showproject', ['id' => $project->id]) }}">
                                 <h3>{{ $project->title }}</h3>
                             </a>
                         </div>
                     </div>
-                </div>
             @endforeach
         </div>
     </div>

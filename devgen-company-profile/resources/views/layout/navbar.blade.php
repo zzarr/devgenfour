@@ -41,9 +41,10 @@
 
 
                         <li class="nav-item">
-                            <a href="#project-section" class="nav-link">
+                            <a href="#project-section" class="nav-link" id="projects-link">
                                 Projects
                             </a>
+                        </li>
 
 
                         <li class="nav-item">
@@ -75,3 +76,5 @@
         </div>
     </div>
 </div>
+
+

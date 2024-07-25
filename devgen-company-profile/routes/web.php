@@ -10,7 +10,10 @@ use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\AppSettingController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\ProjectlController;
+use App\Http\Controllers\ProjectCounterController;
+use App\Http\Controllers\DetailProjectCounterController;
 use App\Http\Controllers\admin\AboutUsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +41,8 @@ Route::get('/projects/{id}', [ProjectlController::class, 'show'])->name('showpro
 Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
 // landing page end
 
+Route::post('/increment-project-counter', [ProjectCounterController::class, 'increment'])->name('increment.project.counter');
+Route::post('/increment-detail-project-counter/{id}', [DetailProjectCounterController::class, 'incrementCounter'])->name('increment.detail.project.counter');
 
 
 

@@ -24,3 +24,49 @@
  <script src="{{ asset('fria/fria/assets//js/wow.min.js') }} "></script>
  <!-- Custom JS -->
  <script src="{{ asset('fria/fria/assets//js/main.js') }} "></script>
+
+<!-- script-landingpage.blade.php -->
+
+<!-- project in navbar counter -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('projects-link').addEventListener('click', function() {
+        fetch('{{ route('increment.project.counter') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => console.log('Project count incremented: ', data.count))
+        .catch(error => console.error('Error incrementing project count:', error));
+    });
+});
+</script>
+
+<!-- detail project counter -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const projectIdElement = document.getElementById('project-id');
+    const projectId = projectIdElement ? projectIdElement.value : null;
+
+    if (projectId) {
+        const url = '{{ route('increment.detail.project.counter', ['id' => 'PROJECT_ID']) }}'.replace('PROJECT_ID', projectId);
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({})
+        }).then(response => response.json())
+          .then(data => console.log('Detail Project count incremented:', data.count))
+          .catch(error => console.error('Error:', error));
+    }
+});
+</script>
+
+

@@ -150,6 +150,9 @@
             </div>
 
         @include('layout.footer-section', ['numbers' => $numbers, 'appSetting' => $appSetting])
+
+        <input type="hidden" id="project-id" value="{{ $project->id }}">
+        
         @include('layout.script-landingpage')
 </body>
 </html>

@@ -22,7 +22,7 @@ class LandingPageController extends Controller
     {
         $aboutUs = AboutUs::first(); 
 
-        return view('about', compact('aboutUs'));
+        return view('AboutUs', compact('aboutUs'));
     }
 
     public function edit($id)

@@ -12,10 +12,11 @@ class LandingPageController extends Controller
     public function index()
     {
         $appSetting = AppSetting::first();
+        $numbers = AppSetting::all();
         $projects = Project::all();
         $aboutUs = AboutUs::first();
 
-        return view('home', compact('appSetting', 'projects', 'aboutUs'));
+        return view('home', compact('appSetting', 'projects', 'aboutUs', 'numbers'));
     }
 
     public function about()

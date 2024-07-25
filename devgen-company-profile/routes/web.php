@@ -32,7 +32,7 @@ Route::get('/', function () {
 Route::get('/home', [LandingPageController::class, 'index'])->middleware('count.visitor');
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
-Route::get('/projects/{id_project}', [ProjectlController::class, 'show'])->name('showproject');
+Route::get('/projects/{id}', [ProjectlController::class, 'show'])->name('showproject');
 
 // route about coba
 Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');

@@ -140,7 +140,7 @@
                             <img src="{{ asset('project/thumbnail/' . $project->thumbnail)}}" style="width: 100%; height: 200px; object-fit: cover;">
                         </div>
                         <div class="projects-content">
-                            <a href="{{ route('showproject', ['id_project' => $project->id_project]) }}">
+                            <a href="{{ route('showproject', ['id' => $project->id]) }}">
                                 <h3>{{ $project->title }}</h3>
                             </a>
                         </div>
@@ -149,7 +149,7 @@
                 @endforeach
             </div>
 
-        @include('layout.footer-section')
+        @include('layout.footer-section', ['numbers' => $numbers, 'appSetting' => $appSetting])
         @include('layout.script-landingpage')
 </body>
 </html>

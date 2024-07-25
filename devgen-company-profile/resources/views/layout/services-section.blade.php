@@ -20,11 +20,7 @@
                         </div>
 
                     <h3>{{ $services->title }}</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore facilisis.
-                    </p>
+
 
 
                 </div>

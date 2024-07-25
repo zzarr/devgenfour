@@ -66,5 +66,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'count.visitor' => \App\Http\Middleware\TrackVisitor::class,
+        'count.project.views' => \App\Http\Middleware\CountDetailProjectViews::class,
+
     ];
 }

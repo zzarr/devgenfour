@@ -15,9 +15,9 @@ class DashboardController extends Controller
         $visitorCount = \App\Models\Visitor::count();
         $projectCounter = ProjectCounter::first();
         $projectCount = $projectCounter ? $projectCounter->count : 0;
-        
-        $detailProjectCounter = DetailProjectCounter::first();
-        $detailProjectCount = $detailProjectCounter ? $detailProjectCounter->count : 0;
+    
+        $detailProjectCount = DetailProjectCounter::count();
+
         
         return view('Admin.dashboard', compact('visitorCount', 'projectCount', 'detailProjectCount'));
     }

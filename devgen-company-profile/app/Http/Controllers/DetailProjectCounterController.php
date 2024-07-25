@@ -7,21 +7,38 @@ use Illuminate\Support\Facades\Session;
 
 class DetailProjectCounterController extends Controller
 {
-    public function incrementCounter(Request $request, $id)
+    public function incrementCounter($id)
     {
-        // Gunakan session untuk memastikan counter hanya ditambahkan sekali per sesi
+        // Check if the project has already been viewed in this session
         if (!Session::has('project_viewed_' . $id)) {
-            // Temukan atau buat record baru untuk project ID yang spesifik
-            $counter = DetailProjectCounter::firstOrCreate(['project_id' => $id], ['count' => 0]);
+            // Find or create the counter for the specific project
+            $counter = DetailProjectCounter::where('project_id', $id)->first();
 
-            // Increment count
-            $counter->increment('count');
+            if (!$counter) {
+                // Create a new counter if not exists
+                $counter = DetailProjectCounter::create([
+                    'project_id' => $id,
+                    'count' => 1,
+                ]);
+            } else {
+                // Increment the count if the counter exists
+                $counter->increment('count');
+            }
 
-            // Tandai bahwa proyek telah dilihat di sesi ini
+            // Mark the project as viewed in this session
             Session::put('project_viewed_' . $id, true);
+        } else {
+            // If the project was already viewed in this session, retrieve the counter
+            $counter = DetailProjectCounter::where('project_id', $id)->first();
+            if (!$counter) {
+                $counter = DetailProjectCounter::create([
+                    'project_id' => $id,
+                    'count' => 0,
+                ]);
+            }
         }
 
-        return response()->json(['success' => true, 'count' => $counter->count]);
+        return response()->json(['success' => true, 'count' => $counter->count ?? 0]);
     }
 }
 

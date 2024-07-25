@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DetailProjectCounter extends Model
 {
     use HasFactory;
-    
-    protected $fillable = ['project_id', 'count'];
+
+    protected $fillable = ['project_id', 'ip_address', 'visited_at'];
 }

@@ -11,7 +11,6 @@
         </div>
 
         <div class="row">
-            @foreach ($partners as $image)
             <div class="col-lg-4 col-md-6">
                 <div class="single-services">
                     <div class="icon bg-deb0fe">

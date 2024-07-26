@@ -149,7 +149,7 @@
                 @endforeach
             </div>
 
-        @include('layout.footer-section', ['numbers' => $numbers, 'appSetting' => $appSetting])
+        @include('layout.footer-section')
 
         <input type="hidden" id="project-id" value="{{ $project->id }}">
         

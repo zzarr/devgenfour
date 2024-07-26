@@ -96,7 +96,7 @@
 <body>
     
 
-        <div class="page-title-area" style="background-image: url('{{ asset('project/thumbnail/' . $project->thumbnail) }}')">
+        <div class="page-title-area" style="background-image: url('{{ asset($project->thumbnail) }}')">
             <div class="page-title-area">
             <div class="d-table">
                 <div class="d-table-cell">
@@ -118,26 +118,28 @@
                 @foreach ($projectimg as $p)
                 <div class="col-lg-4 col-md-4 d-flex " >
                     <div class="project-details-image">
-                        <img src="{{ asset('project/image/' . $p->image_name) }}" style="width: 100%; height: auto;">
+                        <img src="{{ asset($p->image_name) }}" style="width: 200px; height: 200px; margin-right: 10px;">
                     </div>
                 </div>
               @endforeach
             </div>
+            <div class="col-lg-12 col-md-12">    
+                <div class="projects-details-desc">
+                     <h3>{{ $project->title }}</h3>
+                     <p>{!! $project->description !!}</p>
+                 </div>
+             </div>
         </div>
         
+   
+        
         <div class="container-fluid">
-            <div class="section-title">
-                <h2> {{ $project->title }}</h2>
-                <p>{!! $project->description !!}</p>
-                <div class="bar"></div>
-            </div>
-            
             <div class="row"> 
                 @foreach ($projects as $project)
                 <div class="col-lg-3">
                     <div class="single-projects">
                         <div class="projects-image">
-                            <img src="{{ asset('project/thumbnail/' . $project->thumbnail)}}" style="width: 100%; height: 200px; object-fit: cover;">
+                            <img src="{{ asset($project->thumbnail)}}" style="width: 100%; height: 200px; object-fit: cover;">
                         </div>
                         <div class="projects-content">
                             <a href="{{ route('showproject', ['id' => $project->id]) }}">
@@ -148,11 +150,10 @@
                 </div>
                 @endforeach
             </div>
+        </div>
 
         @include('layout.footer-section')
-
         <input type="hidden" id="project-id" value="{{ $project->id }}">
-        
         @include('layout.script-landingpage')
 </body>
 </html>

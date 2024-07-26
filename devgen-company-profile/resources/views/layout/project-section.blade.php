@@ -11,20 +11,19 @@
         </div>
         <div class="row">
             @foreach ($projects as $project)
-            <div class="col-lg-3 p-0">
-                <div class="single-projects two">
-                    <div class="projects-image">
-                        <img src="{{ asset('project/thumbnail/' . $project->thumbnail)}}" style="width: 100%; height: 200px; object-fit: cover;">
-                    </div>
-
-                    <div class="projects-content">
-                        <a href="{{ route('showproject', ['id' => $project->id]) }}">
-                            <h3>{{ $project->title }}</h3>
-                        </a>
+                <div class="col-lg-3 p-0">
+                    <div class="single-projects two">
+                        <div class="projects-image">
+                            <img src="{{ asset($project->thumbnail) }}"
+                                style="width: 100%; height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="projects-content">
+                            <a href="{{ route('showproject', ['id' => $project->id]) }}">
+                                <h3>{{ $project->title }}</h3>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
-        </div>
+                @endforeach
     </div>
 </section>

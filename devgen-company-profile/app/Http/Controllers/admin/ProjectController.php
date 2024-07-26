@@ -91,14 +91,14 @@ class ProjectController extends Controller
         return view('Admin.projectedit', compact('projects', 'images'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+ public function update(Request $request, $id)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
 
         $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
         $project = Project::findOrFail($id);
@@ -152,32 +152,89 @@ class ProjectController extends Controller
         return redirect()->route('project_admin')->with('success', 'Project berhasil diperbarui');
     }
 
+    $project->update($data);
 
-    public function destroy($id)
-    {
-        $project = Project::findOrFail($id);
-
-        // Delete thumbnail
-        if ($project->thumbnail) {
-            $thumbnailPath = public_path($project->thumbnail);
-            if (file_exists($thumbnailPath)) {
-                unlink($thumbnailPath);
-            }
-        }
-
-        // Delete related images
-        $images = ProjectImg::where('id_project', $id)->get();
-        foreach ($images as $image) {
-            $imagePath = public_path($image->image_name);
+    // Handle project images update
+    if ($request->hasFile('images')) {
+        // Delete all existing images
+        $existingImages = ProjectImg::where('id_project', $id)->get();
+        foreach ($existingImages as $image) {
+            $imagePath = public_path('project/image/' . $image->image_name);
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
             $image->delete();
         }
 
-        // Delete project
-        $project->delete();
+        // Upload new images
+        $files = $request->file('images');
+        foreach ($files as $file) {
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('project/image'), $filename);
 
-        return redirect()->route('project_admin')->with('success', 'Project berhasil dihapus');
+            ProjectImg::create([
+                'id_project' => $id,
+                'image_name' => $filename,
+            ]);
+        }
     }
+
+    return redirect()->route('project_admin')->with('success', 'Project berhasil diperbarui');
+}
+
+    public function destroy($id)
+    {
+        $project = Project::findOrFail($id);
+    
+        // Delete related images from filesystem
+        $projectImages = ProjectImg::where('id_project', $id)->get();
+        foreach ($projectImages as $image) {
+            if (!empty($image->filename)) {
+                $imagePath = public_path('project/image/' . $image->filename);
+                $thumbnailPath = public_path('project/thumbnail/' . $image->filename);
+    
+                if (file_exists($imagePath) && is_file($imagePath)) {
+                    unlink($imagePath);
+                }
+    
+                if (file_exists($thumbnailPath) && is_file($thumbnailPath)) {
+                    unlink($thumbnailPath);
+                }
+            }
+        }
+    
+        // Delete related images from database
+        ProjectImg::where('id_project', $id)->delete();
+    
+        // Delete the project
+        $project->delete();
+    
+        return response()->json(['success' => 'Project berhasil dihapus.']);
+    }
+    
+    public function deleteImage(Request $request)
+    {
+        $id = $request->input('id');
+        $type = $request->input('type');
+    
+        if ($type == 'thumbnail') {
+            $project = Project::findOrFail($id);
+            $thumbnailPath = public_path('project/thumbnail/' . $project->thumbnail);
+            if (file_exists($thumbnailPath)) {
+                unlink($thumbnailPath);
+            }
+            $project->thumbnail = null;
+            $project->save();
+        } elseif ($type == 'image') {
+            $image = ProjectImg::findOrFail($id);
+            $imagePath = public_path('project/image/' . $image->image_name);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+            $image->delete();
+        }
+    
+        return response()->json(['success' => 'Image deleted successfully']);
+    }
+
 }

@@ -6,7 +6,7 @@
             <div class="page-title-box">
                 <div class="float-end">
                     <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Partner</li>
                     </ol>
                 </div>
@@ -44,75 +44,81 @@
 @endsection
 
 @push('script')
-<script>
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-        let table = $("#datatable").DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('partner_admin.datatable') }}",
-            columnDefs: [
-                {
-                    targets: 0,
-                    render: function(data, type, full, meta) {
-                        return meta.row + 1;
-                    }
-                },
-                {
-                    targets: 1,
-                    render: function(data, type, full, meta) {
-                        return `<img src="/partners/${data}" alt="Partner Image" height="100">`;
+            let table = $("#datatable").DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('partner_admin.datatable') }}",
+                columnDefs: [{
+                        targets: 0,
+                        render: function(data, type, full, meta) {
+                            return meta.row + 1;
+                        }
                     },
-                },
-                {
-                    targets: 3,
-                    render: function(data, type, full, meta) {
-                        let btn = `
+                    {
+                        targets: 1,
+                        render: function(data, type, full, meta) {
+                            return `<img src="${data}" alt="Partner Image" height="100">`;
+                        },
+                    },
+                    {
+                        targets: 3,
+                        render: function(data, type, full, meta) {
+                            let btn = `
                             <div class="btn-list">
                                 <a href="{{ route('editpartner_admin', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
                                 <button class="btn btn-danger btn-delete" data-id=":id"><i class="fas fa-trash-alt"></i> Delete</button>
                             </div>
                         `;
-                        btn = btn.replaceAll(':id', full.id);
-                        return btn;
+                            btn = btn.replaceAll(':id', full.id);
+                            return btn;
+                        },
                     },
-                },
-            ],
-            columns: [
-                { data: 'id' },
-                { data: 'image' },
-                { data: 'name' }, // Add this line
-                { data: 'id' }
-            ],
-            language: {
-                searchPlaceholder: 'Search...',
-                sSearch: '',
-            }
-        });
-
-        $('#datatable').on('click', '.btn-delete', function() {
-            let deleteId = $(this).data('id');
-            if (confirm('Are you sure you want to delete this item?')) {
-                $.ajax({
-                    url: "{{ url('admin/partner') }}/" + deleteId,
-                    type: 'POST',
-                    data: {
-                        _method: 'DELETE' 
+                ],
+                columns: [{
+                        data: 'id'
                     },
-                    success: function(result) {
-                        table.ajax.reload(null, false);
+                    {
+                        data: 'image'
                     },
-                    error: function(xhr) {
-                        alert('Error deleting record: ' + xhr.statusText);
+                    {
+                        data: 'name'
+                    }, // Add this line
+                    {
+                        data: 'id'
                     }
-                });
-            }
+                ],
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                }
+            });
+
+            $('#datatable').on('click', '.btn-delete', function() {
+                let deleteId = $(this).data('id');
+                if (confirm('Are you sure you want to delete this item?')) {
+                    $.ajax({
+                        url: "{{ url('admin/partner') }}/" + deleteId,
+                        type: 'POST',
+                        data: {
+                            _method: 'DELETE'
+                        },
+                        success: function(result) {
+                            table.ajax.reload(null, false);
+                        },
+                        error: function(xhr) {
+                            alert('Error deleting record: ' + xhr.statusText);
+                        }
+                    });
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endpush

@@ -24,18 +24,10 @@ class LandingPageController extends Controller
         $projects = Project::all();
         $partners = Partners::all();
         $team = Team::all();
-        return view('home', compact('appSetting', 'projects','services','partners','team','numbers','service'));
+        return view('home', compact('appSetting', 'projects', 'services', 'partners', 'team', 'numbers', 'service'));
     }
 
 
-    public function edit($id)
-    {
-
-        return view('admin.app_setting', compact('settings'));
-
-        return view('home', compact('appSetting', 'projects', 'aboutUs', 'numbers'));
-
-    }
 
     public function about()
     {

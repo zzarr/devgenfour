@@ -14,7 +14,7 @@ class AppSettingController extends Controller
      */
     public function index()
     {
-        $settings = DB::table('app_settings')->first();;
+        $settings = AppSetting::first();
         return view('Admin.app_setting', compact('settings'));
     }
 

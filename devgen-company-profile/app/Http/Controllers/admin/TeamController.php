@@ -140,19 +140,19 @@ class TeamController extends Controller
     {
         // Hapus data dari tabel 'teams'
         $team = Team::findOrFail($id);
-    
+
         // Get the path to the image file
         $imagePath = public_path('team/' . $team->foto);
-    
+
         // Delete the image file if it exists
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }
-    
+
         // Delete the service record
         $team->delete();
-    
+
         // Return a success response
-        return response()->json(['success' => 'Item deleted successfully.']);
+        return redirect()->route('team_admin')->with('success', 'Data berhasil dihapus');
     }
 }

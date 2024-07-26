@@ -17,12 +17,14 @@
     <div class="card">
         <div class="col-lg-12">
             <div class="card-body">
-                <form method="POST" action="{{ route('updateproject_admin', $projects->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('updateproject_admin', $projects->id) }}"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">
                         <label for="title" class="col-sm-2 col-form-label text-end">Title</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="title" id="title" value="{{ $projects->title }}" required />
+                            <input class="form-control" type="text" name="title" id="title"
+                                value="{{ $projects->title }}" required />
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -34,15 +36,17 @@
                     <div class="mb-3 row">
                         <label for="thumbnail" class="col-sm-2 col-form-label text-end">Thumbnail</label>
                         <div class="col-sm-10">
-                            <input name="thumbnail" type="file" class="dropify" data-height="100" data-default-file="{{ asset('project/thumbnail/' . $projects->thumbnail) }}" />
+                            <input name="thumbnail" type="file" class="dropify" data-height="100"
+                                data-default-file="{{ asset('' . $projects->thumbnail) }}" />
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="project_image" class="col-sm-2 col-form-label text-end">Project image</label>
                         <div class="col-sm-10">
                             <div id="project-images">
-                                @foreach($images as $image)
-                                    <input name="images[]" type="file" class="dropify" data-height="100" data-default-file="{{ asset('project/image/' . $image->image_name) }}" />
+                                @foreach ($images as $image)
+                                    <input name="images[]" type="file" class="dropify" data-height="100"
+                                        data-default-file="{{ asset('' . $image->image_name) }}" />
                                 @endforeach
                             </div>
                             <button type="button" id="add-image" class="btn btn-secondary mt-2">Add Image</button>
@@ -62,7 +66,8 @@
             $('.dropify').dropify();
 
             $('#add-image').click(function() {
-                $('#project-images').append('<input name="images[]" type="file" class="dropify" data-height="100" multiple />');
+                $('#project-images').append(
+                    '<input name="images[]" type="file" class="dropify" data-height="100" multiple />');
                 $('.dropify').dropify();
             });
         });

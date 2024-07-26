@@ -9,9 +9,7 @@ class AppSetting extends Model
 {
     use HasFactory;
 
-    protected $table = 'app_settings';
 
-    protected $primaryKey = 'id';
 
     protected $fillable = [
 
@@ -24,5 +22,4 @@ class AppSetting extends Model
         'alamat',
         'gmaap_coordinat',
     ];
-
 }

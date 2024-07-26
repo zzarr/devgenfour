@@ -10,7 +10,10 @@ use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\AppSettingController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\ProjectlController;
+use App\Http\Controllers\ProjectCounterController;
+use App\Http\Controllers\DetailProjectCounterController;
 use App\Http\Controllers\admin\AboutUsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +35,13 @@ Route::get('/', function () {
 Route::get('/home', [LandingPageController::class, 'index'])->middleware('count.visitor');
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
-Route::get('/projects/{id}', [ProjectlController::class, 'show'])->name('showproject');
+Route::get('/projects/{id}', [ProjectlController::class, 'show'])->middleware('count.project.views')->name('showproject');
 
 // route about coba
-Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
+Route::get('/AboutUs', [LandingPageController::class, 'about'])->middleware('count.about.us')->name('about-us');
 // landing page end
 
+Route::post('/increment-project-counter', [ProjectCounterController::class, 'increment'])->name('increment.project.counter');
 
 
 

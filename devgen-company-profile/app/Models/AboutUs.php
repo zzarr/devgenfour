@@ -11,6 +11,8 @@ class AboutUs extends Model
 
     protected $table = 'about_us';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'title',
         'description',

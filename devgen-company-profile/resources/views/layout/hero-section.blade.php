@@ -10,7 +10,7 @@
                                 {!! $appSetting->desc !!} 
                             </p>
                             <div class="banner-btn">
-                                <a href="https://wa.me/?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda{{ $appSetting->no_contact }}" class="optional-btn"> Contact Us</a>
+                                <a href="https://wa.me/{{ $appSetting->no_contact }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda" class="optional-btn">Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                                 src="{{ asset('' . $appSetting->logo) }}"
                                 class="wow zoomIn"
                                 data-wow-delay="0.6s"
-                                alt="image"
+                                alt=""
                             />
                         </div>
                     </div>

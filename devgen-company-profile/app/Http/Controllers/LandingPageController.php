@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AppSetting;
 use App\Models\Project;
-use App\Models\AboutUs;
+use App\Models\Services;
+use App\Models\Partners;
+use App\Models\Team;
+use App\Models\AboutUs; // Pastikan AboutUs diimport
 
 class LandingPageController extends Controller
 {
@@ -14,15 +17,22 @@ class LandingPageController extends Controller
         $appSetting = AppSetting::first();
         $projects = Project::all();
         $aboutUs = AboutUs::first(); 
+        $services = Services::all();
+        $partners = Partners::all();
+        $team = Team::all();
+        $numbers = AppSetting::all(); 
 
-        return view('home', compact('appSetting', 'projects', 'aboutUs'));
+        return view('home', compact('appSetting', 'projects', 'aboutUs', 'services', 'partners', 'team', 'numbers'));
     }
 
     public function about()
     {
-        $aboutUs = AboutUs::first(); 
+        $aboutUs = AboutUs::first();
+        $appSetting = AppSetting::first();
+        $numbers = AppSetting::all();
+        
 
-        return view('AboutUs', compact('aboutUs'));
+        return view('AboutUs', compact('aboutUs', 'appSetting', 'numbers')); // Nama view harus sesuai dengan nama file view
     }
 
     public function edit($id)

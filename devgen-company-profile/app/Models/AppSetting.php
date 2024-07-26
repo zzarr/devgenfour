@@ -24,4 +24,5 @@ class AppSetting extends Model
         'alamat',
         'gmaap_coordinat',
     ];
+
 }

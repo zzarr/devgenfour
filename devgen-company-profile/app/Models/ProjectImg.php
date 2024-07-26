@@ -10,7 +10,7 @@ class ProjectImg extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id';
+
     protected $fillable = [
         'id_project',
         'image_name'
@@ -18,6 +18,6 @@ class ProjectImg extends Model
 
     public function project()
     {
-        return $this->belongsTo(Project::class, 'id_project');
+        return $this->belongsTo(Project::class, 'id');
     }
 }

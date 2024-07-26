@@ -11,107 +11,26 @@
         </div>
 
         <div class="row">
+            @foreach ($services as $services)
             <div class="col-lg-4 col-md-6">
                 <div class="single-services">
-                    <div class="icon bg-deb0fe">
-                        <i class="flaticon-it"></i>
-                    </div>
-                    <h3>IT Consultancy</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore facilisis.
-                    </p>
-                    <a href="single-services.html" class="read-btn"
-                        >Read More</a
-                    >
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services">
-                    <div class="icon bg-79e8e2">
-                        <i class="flaticon-setting"></i>
-                    </div>
-                    <h3>Web Development</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore facilisis.
-                    </p>
-                    <a href="single-services.html" class="read-btn"
-                        >Read More</a
-                    >
-                </div>
-            </div>
+                        <div class="icon bg-deb0fe">
+                            <img src="{{ asset('services/' . $services->icon) }}" style="width: 25%; height: auto;">
+                        </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services">
-                    <div class="icon bg-fcc774">
-                        <i class="flaticon-promotion"></i>
-                    </div>
-                    <h3>Digital Marketing</h3>
+                    <h3>{{ $services->title }}</h3>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur
                         adipiscing elit, sed do eiusmod tempor
                         incididunt ut labore facilisis.
                     </p>
-                    <a href="single-services.html" class="read-btn"
-                        >Read More</a
-                    >
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services">
-                    <div class="icon bg-84b7fd">
-                        <i class="flaticon-cellphone"></i>
-                    </div>
-                    <h3>App Development</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore facilisis.
-                    </p>
-                    <a href="single-services.html" class="read-btn"
-                        >Read More</a
-                    >
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services">
-                    <div class="icon bg-fe929f">
-                        <i class="flaticon-shopping-cart"></i>
-                    </div>
-                    <h3>E-commerce Development</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore facilisis.
-                    </p>
-                    <a href="single-services.html" class="read-btn"
-                        >Read More</a
-                    >
                 </div>
             </div>
+            @endforeach
 
-            <div class="col-lg-4 col-md-6">
-                <div class="single-services">
-                    <div class="icon bg-2e1342">
-                        <i class="flaticon-optimize"></i>
-                    </div>
-                    <h3>IT Solutions</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore facilisis.
-                    </p>
-                    <a href="single-services.html" class="read-btn"
-                        >Read More</a
-                    >
-                </div>
-            </div>
         </div>
     </div>
 

@@ -24,3 +24,29 @@
  <script src="{{ asset('fria/fria/assets//js/wow.min.js') }} "></script>
  <!-- Custom JS -->
  <script src="{{ asset('fria/fria/assets//js/main.js') }} "></script>
+
+<!-- script-landingpage.blade.php -->
+
+<!-- project in navbar counter -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('projects-link').addEventListener('click', function() {
+        fetch('{{ route('increment.project.counter') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => console.log('Project count incremented: ', data.count))
+        .catch(error => console.error('Error incrementing project count:', error));
+    });
+});
+</script>
+
+<!-- detail project counter -->
+
+
+

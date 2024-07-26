@@ -17,12 +17,14 @@
     <div class="card">
         <div class="col-lg-12">
             <div class="card-body">
-                <form method="POST" action="{{ route('updateproject_admin', $projects->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('updateproject_admin', $projects->id) }}"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">
                         <label for="title" class="col-sm-2 col-form-label text-end">Title</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="title" id="title" value="{{ $projects->title }}" required />
+                            <input class="form-control" type="text" name="title" id="title"
+                                value="{{ $projects->title }}" required />
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -34,7 +36,12 @@
                     <div class="mb-3 row">
                         <label for="thumbnail" class="col-sm-2 col-form-label text-end">Thumbnail</label>
                         <div class="col-sm-10">
+<<<<<<< HEAD
                             <input name="thumbnail" type="file" class="dropify" data-height="100" data-default-file="{{ asset('project/thumbnail/' . $projects->thumbnail) }}" data-id="{{ $projects->id }}" data-type="thumbnail" />
+=======
+                            <input name="thumbnail" type="file" class="dropify" data-height="100"
+                                data-default-file="{{ asset('' . $projects->thumbnail) }}" />
+>>>>>>> 94811b2aaa88439de8605cec23fbcd7acd7fcac1
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -62,7 +69,8 @@
             $('.dropify').dropify();
 
             $('#add-image').click(function() {
-                $('#project-images').append('<input name="images[]" type="file" class="dropify" data-height="100" multiple />');
+                $('#project-images').append(
+                    '<input name="images[]" type="file" class="dropify" data-height="100" multiple />');
                 $('.dropify').dropify();
             });
 

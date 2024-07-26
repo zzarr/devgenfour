@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'count.visitor' => \App\Http\Middleware\TrackVisitor::class,
         'count.project.views' => \App\Http\Middleware\CountDetailProjectViews::class,
+        'count.about.us' => \App\Http\Middleware\CountAboutUs::class,
 
     ];
 }

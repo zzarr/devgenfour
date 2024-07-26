@@ -34,27 +34,27 @@ class PartnerController extends Controller
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
+
         // Ensure the directory exists
         if (!file_exists(public_path('partners'))) {
             mkdir(public_path('partners'), 0755, true);
         }
-    
+
         // Handle file upload
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = '/partners/' . time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('partners'), $filename);
         } else {
             return redirect()->route('partner_admin')->with('error', 'File upload failed.');
         }
-    
+
         // Create the service
         Partners::create([
             'name' => $request->name,
             'image' => $filename,
         ]);
-    
+
         return redirect()->route('partner_admin')->with('success', 'partnerF berhasil ditambahkan');
     }
 
@@ -88,7 +88,7 @@ class PartnerController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = '/' . 'partners/' . time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('partners'), $filename);
             $data['image'] = $filename;
         }
@@ -105,15 +105,15 @@ class PartnerController extends Controller
     public function destroy($id)
     {
         $partner = Partners::findOrFail($id);
-    
+
         $imagePath = public_path('partners/' . $partner->image);
-    
+
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }
-    
+
         $partner->delete();
-    
+
         return response()->json(['success' => 'Item deleted successfully.']);
     }
 }

@@ -15,6 +15,15 @@
     </div>
     <!-- end page title end breadcrumb -->
 
+    @if (session('success'))
+        <div class="alert icon-custom-alert alert-outline-success alert-dismissible fade show floating-alert " role="alert">
+            <i class="mdi mdi-check-all alert-icon"></i>
+            <div class="alert-text">
+                <strong>Well done!</strong> {{ session('success') }}
+            </div>
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -77,7 +86,7 @@
                             let btn = `
                             <div class="btn-list">
                                 <a href="{{ route('editteam_admin', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                                <a href="#" data-toggle="modal" data-target="#modal-hapus${data}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
+                                <a href="{{ route('deleteteam_admin', ':id') }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                             </div>
                         `;
                             btn = btn.replaceAll(':id', String(data));
@@ -109,5 +118,21 @@
                 }
             });
         });
+
+        setTimeout(function() {
+            $('.floating-alert').alert('close');
+        }, 1500);
     </script>
+@endpush
+
+@push('css')
+    <style>
+        .floating-alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+            /* Above most other elements */
+        }
+    </style>
 @endpush

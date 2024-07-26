@@ -32,7 +32,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('services_admin') }}" class="nav-link text-black ">
-                            <i class="mdi mdi-wrench menu-icon"></i>
+                            <i class="ti ti-tool menu-icon"></i>
                             <span>Manajemen Service</span>
                         </a>
                     </li>

@@ -10,7 +10,7 @@ class AboutUsTableSeeder extends Seeder
     public function run()
     {
         DB::table('about_us')->insert([
-            'id_about_us' => '1',
+            'id' => '1',
             'title' => 'Our Story',
             'description' => 'Welcome to our company. We are dedicated to providing the best service and experience.',
             'image' => 'default-image.jpg',

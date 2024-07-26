@@ -156,10 +156,27 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $project = Project::findOrFail($id);
-        $project->delete();
+
+        // Delete thumbnail
+        if ($project->thumbnail) {
+            $thumbnailPath = public_path($project->thumbnail);
+            if (file_exists($thumbnailPath)) {
+                unlink($thumbnailPath);
+            }
+        }
 
         // Delete related images
-        ProjectImg::where('id_project', $id)->delete();
+        $images = ProjectImg::where('id_project', $id)->get();
+        foreach ($images as $image) {
+            $imagePath = public_path($image->image_name);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+            $image->delete();
+        }
+
+        // Delete project
+        $project->delete();
 
         return redirect()->route('project_admin')->with('success', 'Project berhasil dihapus');
     }

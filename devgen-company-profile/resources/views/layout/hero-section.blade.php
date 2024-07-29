@@ -10,9 +10,7 @@
                                 {!! $appSetting->desc !!} 
                             </p>
                             @php
-                                // Mengambil nomor telepon dari pengaturan aplikasi
                                 $phoneNumber = $appSetting->no_contact;
-                                // Mengganti nomor telepon yang dimulai dengan '0' menjadi format internasional '+62'
                                 if (substr($phoneNumber, 0, 1) === '0') {
                                     $phoneNumber = '+62' . substr($phoneNumber, 1);
                                 }

@@ -14,7 +14,7 @@
 
 @include('layout.navbar')
 
-<div class="page-title-area item-bg-1">
+<div class="page-title-area" style="background-image: url('{{ asset($aboutUs->image) }}')">>
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">

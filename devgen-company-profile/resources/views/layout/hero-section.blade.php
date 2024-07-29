@@ -9,8 +9,16 @@
                             <p>
                                 {!! $appSetting->desc !!} 
                             </p>
+                            @php
+                                // Mengambil nomor telepon dari pengaturan aplikasi
+                                $phoneNumber = $appSetting->no_contact;
+                                // Mengganti nomor telepon yang dimulai dengan '0' menjadi format internasional '+62'
+                                if (substr($phoneNumber, 0, 1) === '0') {
+                                    $phoneNumber = '+62' . substr($phoneNumber, 1);
+                                }
+                            @endphp
                             <div class="banner-btn">
-                                <a href="https://wa.me/{{ $appSetting->no_contact }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda" class="optional-btn">Contact Us</a>
+                                <a href="https://wa.me/{{ $phoneNumber }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda" class="optional-btn">Contact Us</a>
                             </div>
                         </div>
                     </div>

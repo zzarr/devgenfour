@@ -21,7 +21,7 @@
                 <div class="page-title-content">
                     <h2>About</h2>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="home">Home</a></li>
                         <li>About</li>
                     </ul>
                 </div>
@@ -51,20 +51,6 @@
                     <h2>{{ $aboutUs->title }}</h2>
                     <div class="bar"></div>
                     <p>{!! $aboutUs->description !!}</p>
-
-                    <div class="tab about-list-tab">
-                        <ul class="tabs">
-                            <li>
-                                <a href="#"> Our History </a>
-                            </li>
-                            <li>
-                                <a href="#"> Our Mission </a>
-                            </li>
-                            <li>
-                                <a href="#"> Friendly Support </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>

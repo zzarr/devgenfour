@@ -11,7 +11,6 @@ use App\Http\Controllers\admin\AppSettingController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\ProjectlController;
 use App\Http\Controllers\ProjectCounterController;
-use App\Http\Controllers\DetailProjectCounterController;
 use App\Http\Controllers\admin\AboutUsController;
 
 
@@ -42,7 +41,9 @@ Route::get('/projects/{id}', [ProjectlController::class, 'show'])->middleware('c
 
 // route about coba
 
-Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
+
+// Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
+Route::get('/AboutUs', [LandingPageController::class, 'about'])->middleware('count.about.us')->name('about-us');
 // landing page end
 
 Route::post('/increment-project-counter', [ProjectCounterController::class, 'increment'])->name('increment.project.counter');
@@ -60,7 +61,8 @@ Route::get('/admin/project_add', [ProjectController::class, 'create'])->name('ad
 Route::post('/admin/project_add', [ProjectController::class, 'store'])->name('storeproject_admin');
 Route::get('/admin/project_edit/{id}', [ProjectController::class, 'edit'])->name('editproject_admin');
 Route::post('/admin/project_update/{id}', [ProjectController::class, 'update'])->name('updateproject_admin');
-Route::get('/admin/project_delete/{id}', [ProjectController::class, 'destroy'])->name('deleteproject_admin');
+Route::delete('/admin/project/{id}', [ProjectController::class, 'destroy'])->name('deleteproject_admin');
+Route::post('/deleteprojectimage', [ProjectController::class, 'deleteImage'])->name('deleteprojectimage');
 
 Route::get('admin/services/datatables', [ServicesController::class, 'datatable'])->name('services_admin.datatable');
 Route::get('/admin/services', [ServicesController::class, 'index'])->name('services_admin');

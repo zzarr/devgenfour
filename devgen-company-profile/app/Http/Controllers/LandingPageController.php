@@ -22,8 +22,11 @@ class LandingPageController extends Controller
         $team = Team::all();
         $numbers = AppSetting::all(); 
 
-        return view('home', compact('appSetting', 'projects', 'aboutUs', 'services', 'partners', 'team', 'numbers'));
+        return view('home', compact('appSetting', 'projects', 'services', 'partners', 'team', 'numbers', 'aboutUs'));
     }
+
+
+
 
     public function about()
     {

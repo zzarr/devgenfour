@@ -65,7 +65,7 @@
 
             $('#add-image').click(function() {
                 $('#project-images').append(
-                    '<input name="images[]" type="file" class="dropify" data-height="100" multiple />');
+                    '<input name="images" type="file" class="dropify" data-height="100" multiple />');
                 $('.dropify').dropify();
             });
 

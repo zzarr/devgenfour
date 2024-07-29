@@ -137,6 +137,7 @@
                     <div class="project-details-image">
                         <img src="{{ asset($p->image_name) }}" style="width: 200px; height: 200px; margin-right: 10px;">
                     </div>
+                </div>
             @endforeach
         </div>
         <div class="col-lg-12 col-md-12">
@@ -164,6 +165,7 @@
                             </a>
                         </div>
                     </div>
+                </div>
             @endforeach
         </div>
     </div>

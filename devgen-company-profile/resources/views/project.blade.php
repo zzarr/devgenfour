@@ -113,63 +113,64 @@
 </head>
 @include('layout.navbar')
 
-<body>
-    <div class="page-title-area" style="background-image: url('{{ asset('' . $project->thumbnail) }}')">
-        <div class="page-title-area">
-            <div class="d-table">
-                <div class="d-table-cell">
-                    <div class="container">
-                        <div class="page-title-content">
-                            <h2>{{ $project->title }}</h2>
-                            <ul>
-                                <li><a href="{{ url('/home') }}">Home</a></li>
-                                <li> {{ $project->title }}</li>
-                            </ul>
-                        </div>
+<div class="page-title-area" style="background-image: url('{{ asset($project->thumbnail) }}')">
+    <div class="page-title-area">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <h2>{{ $project->title }}</h2>
+                        <ul>
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                            <li> {{ $project->title }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="row">
-                @foreach ($projectimg as $p)
-                    <div class="col-lg-4 col-md-4 d-flex ">
-                        <div class="project-details-image">
-                            <img src="{{ asset('' . $p->image_name) }}" style="width: 100%; height: auto;">
-                        </div>
+    <div class="container">
+        <div class="row">
+            @foreach ($projectimg as $p)
+                <div class="col-lg-4 col-md-4 d-flex ">
+                    <div class="project-details-image">
+                        <img src="{{ asset($p->image_name) }}" style="width: 200px; height: 200px; margin-right: 10px;">
                     </div>
-                @endforeach
+            @endforeach
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="projects-details-desc">
+                <h3>{{ $project->title }}</h3>
+                <p>{!! $project->description !!}</p>
             </div>
         </div>
+    </div>
 
-        <div class="container-fluid">
-            <div class="section-title">
-                <h2> {{ $project->title }}</h2>
-                <p>{!! $project->description !!}</p>
-                <div class="bar"></div>
-            </div>
 
-            <div class="row">
-                @foreach ($projects as $project)
-                    <div class="col-lg-3">
-                        <div class="single-projects">
-                            <div class="projects-image">
-                                <img src="{{ asset('' . $project->thumbnail) }}"
-                                    style="width: 100%; height: 200px; object-fit: cover;">
-                            </div>
-                            <div class="projects-content">
-                                <a href="{{ route('showproject', ['id' => $project->id]) }}">
-                                    <h3>{{ $project->title }}</h3>
-                                </a>
-                            </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            @foreach ($projects as $project)
+                <div class="col-lg-3">
+                    <div class="single-projects">
+                        <div class="projects-image">
+                            <img src="{{ asset($project->thumbnail) }}"
+                                style="width: 100%; height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="projects-content">
+                            <a href="{{ route('showproject', ['id' => $project->id]) }}">
+                                <h3>{{ $project->title }}</h3>
+                            </a>
                         </div>
                     </div>
-                @endforeach
-            </div>
+            @endforeach
+        </div>
+    </div>
 
-            @include('layout.footer-section', ['numbers' => $numbers, 'appSetting' => $appSetting])
-            @include('layout.script-landingpage')
-</body>
+    @include('layout.footer-section')
+    <input type="hidden" id="project-id" value="{{ $project->id }}">
+    @include('layout.script-landingpage')
+    </body>
 
 </html>

@@ -1,17 +1,18 @@
 <section class="footer-section pt-100 pb-70" id="footer-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div>
                     <img
-                        src="{{ asset('img/' . $appSetting->logo) }}"
+                        src="{{ asset($appSetting->logo) }}"
+                        style="width: 80%; height: auto;"
                         class="wow zoomIn"
                         data-wow-delay="0.6s"
                         alt="image"
                     />
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h5>Contact Us</h5>
                 @foreach ($numbers as $number)
                 @php

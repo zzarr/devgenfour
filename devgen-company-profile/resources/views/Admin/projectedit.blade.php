@@ -63,11 +63,15 @@
             $('#summernote').summernote();
             $('.dropify').dropify();
 
-            $('#add-image').click(function() {
-                $('#project-images').append(
-                    '<input name="images" type="file" class="dropify" data-height="100" multiple />');
-                $('.dropify').dropify();
-            });
+        $('#add-image').click(function() {
+            var newImageInput = $(
+                '<div class="project-image">' +
+                '<input name="images[]" type="file" class="dropify" data-height="100" />' +
+                '</div>'
+            );
+            $('#project-images').append(newImageInput);
+            newImageInput.find('.dropify').dropify();
+        });
 
             $('.dropify').on('dropify.afterClear', function(event, element) {
                 var id = $(this).data('id');

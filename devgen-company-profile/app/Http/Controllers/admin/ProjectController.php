@@ -99,10 +99,10 @@ class ProjectController extends Controller
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
+    
         $data = $request->except(['_token', '_method', 'thumbnail', 'images']);
         $project = Project::findOrFail($id);
-
+    
         // Handle thumbnail update
         if ($request->hasFile('thumbnail')) {
             // Delete old thumbnail if exists
@@ -112,46 +112,34 @@ class ProjectController extends Controller
                     unlink($oldThumbnailPath);
                 }
             }
-
+    
             // Upload new thumbnail
             $file = $request->file('thumbnail');
-            $filename = '/project/thumbnail/' . time() . '_' . $file->getClientOriginalName();
+            $filename = '/project/image/' . time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('project/thumbnail'), $filename);
             $data['thumbnail'] = $filename;
         } else {
             $data['thumbnail'] = $project->thumbnail; // Preserve existing thumbnail if no new one is provided
         }
-
+    
         $project->update($data);
-
+    
         // Handle project images update
         if ($request->hasFile('images')) {
-            // Delete all existing images
-            $existingImages = ProjectImg::where('id_project', $id)->get();
-            foreach ($existingImages as $image) {
-                $imagePath = public_path('project/image/' . $image->image_name);
-                if (file_exists($imagePath)) {
-                    unlink($imagePath);
-                }
-                $image->delete();
-            }
-
-            // Upload new images
             $files = $request->file('images');
             foreach ($files as $file) {
-                $filename = time() . '_' . $file->getClientOriginalName();
+                $filename = '/project/image/' . time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('project/image'), $filename);
-
+    
                 ProjectImg::create([
                     'id_project' => $id,
                     'image_name' => $filename,
                 ]);
             }
         }
-
+    
         return redirect()->route('project_admin')->with('success', 'Project berhasil diupdate');
-    }
-
+    }    
 
     public function destroy($id)
     {

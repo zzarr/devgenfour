@@ -78,7 +78,7 @@
                             let btn = `
                             <div class="btn-list">
                                 <a href="{{ route('editproject_admin', ':id') }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-                                <a href="{{ route('deleteproject_admin', ':id') }}" class="btn btn-danger btn-delete" data-id=":id"><i class="fas fa-trash-alt"></i> Delete</a>
+                                <button class="btn btn-danger btn-delete" data-id=":id"><i class="fas fa-trash-alt"></i> Delete</button>
                             </div>
                         `;
                             btn = btn.replaceAll(':id', full.id);
@@ -113,10 +113,7 @@
                 if (confirm('Are you sure you want to delete this item?')) {
                     $.ajax({
                         url: "{{ url('admin/project') }}/" + deleteId,
-                        type: 'POST',
-                        data: {
-                            _method: 'DELETE' // Spoofing the DELETE method
-                        },
+                        type: 'DELETE',
                         success: function(result) {
                             table.ajax.reload(null, false);
                         },

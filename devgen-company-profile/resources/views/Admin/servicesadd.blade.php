@@ -34,6 +34,12 @@
                             <input class="form-control" type="text" name="title" id="title-input" required />
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label for="title-input" class="col-sm-2 col-form-label text-end">Deskripsi</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="description" id="title-input" required />
+                        </div>
+                    </div>
                 </div>
                 <button class="btn btn-success mt-4" style="margin-left: 45px"><i class="ti ti-check"></i>
                     Save</button>

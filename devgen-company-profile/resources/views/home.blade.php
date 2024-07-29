@@ -13,6 +13,8 @@
     @include('layout.hero-section', ['appSetting' => $appSetting])
     <!-- End Banner Area -->
 
+    {{-- @include('AboutUs') --}}
+
 
     <!-- Start Services Area -->
     @include('layout.services-section')

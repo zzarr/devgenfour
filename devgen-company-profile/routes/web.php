@@ -36,7 +36,13 @@ Route::get('/home', [LandingPageController::class, 'index'])->middleware('count.
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{id}', [ProjectlController::class, 'show'])->middleware('count.project.views')->name('showproject');
 
+// route about coba`
+
+
 // route about coba
+
+
+// Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
 Route::get('/AboutUs', [LandingPageController::class, 'about'])->middleware('count.about.us')->name('about-us');
 // landing page end
 

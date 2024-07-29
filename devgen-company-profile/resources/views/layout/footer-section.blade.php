@@ -4,7 +4,7 @@
             <div class="col-md-2">
                 <div>
                     <img
-                        src="{{ asset($appSetting->logo) }}"
+                        src="{{ asset('' . $appSetting->logo) }}"
                         style="width: 80%; height: auto;"
                         class="wow zoomIn"
                         data-wow-delay="0.6s"

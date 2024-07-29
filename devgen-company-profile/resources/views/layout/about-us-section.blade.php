@@ -8,7 +8,8 @@
                         <li>
                         <a href="{{ url('/home') }}" class="nav-link">home</a>
                         </li>
-                        <li>About</li>
+                        <li> <a href="{{ url('AboutUs') }}">
+                            About</li>
                     </ul>
                 </div>
             </div>
@@ -22,14 +23,14 @@
         <div class="row">
             <div class="col-lg-6 p-0">
                 <div class="about-image">
-                    <img src="{{ asset('img/' . $aboutUs->image) }}" alt="Image"/>
-                </div>
+                    {{ $aboutUs->image }}
+                
             </div>
             <div class="col-lg-6">
                 <div class="about-tab">
                     <h2>{{ $aboutUs->title }}</h2>
                     <div class="bar"></div>
-                    <p>{{ $aboutUs->description }}</p>
+                    {!! $aboutUs->description !!}
                     <a class="default-btn" href="#">Discover More</a>
                 </div>
             </div>

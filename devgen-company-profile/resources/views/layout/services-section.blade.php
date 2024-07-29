@@ -11,7 +11,7 @@
         </div>
 
         <div class="row">
-            @foreach ($service as $services)
+            @foreach ($services as $services)
             <div class="col-lg-4 col-md-6">
                 <div class="single-services">
 

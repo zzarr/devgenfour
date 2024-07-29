@@ -43,6 +43,9 @@ class TeamController extends Controller
             'name' => 'required|string|max:255',
             'jabatan' => 'nullable|string|max:255',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'facebook' => 'nullable|string|max:255',
+            'instagram' => 'nullable|string|max:255',
+            'linkedin' => 'nullable|string|max:255',
         ]);
 
         // Mengumpulkan data dari request, kecuali field '_token', '_method', dan 'foto'
@@ -68,6 +71,9 @@ class TeamController extends Controller
             'name' => $data['name'],
             'jabatan' => $data['jabatan'],
             'foto' => $data['foto'],
+            'facebook' => $request->facebook,
+            'instagram' => $data['instagram'],
+            'linkedin' => $data['linkedin'],
             'created_at' => $data['created_at'],
             'updated_at' => $data['updated_at'],
         ]);

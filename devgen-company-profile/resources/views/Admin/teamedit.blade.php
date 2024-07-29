@@ -46,6 +46,36 @@
                                 data-default-file="{{ asset('team/' . $team->foto) }}" />
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label for="no_contact" class="col-sm-2 col-form-label text-end">Facebook</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="ti ti-brand-facebook"></i></span>
+                                <input type="text" class="form-control" name="facebook" id="no_contact"
+                                    value="{{ $team->facebook }}" placeholder="Facebook" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="email" class="col-sm-2 col-form-label text-end">Linkedin</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="ti ti-brand-linkedin"></i></span>
+                                <input type="text" class="form-control" name="linkedin" id="email"
+                                    value="{{ $team->linkedin }}" placeholder="Linkedin" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="instagram" class="col-sm-2 col-form-label text-end">Instagram</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="ti ti-brand-instagram"></i></span>
+                                <input type="text" class="form-control" name="instagram" id="instagram"
+                                    value="{{ $team->instagram }}" placeholder="Instagram" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button class="btn btn-success mt-4" style="margin-left: 45px"><i class="ti ti-check"></i>
                     Save</button>

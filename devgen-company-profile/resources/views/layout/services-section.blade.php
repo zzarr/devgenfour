@@ -11,7 +11,7 @@
         </div>
 
         <div class="row">
-            @foreach ($service as $services)
+            @foreach ($services as $services)
             <div class="col-lg-4 col-md-6">
                 <div class="single-services">
 
@@ -20,11 +20,7 @@
                         </div>
 
                     <h3>{{ $services->title }}</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore facilisis.
-                    </p>
+
 
 
                 </div>

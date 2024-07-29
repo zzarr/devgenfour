@@ -4,8 +4,8 @@
             <div class="fria-responsive-menu">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="{{ asset('img/' . $appSetting->logo) }}" class="black-logo" alt="image" />
-                        <img src="{{ asset('img/' . $appSetting->logo) }}" class="white-logo" alt="image" />
+                        {{-- <img src="{{ asset('img/' . $appSetting->logo) }}" class="black-logo" alt="image" />
+                        <img src="{{ asset('img/' . $appSetting->logo) }}" class="white-logo" alt="image" /> --}}
                     </a>
                 </div>
             </div>
@@ -16,8 +16,8 @@
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" href="index.html">
-                    <img src="img/dev.png" class="black-logo" alt="image" />
-                    <img src="img/dev.png" class="white-logo" alt="image" />
+                    <img src="{{ asset($appSetting->logo) }}" style="height: 40px; width: auto;" alt="logo" />
+                  
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">

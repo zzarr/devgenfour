@@ -3709,7 +3709,7 @@ About Area CSS
   height: 100%;
 }
 .about-image img {
-  display: none;
+  display: block;
 }
 
 /*================================================
@@ -5365,6 +5365,7 @@ Projects Details Area CSS
 =================================================*/
 .project-details-image {
   margin-bottom: 30px;
+  
 }
 
 .projects-details-desc {

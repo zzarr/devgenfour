@@ -25,28 +25,59 @@
             <div class="card-body">
                 <div class="col-lg-12">
                     <div class="mb-3 row">
-                        <label for="example-text-input" class="col-sm-2 col-form-label text-end">Nama</label>
+                        <label for="name" class="col-sm-2 col-form-label text-end">Nama</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="name" id="example-text-input" />
+                            <input class="form-control" type="text" name="name" id="name" />
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="example-email-input" class="col-sm-2 col-form-label text-end">Jabatan</label>
+                        <label for="jabatan" class="col-sm-2 col-form-label text-end">Jabatan</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="jabatan" id="example-text-input" />
+                            <input class="form-control" type="text" name="jabatan" id="jabatan" />
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="example-tel-input" class="col-sm-2 col-form-label text-end">Foto</label>
+                        <label for="foto" class="col-sm-2 col-form-label text-end">Foto</label>
                         <div class="col-sm-10">
-                            <input class=" dropify" type="file" name="foto" id="example-tel-input" />
+                            <input class="form-control dropify" type="file" name="foto" id="foto" />
                         </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="no_contact" class="col-sm-2 col-form-label text-end">Nomor Kontak</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="las la-phone"></i></span>
+                                <input type="text" class="form-control" name="no_contact" id="no_contact"
+                                    placeholder="Phone" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="email" class="col-sm-2 col-form-label text-end">Alamat Email</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="las la-at"></i></span>
+                                <input type="email" class="form-control" name="email" id="email"
+                                    placeholder="Email" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="instagram" class="col-sm-2 col-form-label text-end">Link Instagram</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="ti ti-brand-instagram"></i></span>
+                                <input type="text" class="form-control" name="instagram" id="instagram"
+                                    placeholder="Instagram" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-end mt-4">
+                        <button class="btn btn-success" type="submit"><i class="ti ti-check"></i> Save</button>
+                        <a href="{{ route('team_admin') }}" class="btn btn-outline-danger"><i class="ti ti-arrow-back"></i>
+                            Cancel</a>
                     </div>
                 </div>
-                <button class="btn btn-success mt-4" style="margin-left: 45px"><i class="ti ti-check"></i>
-                    Save</button>
-                <a href="{{ route('team_admin') }}" type="button" class="btn btn-outline-danger mt-4"
-                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
             </div>
         </div>
     </form>

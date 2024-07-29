@@ -1,4 +1,4 @@
-<section class="team-section pb-70" >
+<section class="team-section pb-70">
     <div class="container">
         <div class="section-title">
             <h2>Our Expert Team</h2>
@@ -12,20 +12,39 @@
 
         <div class="row">
             @foreach ($team as $image)
-            <div class="col-lg-3 ">
-                <div class="card mb-4 shadow-sm text-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-team">
                     <div class="image">
-                        <img src="{{ asset('team/' . $image->foto)}}">
+                        <img src="{{ asset('team/' . $image->foto)}}" style="width: 365px; height: 490px; object-fit: cover;">
                     </div>
 
                     <div class="content">
                         <h3>{{ $image->name }}</h3>
-                        <span><h3>{{ $image->jabatan }}</h3></span>
+                        <span>{{ $image->jabatan }}</span>
+
+                        <ul class="social">
+                            <li>
+                                <a href="#">
+                                    <i class="flaticon-facebook"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="flaticon-twitter"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="flaticon-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
             @endforeach
-
-
+        </div>
     </div>
 </section>

@@ -80,7 +80,7 @@ class AppSettingController extends Controller
             $filePath = $file->move(public_path('img'), $filename);
 
             // Tambahkan path lengkap ke array data
-            $data['logo'] = asset('img/' . $filename);
+            $data['logo'] = 'img/' . $filename;
         } else {
             // Jika tidak ada logo yang diunggah, tetap gunakan logo yang sudah ada
             $data['logo'] = $appSetting->logo;

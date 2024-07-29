@@ -7,7 +7,7 @@
             @foreach ($partners as $image)
             <div class="partner-item">
                 <a href="#">
-                    <img src="{{ asset('partners/' . $image->image)}}">
+                    <img src="{{ asset('' . $image->image)}}">
                 </a>
             </div>
             @endforeach
@@ -15,3 +15,5 @@
         </div>
     </div>
 </div>
+
+

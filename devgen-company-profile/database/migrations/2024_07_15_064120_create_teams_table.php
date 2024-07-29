@@ -13,6 +13,9 @@ class CreateTeamsTable extends Migration
             $table->string('name');
             $table->string('jabatan');
             $table->string('foto');
+            $table->string('facebook');
+            $table->string('instagram');
+            $table->string('linkedin');
             $table->timestamps();
         });
     }

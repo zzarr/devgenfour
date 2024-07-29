@@ -43,27 +43,27 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="no_contact" class="col-sm-2 col-form-label text-end">Nomor Kontak</label>
+                        <label for="no_contact" class="col-sm-2 col-form-label text-end">Facebook</label>
                         <div class="col-sm-10">
                             <div class="input-group">
-                                <span class="input-group-text"><i class="las la-phone"></i></span>
-                                <input type="text" class="form-control" name="no_contact" id="no_contact"
-                                    placeholder="Phone" />
+                                <span class="input-group-text"><i class="ti ti-brand-facebook"></i></span>
+                                <input type="text" class="form-control" name="facebook" id="no_contact"
+                                    placeholder="Facebook" />
                             </div>
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="email" class="col-sm-2 col-form-label text-end">Alamat Email</label>
+                        <label for="email" class="col-sm-2 col-form-label text-end">Linkedin</label>
                         <div class="col-sm-10">
                             <div class="input-group">
-                                <span class="input-group-text"><i class="las la-at"></i></span>
-                                <input type="email" class="form-control" name="email" id="email"
-                                    placeholder="Email" />
+                                <span class="input-group-text"><i class="ti ti-brand-linkedin"></i></span>
+                                <input type="text" class="form-control" name="linkedin" id="email"
+                                    placeholder="Linkedin" />
                             </div>
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="instagram" class="col-sm-2 col-form-label text-end">Link Instagram</label>
+                        <label for="instagram" class="col-sm-2 col-form-label text-end">Instagram</label>
                         <div class="col-sm-10">
                             <div class="input-group">
                                 <span class="input-group-text"><i class="ti ti-brand-instagram"></i></span>

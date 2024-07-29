@@ -16,6 +16,6 @@ class Team extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
-        'name', 'jabatan', 'foto',
+        'name', 'jabatan', 'foto', 'facebook', 'instagram', 'linkedin', 'created_at', 'updated_at'
     ];
 }

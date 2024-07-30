@@ -24,20 +24,20 @@
 
                         <ul class="social">
                             <li>
-                                <a href="#">
-                                    <i class="flaticon-facebook"></i>
+                                <a href="{{ $teams->facebook }}">
+                                    <i class="ti ti-brand-facebook"></i>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#">
-                                    <i class="flaticon-twitter"></i>
+                                <a href="{{ $teams->linkedin }}">
+                                    <i class="ti ti-brand-linkedin"></i>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ $teams->instagram }}">
-                                    <i class="flaticon-instagram"></i>
+                                    <i class="ti ti-brand-instagram"></i>
                                 </a>
                             </li>
                         </ul>

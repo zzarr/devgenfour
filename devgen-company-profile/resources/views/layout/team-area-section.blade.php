@@ -37,7 +37,7 @@
 
                             <li>
                                 <a href="#">
-                                    <i class="flaticon-instagram"></i>
+                                    <a href="{{ $team->instagram }}" target="_blank" class="text-black">instagram</a>
                                 </a>
                             </li>
                         </ul>

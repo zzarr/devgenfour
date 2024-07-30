@@ -17,7 +17,7 @@
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" href="index.html">
                     <img src="{{ asset($appSetting->logo) }}" style="height: 40px; width: auto;" alt="logo" />
-                  
+
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -35,20 +35,20 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#services-section" class="nav-link">
+                            <a href="{{ url('/home#services-section') }}" class="nav-link">
                                 Services
                             </a>
 
 
                         <li class="nav-item">
-                            <a href="#project-section" class="nav-link" id="projects-link">
+                            <a href="{{ url('/home#project-section') }}" class="nav-link" id="projects-link">
                                 Projects
                             </a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a href="#footer-section" class="nav-link">
+                            <a href="{{ url('/home#footer-section') }}" class="nav-link">
                                 Contact
                             </a>
                         </li>
@@ -76,5 +76,3 @@
         </div>
     </div>
 </div>
-
-

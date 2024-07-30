@@ -50,30 +50,28 @@ class ProjectController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
-            $filename = '/project/thumbnail/' . $request->title . '_' . $file->getClientOriginalName();
+            $filename = '/project/thumbnail/' . time() .  $request->title . '_' . $file->getClientOriginalName();
             $file->move(public_path('project/thumbnail'), $filename);
             $data['thumbnail'] = $filename;
         } else {
             $data['thumbnail'] = null;
         }
 
-        // Insert project using Eloquent
         $project = Project::create([
             'title' => $data['title'],
             'description' => $data['description'],
             'thumbnail' => $data['thumbnail'],
         ]);
 
-        // Debug: Check the ID of the created project
-        Log::info('Created project ID: ' . $project->id);
+        // // Debug: Check the ID of the created project
+        // Log::info('Created project ID: ' . $project->id);
 
         if ($request->hasFile('images')) {
             $files = $request->file('images');
             foreach ($files as $file) {
-                $filename = '/project/image/' . $request->title . '_img' . $file->getClientOriginalName();
+                $filename = '/project/image/' . time() . $request->title . '_img' . $file->getClientOriginalName();
                 $file->move(public_path('project/image'), $filename);
 
-                // Use Eloquent to create project images
                 ProjectImg::create([
                     'id_project' => $project->id,
                     'image_name' => $filename,

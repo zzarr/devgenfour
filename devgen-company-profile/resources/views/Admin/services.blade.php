@@ -33,6 +33,7 @@
                                         <th class="column-no">No</th>
                                         <th>Icon</th>
                                         <th>Title</th>
+                                        <th>Deskripsi</th>
                                         <th class="column-action">Action</th>
                                     </tr>
                                 </thead>
@@ -75,7 +76,7 @@
                         },
                     },
                     {
-                        targets: 3,
+                        targets: 4,
                         className: 'column-action',
                         render: function(data, type, full, meta) {
                             let btn = `
@@ -97,6 +98,9 @@
                     },
                     {
                         data: 'title'
+                    },
+                    {
+                        data: 'description'
                     },
                     {
                         data: 'id'
@@ -131,11 +135,9 @@
 <style>
     .column-no {
         width: 50px;
-        /* Adjust this value as needed */
     }
 
     .column-action {
-        width: 150px;
-        /* Adjust this value as needed */
+        width: 200px;
     }
 </style>

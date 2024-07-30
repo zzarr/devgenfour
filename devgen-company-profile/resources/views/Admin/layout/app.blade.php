@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @include('Admin.layout.head-admin')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('css')
     <title>Document</title>
 </head>

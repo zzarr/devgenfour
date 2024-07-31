@@ -18,7 +18,7 @@ class ProjectlController extends Controller
                 $numbers = AppSetting::all();
                 $project = Project::where('id', $id_project)->first();
                 // dd($project);
-                $projects = Project::all();
+                $projects = Project::whereNot('id',$id_project)->get();
                 $projectimg = ProjectImg::where('id_project', $id_project)->get();
                 return view('project', compact('appSetting', 'project', 'projects', 'projectimg', 'numbers'));
         }

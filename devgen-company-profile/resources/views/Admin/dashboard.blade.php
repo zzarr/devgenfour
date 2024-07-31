@@ -22,7 +22,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col">
                             <p class="text-dark mb-1 fw-semibold">Visitor</p>
-                            <h4 class="my-1"> {{ $visitorCount }}</h4>
+                            <h4 class="my-1"> {{ $visitorCountAll }}</h4>
                         </div>
                         <div class="col-auto align-self-center">
                             <div
@@ -40,7 +40,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col">
                             <p class="text-dark mb-1 fw-semibold">Project Counter</p>
-                            <h4 class="my-1">{{ $projectCount }}</h4>
+                            <h4 class="my-1">{{ $projectCountAll }}</h4>
                         </div>
                         <div class="col-auto align-self-center">
                             <div
@@ -58,7 +58,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col">
                             <p class="text-dark mb-1 fw-semibold">About Us Counter</p>
-                            <h4 class="my-1">{{ $aboutUsCount }}</h4>
+                            <h4 class="my-1">{{ $aboutUsCountAll }}</h4>
                         </div>
                         <div class="col-auto align-self-center">
                             <div
@@ -82,7 +82,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col">
                             <p class="text-dark mb-1 fw-semibold">Detail Project Counter</p>
-                            <h4 class="my-1">{{ $detailProjectCount }}</h4>
+                            <h4 class="my-1">{{ $detailProjectCountAll }}</h4>
                         </div>
                         <div class="col-auto align-self-center">
                             <div
@@ -118,44 +118,53 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Konfigurasi chart dengan dataset terpisah untuk setiap counter
+        const visitorData = @json($visitorData);
+        const projectData = @json($projectData);
+        const aboutUsData = @json($aboutUsData);
+        const detailProjectData = @json($detailProjectData);
+
         const ctx = document.getElementById('chartSaya').getContext('2d');
         const chartSaya = new Chart(ctx, {
-            type: 'line', // Contoh tipe chart
+            type: 'line',
             data: {
-                labels: ['Counter'], // Label untuk sumbu x
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
                         label: 'Visitor',
-                        data: [{{ $visitorCount }}], // Data untuk Visitor
+                        data: visitorData,
                         borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
+                        borderWidth: 1,
+                        fill: false,
                     },
                     {
                         label: 'Project',
-                        data: [{{ $projectCount }}], // Data untuk Project
+                        data: projectData,
                         borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
+                        borderWidth: 1,
+                        fill: false,
                     },
                     {
                         label: 'About Us',
-                        data: [{{ $aboutUsCount }}], // Data untuk About Us
+                        data: aboutUsData,
                         borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
+                        borderWidth: 1,
+                        fill: false,
                     },
                     {
                         label: 'Detail Project',
-                        data: [{{ $detailProjectCount }}], // Data untuk Detail Project
+                        data: detailProjectData,
                         borderColor: 'rgba(153, 102, 255, 1)',
-                        borderWidth: 1
-                    }
-                ]
+                        borderWidth: 1,
+                        fill: false,
+                    },
+                ],
             },
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
-                    }
-                }
-            }
+                        beginAtZero: true,
+                    },
+                },
+            },
         });
     </script>
 @endpush

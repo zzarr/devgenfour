@@ -9,6 +9,7 @@ use App\Models\Services;
 use App\Models\Partners;
 use App\Models\Team;
 use App\Models\AboutUs; // Pastikan AboutUs diimport
+use App\Models\Choose;
 
 class LandingPageController extends Controller
 {
@@ -20,9 +21,11 @@ class LandingPageController extends Controller
         $services = Services::all();
         $partners = Partners::all();
         $team = Team::all();
-        $numbers = AppSetting::all(); 
+        $numbers = AppSetting::all();
+        $choose = Choose::all();
+        
 
-        return view('home', compact('appSetting', 'projects', 'services', 'partners', 'team', 'numbers', 'aboutUs'));
+        return view('home', compact('appSetting', 'projects', 'services', 'partners', 'team', 'numbers', 'aboutUs', 'choose'));
     }
 
 

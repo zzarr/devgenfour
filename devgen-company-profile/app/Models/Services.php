@@ -13,5 +13,5 @@ class Services extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['icon', 'title'];
+    protected $fillable = ['icon', 'title','description'];
 }

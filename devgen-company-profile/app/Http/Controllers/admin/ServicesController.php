@@ -5,9 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Services;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Facades\Log;
 
 
 class ServicesController extends Controller
@@ -45,6 +43,8 @@ class ServicesController extends Controller
         $request->validate([
             'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+
         ]);
     
         // Ensure the directory exists
@@ -65,6 +65,8 @@ class ServicesController extends Controller
         Services::create([
             'icon' => $filename,
             'title' => $request->title,
+            'description' => $request->description,
+
         ]);
     
         return redirect()->route('services_admin')->with('success', 'Service berhasil ditambahkan');
@@ -90,6 +92,7 @@ class ServicesController extends Controller
          // Validasi input untuk memastikan data yang dimasukkan sesuai dengan harapan
          $request->validate([
              'title' => 'required|string|max:255',
+             'description' => 'nullable|string',
              'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
          ]);
      

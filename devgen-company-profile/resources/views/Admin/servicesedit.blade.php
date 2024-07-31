@@ -22,6 +22,10 @@
                             <label for="title">Title</label>
                             <input type="text" class="form-control" id="title" name="title" value="{{ $service->title }}" required>
                         </div>
+                        <div class="form-group">
+                            <label for="description">Deskripsi</label>
+                            <input type="text" class="form-control" id="description" name="description" value="{{ $service->description }}" required>
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

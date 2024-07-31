@@ -91,7 +91,7 @@
                     },
                     {
                         data: 'thumbnail'
-                    }, // Ensure this matches the data returned
+                    }, 
                     {
                         data: 'title'
                     },
@@ -100,7 +100,7 @@
                     },
                     {
                         data: 'id'
-                    } // For action column
+                    } 
                 ],
                 language: {
                     searchPlaceholder: 'Search...',

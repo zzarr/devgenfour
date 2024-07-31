@@ -11,33 +11,33 @@
         </div>
 
         <div class="row">
-            @foreach ($team as $image)
+            @foreach ($team as $teams)
             <div class="col-lg-4 col-md-6">
                 <div class="single-team">
                     <div class="image">
-                        <img src="{{ asset('team/' . $image->foto)}}" style="width: 365px; height: 490px; object-fit: cover;">
+                        <img src="{{ asset('team/' . $teams->foto)}}" style="width: 365px; height: 490px; object-fit: cover;">
                     </div>
 
                     <div class="content">
-                        <h3>{{ $image->name }}</h3>
-                        <span>{{ $image->jabatan }}</span>
+                        <h3>{{ $teams->name }}</h3>
+                        <span>{{ $teams->jabatan }}</span>
 
                         <ul class="social">
                             <li>
-                                <a href="#">
-                                    <i class="flaticon-facebook"></i>
+                                <a href="{{ $teams->facebook }}">
+                                    <i class="ti ti-brand-facebook"></i>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#">
-                                    <i class="flaticon-twitter"></i>
+                                <a href="{{ $teams->linkedin }}">
+                                    <i class="ti ti-brand-linkedin"></i>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#">
-                                    <a href="{{ $team->instagram }}" target="_blank" class="text-black">instagram</a>
+                                <a href="{{ $teams->instagram }}">
+                                    <i class="ti ti-brand-instagram"></i>
                                 </a>
                             </li>
                         </ul>

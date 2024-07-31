@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'count.visitor' => \App\Http\Middleware\TrackVisitor::class,
         'count.project.views' => \App\Http\Middleware\CountDetailProjectViews::class,
         'count.about.us' => \App\Http\Middleware\CountAboutUs::class,
+        'auth' => \App\Http\Middleware\AuthMiddleware::class,
 
     ];
 }

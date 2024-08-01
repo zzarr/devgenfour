@@ -21,7 +21,7 @@
     <!-- End Services Area -->
 
     <!-- Start Overview Area -->
-    @include('layout.overview-area-section')
+    {{-- @include('layout.overview-area-section') --}}
     <!-- End Overview Area -->
 
     {{-- bagian saya --}}
@@ -33,7 +33,7 @@
     {{-- bagian saya berakhir --}}
 
     <!-- team expert section -->
-    @include('layout.team-expert-section')
+    {{-- @include('layout.team-expert-section') --}}
     <!-- End Fun Facts Section -->
 
     <!-- Start Projects Area -->

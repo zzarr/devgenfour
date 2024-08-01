@@ -146,11 +146,16 @@
                 <p>{!! $project->description !!}</p>
             </div>
         </div>
+    </br>
     </div>
 
-
-
     <div class="container-fluid">
+        <div class="section-title">
+            <h5>Project Lainnya</h5>
+            <div class="bar"></div>
+        </div>
+
+    <div class="container-fluid">        
         <div class="row">
             @foreach ($projects as $project)
                 <div class="col-lg-3">

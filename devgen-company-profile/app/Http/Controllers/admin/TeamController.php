@@ -132,6 +132,9 @@ class TeamController extends Controller
             'name' => $data['name'],
             'jabatan' => $data['jabatan'],
             'foto' => $data['foto'],
+            'facebook' => $request->facebook,
+            'instagram' => $data['instagram'],
+            'linkedin' => $data['linkedin'],
             'updated_at' => $data['updated_at'],
         ]);
 

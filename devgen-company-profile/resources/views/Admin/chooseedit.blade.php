@@ -1,9 +1,18 @@
 @extends('admin.layout.app')
 
 @section('content')
-    <div class="row">
+<div class="row">
         <div class="col-sm-12">
+        <div class="page-title-box">
+        <div class="float-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item">Choose</li>
+                        <li class="breadcrumb-item active">Edit Choose</li>
+                    </ol>
+                </div>
             <h4 class="page-title">Edit Choose</h4>
+            </div>
         </div>
     </div>
 

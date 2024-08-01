@@ -3,9 +3,20 @@
 @section('content')
     <div class="row">
         <div class="col-sm-12">
-            <h4 class="page-title">Edit Service</h4>
+        <div class="page-title-box">
+        <div class="float-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item">Services</li>
+                        <li class="breadcrumb-item active">Edit Services</li>
+                    </ol>
+                </div>
+            <h4 class="page-title">Edit Services</h4>
+            </div>
         </div>
     </div>
+
+
 
     <div class="row">
         <div class="col-lg-12">

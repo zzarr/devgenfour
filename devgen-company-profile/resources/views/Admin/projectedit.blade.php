@@ -5,8 +5,10 @@
         <div class="col-sm-12">
             <div class="page-title-box">
                 <div class="float-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item active">Project</li>
+                <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dasboard</a></li>
+                        <li class="breadcrumb-item ">Project</li>
+                        <li class="breadcrumb-item active">Edit Project</li>
                     </ol>
                 </div>
                 <h4 class="page-title">Edit Project</h4>

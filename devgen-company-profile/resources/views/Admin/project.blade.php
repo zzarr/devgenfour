@@ -29,7 +29,7 @@
                         <table class="table" id="datatable">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Id Project</th>
+                                    <th>No</th>
                                     <th>Thumbnail</th>
                                     <th>Title</th>
                                     <th>Description</th>

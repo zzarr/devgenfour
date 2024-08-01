@@ -16,9 +16,8 @@ class DashboardController extends Controller
     public function index()
     {
         $visitorCountAll = Visitor::count();
-        $projectCounter = ProjectCounter::first();
         $aboutUsCountAll = AboutUsCounter::count();
-        $projectCountAll = $projectCounter ? $projectCounter->count : 0;
+        $projectCountAll = ProjectCounter::count();
         $detailProjectCountAll = DetailProjectCounter::count();
 
         // Menghitung jumlah visitor per bulan

@@ -1,6 +1,5 @@
 @extends('Admin.layout.app') @section('content')
     <!-- Page-Title -->
-    <!-- Page-Title -->
     <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
@@ -17,7 +16,6 @@
         </div>
         <!--end col-->
     </div>
-    <!-- end page title end breadcrumb -->
     <!-- end page title end breadcrumb -->
 
     <form method="POST" action="{{ route('updateteam_admin', $team->id) }}" enctype="multipart/form-data">

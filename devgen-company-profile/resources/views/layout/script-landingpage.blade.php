@@ -37,14 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             },
-            body: JSON.stringify({})
+            body: JSON.stringify({
+                ip_address: '{{ request()->ip() }}'
+            })
         })
         .then(response => response.json())
-        .then(data => console.log('Project count incremented: ', data.count))
+        .then(data => console.log('Project count incremented: ', data))
         .catch(error => console.error('Error incrementing project count:', error));
     });
 });
 </script>
+
 
 <!-- detail project counter -->
 

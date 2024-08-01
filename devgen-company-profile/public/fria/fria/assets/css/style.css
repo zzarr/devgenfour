@@ -2459,15 +2459,15 @@ Choose Area CSS
     border-radius: 50%;
     font-size: 35px;
     transition: 0.5s;
-    overflow: hidden; /* Tambahkan ini untuk mengatasi overflow gambar */
+    overflow: hidden;
 }
 
 .choose-content .icon img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Membuat gambar sesuai dengan ukuran elemen tanpa mengubah aspek rasio */
-    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
-    transition: 0.5s; /* Menambahkan efek transisi */
+    object-fit: cover;
+    border-radius: 50%;
+    transition: 0.5s;
 }
 
 .choose-content h3 {
@@ -2485,7 +2485,7 @@ Choose Area CSS
     width: 0%;
     height: 100%;
     background: #086ad8;
-    border-radius: 50px;
+    border-radius: 0;
     transition: 0.5s;
     border-radius: 50px;
 }
@@ -2528,21 +2528,20 @@ Choose Area CSS
     display: inline-block;
     height: 70px;
     width: 70px;
-
     line-height: 70px;
     border-radius: 50%;
     color: #ffffff;
     font-size: 30px;
     text-align: center;
-    overflow: hidden; /* Tambahkan ini untuk mengatasi overflow gambar */
+    overflow: hidden;
 }
 
 .choose-text .icon img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Membuat gambar sesuai dengan ukuran elemen tanpa mengubah aspek rasio */
-    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
-    transition: 0.5s; /* Menambahkan efek transisi */
+    object-fit: cover;
+    border-radius: 50%;
+    transition: 0.5s;
 }
 
 .choose-text h3 {
@@ -2551,7 +2550,7 @@ Choose Area CSS
 }
 
 .image {
-    text-align: center;
+    text-align: right;
 }
 
 /* .chooseus {

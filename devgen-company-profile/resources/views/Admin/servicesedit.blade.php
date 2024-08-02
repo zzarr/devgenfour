@@ -37,7 +37,11 @@
                             <label for="description">Deskripsi</label>
                             <input type="text" class="form-control" id="description" name="description" value="{{ $service->description }}" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                <button class="btn btn-success mt-4" style="margin-left: 0px">
+                    Submit</button>
+                <a href="{{ route('services_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+            
                     </form>
                 </div>
             </div>

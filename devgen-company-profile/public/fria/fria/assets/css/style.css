@@ -4306,9 +4306,10 @@ About Area CSS
 }
 
 .about-tab {
-    max-width: 620px;
-    padding: 100px 0;
-    margin-left: 50px;
+    max-width: 600px;
+    padding: 0px;
+    margin-left: 45px;
+    margin-top: 0px;
 }
 .about-tab h2 {
     font-size: 38px;
@@ -4387,13 +4388,16 @@ About Area CSS
 }
 
 .about-image {
-    background-image: url(../../assets/img/about/about-2.jpg);
-    background-size: cover;
+    /* background-image: url(../../assets/img/about/about-2.jpg); */
+    background-size: 70%;
     background-position: center center;
-    height: 100%;
+    height: 70%;
+    width: 70%;
 }
 .about-image img {
     display: block;
+    height: 90%;
+    width: 90%;
 }
 
 /*================================================

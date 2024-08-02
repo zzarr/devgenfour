@@ -14,7 +14,7 @@
 
 @include('layout.navbar')
 
-<div class="page-title-area" style="background-image: url('{{ asset($aboutUs->image) }}')">>
+<div class="page-title-area" style="background-image: url('{{ asset($aboutUs->image) }}')">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">
@@ -35,18 +35,15 @@
 <section class="about-section ptb-100">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 p-0">
+            <div class="col-lg-6 p-5">
                 <div class="about-image">
                     <img
-                                src="{{ asset('' . $aboutUs->image) }}"
-                                class="wow zoomIn"
-                                data-wow-delay="0.6s"
-                                alt="image"
-                            />
+                                src="{{ asset('' . $aboutUs->image) }}"/>
                 </div>
             </div>
-
-            <div class="col-lg-6">
+            
+        
+            <div class="col-lg-6 p-0">
                 <div class="about-tab">
                     <h2>{{ $aboutUs->title }}</h2>
                     <div class="bar"></div>

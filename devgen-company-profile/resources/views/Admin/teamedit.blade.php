@@ -1,6 +1,5 @@
 @extends('Admin.layout.app') @section('content')
     <!-- Page-Title -->
-    <!-- Page-Title -->
     <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
@@ -17,7 +16,6 @@
         </div>
         <!--end col-->
     </div>
-    <!-- end page title end breadcrumb -->
     <!-- end page title end breadcrumb -->
 
     <form method="POST" action="{{ route('updateteam_admin', $team->id) }}" enctype="multipart/form-data">
@@ -74,13 +72,15 @@
                                 <input type="text" class="form-control" name="instagram" id="instagram"
                                     value="{{ $team->instagram }}" placeholder="Instagram" />
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-success mt-4" style="margin-left: 45px"><i class="ti ti-check"></i>
-                    Save</button>
+                            <button class="btn btn-success mt-4" style="margin-left: 0px">
+                    Submit</button>
                 <a href="{{ route('team_admin') }}" type="button" class="btn btn-outline-danger mt-4"
                     style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+                        </div>
+                        
+                    </div>
+                    </div>
+
             </div>
         </div>
     </form>

@@ -5,8 +5,10 @@
         <div class="col-sm-12">
             <div class="page-title-box">
                 <div class="float-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item active">Project</li>
+                <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dasboard</a></li>
+                        <li class="breadcrumb-item ">Project</li>
+                        <li class="breadcrumb-item active">Edit Project</li>
                     </ol>
                 </div>
                 <h4 class="page-title">Edit Project</h4>
@@ -50,7 +52,11 @@
                             <button type="button" id="add-image" class="btn btn-secondary mt-2">Add Image</button>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-success mt-4" style="margin-left: 185px">
+                    Submit</button>
+                <a href="{{ route('project_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+            
                 </form>
             </div>
         </div>

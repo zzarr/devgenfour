@@ -11,11 +11,12 @@ class ProjectCounterController extends Controller
 {
     public function increment(Request $request)
     {
-        $counter = ProjectCounter::firstOrCreate(['id' => 1]);
-        $counter->count += 1;
-        $counter->save();
+        $projectCounter = new ProjectCounter();
+        $projectCounter->ip_address = $request->ip_address;
+        $projectCounter->visited_at = now();
+        $projectCounter->save();
 
-        return response()->json(['count' => $counter->count]);
+        return response()->json(['success' => true]);
     }
 
 }

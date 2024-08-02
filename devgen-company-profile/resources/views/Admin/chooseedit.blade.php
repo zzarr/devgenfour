@@ -1,47 +1,87 @@
-@extends('admin.layout.app')
-
-@section('content')
-    <div class="row">
-        <div class="col-sm-12">
+@extends('admin.layout.app') @section('content')
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-end">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('dashboard_admin') }}">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">Choose</li>
+                    <li class="breadcrumb-item active">Edit Choose</li>
+                </ol>
+            </div>
             <h4 class="page-title">Edit Choose</h4>
         </div>
     </div>
+</div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <form action="{{ route('updatechoose_admin', $choose->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-group">
-                            <label for="icon">Icon</label>
-                            <input type="file" class="dropify" id="icon" name="icon" data-default-file="{{ asset('choose/' . $choose->icon) }}" />
-                        </div>
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" value="{{ $choose->title }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" class="form-control" id="description" name="description" value="{{ $choose->description }}" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form
+                    action="{{ route('updatechoose_admin', $choose->id) }}"
+                    method="POST"
+                    enctype="multipart/form-data"
+                >
+                    @csrf @method('PUT')
+                    <div class="form-group">
+                        <label for="icon">Icon</label>
+                        <input
+                            type="file"
+                            class="dropify"
+                            id="icon"
+                            name="icon"
+                            data-default-file="{{ asset('choose/' . $choose->icon) }}"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="title"
+                            name="title"
+                            value="{{ $choose->title }}"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="description"
+                            name="description"
+                            value="{{ $choose->description }}"
+                            required
+                        />
+                    </div>
+                    <button
+                        class="btn btn-success mt-4"
+                        style="margin-left: 0px"
+                    >
+                        Submit
+                    </button>
+                    <a
+                        href="{{ route('choose_admin') }}"
+                        type="button"
+                        class="btn btn-outline-danger mt-4"
+                        style="margin-left: 5px"
+                        ><i class="ti ti-arrow-back"></i> Cancel</a
+                    >
+                </form>
             </div>
         </div>
     </div>
-@endsection
-
-@push('script')
-    <script>
-        $(document).ready(function() {
-            $('.dropify').dropify();
-        });
-    </script>
-@endpush
-
-@push('css')
-    <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}">
+</div>
+@endsection @push('script')
+<script>
+    $(document).ready(function () {
+        $(".dropify").dropify();
+    });
+</script>
+@endpush @push('css')
+<link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}" />
 @endpush

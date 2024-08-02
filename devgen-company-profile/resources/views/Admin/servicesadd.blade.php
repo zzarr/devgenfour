@@ -38,13 +38,13 @@
                         <label for="title-input" class="col-sm-2 col-form-label text-end">Deskripsi</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="description" id="title-input" required />
+                            <button class="btn btn-success mt-4" <i class="ti ti-check"></i>
+                    Submit</button>
+                <a href="{{ route('services_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success mt-4" style="margin-left: 45px"><i class="ti ti-check"></i>
-                    Save</button>
-                <a href="{{ route('services_admin') }}" type="button" class="btn btn-outline-danger mt-4"
-                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
             </div>
         </div>
     </form>

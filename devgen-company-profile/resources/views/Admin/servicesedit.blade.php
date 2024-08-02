@@ -3,9 +3,20 @@
 @section('content')
     <div class="row">
         <div class="col-sm-12">
-            <h4 class="page-title">Edit Service</h4>
+        <div class="page-title-box">
+        <div class="float-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item">Services</li>
+                        <li class="breadcrumb-item active">Edit Services</li>
+                    </ol>
+                </div>
+            <h4 class="page-title">Edit Services</h4>
+            </div>
         </div>
     </div>
+
+
 
     <div class="row">
         <div class="col-lg-12">
@@ -26,7 +37,11 @@
                             <label for="description">Deskripsi</label>
                             <input type="text" class="form-control" id="description" name="description" value="{{ $service->description }}" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                <button class="btn btn-success mt-4" style="margin-left: 0px">
+                    Submit</button>
+                <a href="{{ route('services_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+            
                     </form>
                 </div>
             </div>

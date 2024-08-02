@@ -1,5 +1,5 @@
-<section class="projects-section pt-100 pb-100" id="project-section">
-    <div class="container-fluid">
+<section id="project-section" class="overview-section pt-100 pb-70">
+    <div class="container">
         <div class="section-title">
             <h2>Projects</h2>
             <p>
@@ -23,7 +23,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                @endforeach
-    </div>
+                </div>/
+            @endforeach
+        </div>
 </section>

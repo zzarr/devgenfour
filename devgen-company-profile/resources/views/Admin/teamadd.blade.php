@@ -70,12 +70,15 @@
                                 <input type="text" class="form-control" name="instagram" id="instagram"
                                     placeholder="Instagram" />
                             </div>
-                        </div>
-                    </div>
-                    <div class="text-end mt-4">
-                        <button class="btn btn-success" type="submit"><i class="ti ti-check"></i> Save</button>
-                        <a href="{{ route('team_admin') }}" class="btn btn-outline-danger"><i class="ti ti-arrow-back"></i>
+                            <button class="btn btn-success mt-4" type="submit"></i>Submit</button>
+                        <a href="{{ route('team_admin') }}" class="btn btn-outline-danger mt-4"><i class="ti ti-arrow-back"></i>
                             Cancel</a>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="text-end mt-4">
+
                     </div>
                 </div>
             </div>

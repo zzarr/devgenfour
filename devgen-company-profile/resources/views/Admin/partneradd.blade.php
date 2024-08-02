@@ -33,10 +33,16 @@
                         <label class="col-sm-2 col-form-label text-end ">Nama</label>
                         <div class="col-sm-10">
                             <input name="name" type="text" class="form-control" data-height="100" />
+                            <button class="btn btn-success mt-4" style="margin-left: 0px">
+                    Submit</button>
+                <a href="{{ route('partner_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+            
                         </div>
+                        
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
                 </form>
             </div>
         </div>

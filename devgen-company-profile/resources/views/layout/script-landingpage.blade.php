@@ -25,6 +25,7 @@
  <!-- Custom JS -->
  <script src="{{ asset('fria/fria/assets//js/main.js') }} "></script>
 
+
 <!-- script-landingpage.blade.php -->
 
 <!-- project in navbar counter -->

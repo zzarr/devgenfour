@@ -162,6 +162,7 @@ class TeamController extends Controller
         $team->delete();
 
         // Return a success response
-        return redirect()->route('team_admin')->with('success', 'Data berhasil dihapus');
+        return response()->json(['success' => 'Item deleted successfully.']);
+
     }
 }

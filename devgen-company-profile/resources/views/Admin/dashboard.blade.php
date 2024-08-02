@@ -27,7 +27,7 @@
                         <div class="col-auto align-self-center">
                             <div
                                 class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
-                                <i class="ti ti-user-exclamation"></i>
+                                <i class="ti ti-eye"></i>
                             </div>
                         </div>
                     </div>

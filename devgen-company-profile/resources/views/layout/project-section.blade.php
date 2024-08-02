@@ -1,4 +1,4 @@
-<section class="overview-section pt-100 pb-70">
+<section id="project-section" class="overview-section pt-100 pb-70">
     <div class="container">
         <div class="section-title">
             <h2>Projects</h2>

@@ -24,13 +24,17 @@
                         @csrf
                         <div class="form-group">
                             <label for="image">Image</label>
-                            <input type="file" class="dropify" id="image" name="image" data-default-file="{{ asset('partners/' . $partner->image) }}" />
+                            <input type="file" class="dropify" id="image" name="image" data-default-file="{{ asset('' . $partner->image) }}" />
                         </div>
                         <div class="form-group">
                             <label for="name">Nama</label>
                             <input type="text" class="form-control" id="name" name="name" value="{{ $partner->name }}" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button class="btn btn-success mt-4" style="margin-left: 0px">
+                    Submit</button>
+                <a href="{{ route('partner_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+            
                     </form>
                 </div>
             </div>

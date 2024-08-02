@@ -55,7 +55,7 @@ class PartnerController extends Controller
             'image' => $filename,
         ]);
 
-        return redirect()->route('partner_admin')->with('success', 'partnerF berhasil ditambahkan');
+        return redirect()->route('partner_admin')->with('success', 'Partner berhasil ditambahkan');
     }
 
     /**
@@ -116,4 +116,6 @@ class PartnerController extends Controller
 
         return response()->json(['success' => 'Item deleted successfully.']);
     }
+
+    
 }

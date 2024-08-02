@@ -56,7 +56,6 @@ Route::post('/increment-project-counter', [ProjectCounterController::class, 'inc
 
 
 
-
 /*================================ Admin Routes ======================== */
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard_admin');
@@ -102,7 +101,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/team_store', [TeamController::class, 'store'])->name('storeteam_admin');;
     Route::get('/admin/team_edit/{id}', [TeamController::class, 'edit'])->name('editteam_admin');
     Route::post('/admin/team_update/{id}', [TeamController::class, 'update'])->name('updateteam_admin');
-    Route::get('/admin/team_delete/{id}', [TeamController::class, 'destroy'])->name('deleteteam_admin');
+    Route::delete('/admin/team/{id}', [TeamController::class, 'destroy'])->name('deleteteam_admin');
 
     Route::get('/admin/app_setting', [AppSettingController::class, 'index'])->name('app_setting_admin');
     Route::post('/admin/app-settings/{id}', [AppSettingController::class, 'update'])->name('app-settings_update');

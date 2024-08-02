@@ -42,8 +42,13 @@
                         <div class="col-sm-10">
                             <input name="images[]" type="file" class="dropify" data-height="100" multiple />
                         </div>
+                        
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-success mt-4" style="margin-left: 186px">
+                    Submit</button>
+                <a href="{{ route('project_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+            
                 </form>
             </div>
         </div>

@@ -41,8 +41,8 @@
                                     <tr>
                                         <th class="column-no">No</th>
                                         <th>Icon</th>
-                                        <th>Title</th>
-                                        <th>Deskripsi</th>
+                                        <th class="column-title">Title</th>
+                                        <th class="column-desc">Deskripsi</th>
                                         <th class="column-action">Action</th>
                                     </tr>
                                 </thead>
@@ -83,18 +83,13 @@
                 {
                     targets: 1,
                     render: function(data, type, full, meta) {
-                        return `<img src="/services/${data}" alt="Icon" height="100">`;
+                        return `<img src="/services/${data}" alt="Icon" style="width: 100px; height: 100px; object-fit: cover;">`;
                     },
                 },
                 {
                     targets: 3,
                     render: function(data, type, full, meta) {
-                        if (description.length > 100) {
-                        description = description.substr(0, 100) + '...';
-                    }
-                    
-                    return description;
-                    return data; //memanggil fungsi penghilang tag <html> </html> dari controller
+                        return data; //memanggil fungsi penghilang tag <html> </html> dari controller
                     },
                 },
                 {
@@ -208,6 +203,14 @@
     }
 
     .column-action {
+        width: 180px;
+    }
+
+    .column-title {
+        width: 150px;
+    }
+
+    .column-desc {
         width: 200px;
     }
 </style>

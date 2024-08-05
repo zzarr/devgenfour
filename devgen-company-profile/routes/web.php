@@ -39,7 +39,7 @@ Route::get('/', function () {
 
 Route::get('/home', [LandingPageController::class, 'index'])->middleware('count.visitor');
 
-Route::get('home/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('home/projects', [LandingPageController::class, 'project'])->name('projects.galery');
 Route::get('home/projects/{id}', [ProjectlController::class, 'show'])->middleware('count.project.views')->name('showproject');
 
 Route::get('/home/services', [LandingPageController::class, 'services'])->name('services');

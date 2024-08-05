@@ -42,7 +42,6 @@ class LandingPageController extends Controller
     }
 
 
-
     public function services()
     {
         $aboutUs = AboutUs::first();
@@ -55,5 +54,13 @@ class LandingPageController extends Controller
         $aboutUs = AboutUs::first();
         $appSetting = AppSetting::first();
         return view('Contact', compact('aboutUs', 'appSetting'));
+    }
+
+    public function project()
+    {
+        $aboutUs = AboutUs::first();
+        $appSetting = AppSetting::first();
+        $projects = Project::all();
+        return view('Project-galery', compact('projects', 'aboutUs', 'appSetting'));
     }
 }

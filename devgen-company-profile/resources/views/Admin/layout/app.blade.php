@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        .logo-sm {
+            display: none;
+        }
+
+        .logo-lg {
+            display: inline;
+        }
+
+        body.enlarge-menu .logo-sm {
+            display: inline;
+        }
+
+        body.enlarge-menu .logo-lg {
+            display: none;
+        }
+    </style>
 
     @include('Admin.layout.head-admin')
 

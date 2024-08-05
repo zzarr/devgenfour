@@ -32,7 +32,11 @@ class ServicesController extends Controller
         return datatables()
         ->of($data)
         ->editColumn('description', function ($service) {
-            return strip_tags($service->description); // Menghilangkan <p> tag
+            $description = strip_tags($service->description); // Menghilangkan <p> tag
+            if (strlen($description) > 100) {
+                $description = substr($description, 0, 80) . '...';
+            }
+            return $description;
         })
         ->toJson();
     }

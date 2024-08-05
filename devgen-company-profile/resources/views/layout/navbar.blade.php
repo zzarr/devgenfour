@@ -35,7 +35,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('/home#services-section') }}" class="nav-link">
+                            <a href="{{ route('services') }}" class="nav-link">
                                 Services
                             </a>
 
@@ -48,7 +48,7 @@
 
 
                         <li class="nav-item">
-                            <a href="{{ url('/home#footer-section') }}" class="nav-link">
+                            <a href="{{ route('contact') }}" class="nav-link">
                                 Contact
                             </a>
                         </li>

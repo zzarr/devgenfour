@@ -13,6 +13,7 @@ class AppSettingsTableSeeder extends Seeder
             'name_app' => 'Dummy App',
             'desc' => 'This is a dummy description for the app.',
             'logo' => 'dummy_logo.png',
+            'secondary_logo' => 'sec.pmg',
             'no_contact' => '123456789',
             'email' => 'dummy@app.com',
             'instagram' => 'dummy_instagram',
@@ -22,6 +23,5 @@ class AppSettingsTableSeeder extends Seeder
             'updated_at' => now(),
 
         ]);
-
     }
 }

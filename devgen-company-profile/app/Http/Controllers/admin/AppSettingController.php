@@ -60,6 +60,7 @@ class AppSettingController extends Controller
             'name_app' => 'required|string|max:255',
             'desc' => 'nullable|string',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'secondary_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'no_contact' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255',
             'instagram' => 'nullable|string|max:255',
@@ -71,13 +72,13 @@ class AppSettingController extends Controller
         $appSetting = AppSetting::findOrFail($id);
 
         // Mengumpulkan data dari request, kecuali field '_token', '_method', dan 'logo'
-        $data = $request->except(['_token', '_method', 'logo']);
+        $data = $request->except(['_token', '_method', 'logo', 'secondary_logo']);
 
         // Jika ada file logo yang diunggah, kelola upload file
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
             $filename = "logo." . $file->getClientOriginalExtension();
-            $filePath = $file->move(public_path('img'), $filename);
+            $file->move(public_path('img'), $filename);
 
             // Tambahkan path lengkap ke array data
             $data['logo'] = 'img/' . $filename;
@@ -85,6 +86,21 @@ class AppSettingController extends Controller
             // Jika tidak ada logo yang diunggah, tetap gunakan logo yang sudah ada
             $data['logo'] = $appSetting->logo;
         }
+
+        // Jika ada file logo yang diunggah, kelola upload file
+        if ($request->hasFile('secondary_logo')) {
+            $file = $request->file('secondary_logo');
+            $filename = "secondary_logo." . $file->getClientOriginalExtension();
+            $file->move(public_path('img'), $filename);
+
+            // Tambahkan path lengkap ke array data
+            $data['secondary_logo'] = 'img/' . $filename;
+        } else {
+            // Jika tidak ada logo yang diunggah, tetap gunakan logo yang sudah ada
+            $data['secondary_logo'] = $appSetting->secondary_logo;
+        }
+
+
 
         // Update data di database
         $appSetting->update($data);

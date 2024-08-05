@@ -3,31 +3,27 @@
         <div class="row">
             <div class="col-md-2">
                 <div>
-                    <img
-                        src="{{ asset('' . $appSetting->logo) }}"
-                        style="width: 80%; height: auto;"
-                        class="wow zoomIn"
-                        data-wow-delay="0.6s"
-                        alt="image"
-                    />
+                    <img src="{{ asset('' . $appSetting->logo) }}" style="width: 80%; height: auto;" class="wow zoomIn"
+                        data-wow-delay="0.6s" alt="image" />
                 </div>
             </div>
             <div class="col-md-4">
-                <h5>Contact Us</h5>
-                @foreach ($numbers as $number)
+                <h5> Contact Us</h5>
+
                 @php
-                    $phoneNumber = $number->no_contact;
+                    $phoneNumber = $appSetting->no_contact;
                     if (substr($phoneNumber, 0, 1) === '0') {
                         $phoneNumber = '+62' . substr($phoneNumber, 1);
                     }
                 @endphp
-                <p>Phone: {{ $phoneNumber }}</p>
-                <p>Email: {{ $appSetting->email }}</p>
-                @endforeach
+                <p><i class="ti ti-phone"></i> Phone: {{ $phoneNumber }}</p>
+                <p><i class="ti ti-mail"></i> Email: {{ $appSetting->email }}</p>
+
             </div>
             <div class="col-md-3">
                 <h5>Follow Us</h5>
-                <a href="{{ $appSetting->instagram }}" target="_blank" class="text-black">instagram</a>
+                <a href="{{ $appSetting->instagram }}" target="_blank" class="text-black"><i
+                        class="ti ti-brand-instagram"></i> instagram</a>
             </div>
             <div class="col-md-3">
                 <h5>Our Location</h5>
@@ -63,7 +59,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </div>
     </div>

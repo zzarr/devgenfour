@@ -2,7 +2,9 @@
     <!-- LOGO -->
     <div class="brand">
         <a href="{{ route('dashboard_admin') }}" class="logo">
-
+            <span>
+                <img src="{{ asset('img/secondary_logo.png') }}" alt="logo-small" class="logo-sm">
+            </span>
             <span>
                 <img src="{{ asset('img/logo.png') }}" alt="logo-large" class="logo-lg logo-light"
                     style="width: 150px; height: auto;">

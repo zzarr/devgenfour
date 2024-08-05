@@ -16,7 +16,7 @@ class AppSetting extends Model
         'name_app',
         'desc',
         'logo',
-        'seondary_logo',
+        'secondary_logo',
         'no_contact',
         'email',
         'instagram',

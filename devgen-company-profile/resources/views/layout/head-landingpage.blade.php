@@ -29,3 +29,7 @@
  <link rel="stylesheet" href="{{ asset('fria/fria/assets/css/responsive.css') }}">
 
  <link rel="stylesheet" href="{{ asset('metrica/dist/assets/css/icons.min.css') }}">
+
+
+
+

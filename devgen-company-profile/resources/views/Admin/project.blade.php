@@ -69,8 +69,15 @@
             processing: true,
             serverSide: true,
             ajax: "{{ route('project_admin.datatable') }}",
-            columnDefs: [
+            columnDefs: [{
+                    targets: 0,
+                    className: 'column-no',
+                    render: function(data, type, full, meta) {
+                        return meta.row + 1;
+                    }
+                },
                 {
+                    
                     targets: 1,
                     render: function(data, type, full, meta) {
                         return `<img src="${data}" alt="Thumbnail" height="100">`;
@@ -79,7 +86,7 @@
                 {
                     targets: 3,
                     render: function(data, type, full, meta) {
-                        return data; //memanggil fungsi penghilang tag <p> </p>
+                        return data; //memanggil fungsi penghilang tag <html> </html> dari controller
                     },
                 },
                 {

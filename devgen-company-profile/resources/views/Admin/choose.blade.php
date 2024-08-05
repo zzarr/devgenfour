@@ -81,6 +81,12 @@
                     },
                 },
                 {
+                    targets: 3,
+                    render: function(data, type, full, meta) {
+                        return data; //memanggil fungsi penghilang tag <html> </html> dari controller
+                    },
+                },
+                {
                     targets: 4,
                     render: function(data, type, full, meta) {
                         let btn = `

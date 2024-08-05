@@ -15,7 +15,12 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return view('Admin.services');
+        $serviceItems = Services::all();
+    foreach ($serviceItems as $service) {
+        // Hapus semua tag HTML
+        $service->description = strip_tags($service->description);
+    }
+    return view('Admin.services', compact('serviceItems')); // inisiasi fungsi untuk menghilangkan <html> tag
     }
 
     /**
@@ -24,7 +29,16 @@ class ServicesController extends Controller
     public function datatable(Request $request)
     {
         $data = Services::query();
-        return DataTables::of($data)->make(true);
+        return datatables()
+        ->of($data)
+        ->editColumn('description', function ($service) {
+            $description = strip_tags($service->description); // Menghilangkan <p> tag
+            if (strlen($description) > 100) {
+                $description = substr($description, 0, 80) . '...';
+            }
+            return $description;
+        })
+        ->toJson();
     }
 
     /**

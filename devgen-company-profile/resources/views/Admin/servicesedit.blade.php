@@ -34,9 +34,19 @@
                             <input type="text" class="form-control" id="title" name="title" value="{{ $service->title }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="description">Deskripsi</label>
-                            <input type="text" class="form-control" id="description" name="description" value="{{ $service->description }}" required>
-                        </div>
+                        <label for="description">Description</label>
+                        <textarea 
+                            type="text"
+                            class="form-control"
+                            id="summernote"
+                            name="description"
+                            value="{{ $service->description }}"
+                            rows="10"
+                            required>
+                            {{ $service->description }}
+                        </textarea>
+                    </div>
+                    
                 <button class="btn btn-success mt-4" style="margin-left: 0px">
                     Submit</button>
                 <a href="{{ route('services_admin') }}" type="button" class="btn btn-outline-danger mt-4"
@@ -53,10 +63,14 @@
     <script>
         $(document).ready(function() {
             $('.dropify').dropify();
+            $('#summernote').summernote();
+
         });
     </script>
 @endpush
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}">
+    <link href="{{ asset('summer-note/summernote-bs4.min.css') }}" rel="stylesheet">
+
 @endpush

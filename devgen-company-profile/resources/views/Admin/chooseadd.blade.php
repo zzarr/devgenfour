@@ -31,10 +31,13 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="title-input" class="col-sm-2 col-form-label text-end">Description</label>
+                        <label for="description" class="col-sm-2 col-form-label text-end ">Deskripsi</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="description" id="title-input" required />
-                            <button class="btn btn-success mt-4" style="margin-left: 0px">
+                            <textarea class="form-control" id="summernote" name="description" rows="10" required></textarea>
+                        </div>
+                    </div>
+                    </div>
+                            <button class="btn btn-success mt-4" style="margin-left: 203px">
                             Submit</button>
                 <a href="{{ route('choose_admin') }}" type="button" class="btn btn-outline-danger mt-4"
                     style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
@@ -50,11 +53,13 @@
 @push('script')
     <script>
         $(document).ready(function() {
+            $('#summernote').summernote();
             $('.dropify').dropify();
         });
     </script>
 @endpush
 
 @push('css')
+    <link href="{{ asset('summer-note/summernote-bs4.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}">
 @endpush

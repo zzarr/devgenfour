@@ -58,6 +58,7 @@
     </div>
 @endsection
 
+
 @push('script')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -83,6 +84,17 @@
                     targets: 1,
                     render: function(data, type, full, meta) {
                         return `<img src="/services/${data}" alt="Icon" height="100">`;
+                    },
+                },
+                {
+                    targets: 3,
+                    render: function(data, type, full, meta) {
+                        if (description.length > 100) {
+                        description = description.substr(0, 100) + '...';
+                    }
+                    
+                    return description;
+                    return data; //memanggil fungsi penghilang tag <html> </html> dari controller
                     },
                 },
                 {

@@ -13,12 +13,12 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
-        foreach ($projects as $project) {
-            // Hapus tag <p> dan </p>
-            $project->description = str_replace(['<p>', '</p>'], '', $project->description);
-        }
-        return view('Admin.project', compact('projects')); // inisiasi fungsi untuk menghilangkan tag
+        $ProjectItems = Project::all();
+    foreach ($ProjectItems as $project) {
+        // Hapus semua tag HTML
+        $project->description = strip_tags($project->description);
+    }
+    return view('Admin.project', compact('ProjectItems')); // inisiasi fungsi untuk menghilangkan <html> tag
     }
 
     public function datatable(Request $request)
@@ -27,7 +27,7 @@ class ProjectController extends Controller
         return datatables()
             ->of($data)
             ->editColumn('description', function ($project) {
-                return strip_tags($project->description, '<b><i><u>'); // Menghilangkan <p> tag
+                return strip_tags($project->description); // Menghilangkan <html> tag
             })
             ->toJson();
     }

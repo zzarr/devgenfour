@@ -10,14 +10,24 @@ class ChooseController extends Controller
 {
     public function index()
     {
-        return view('Admin.choose');
+        $chooseItems = Choose::all();
+    foreach ($chooseItems as $choose) {
+        // Hapus semua tag HTML
+        $choose->description = strip_tags($choose->description);
+    }
+    return view('Admin.choose', compact('chooseItems')); // inisiasi fungsi untuk menghilangkan <html> tag
     }
 
     public function datatable(Request $request)
 
     {
         $data = Choose::query();
-        return DataTables::of($data)->make();
+        return datatables()
+        ->of($data)
+        ->editColumn('description', function ($choose) {
+            return strip_tags($choose->description); // Menghilangkan <html> tag
+        })
+        ->toJson();
     }
 
     public function create()

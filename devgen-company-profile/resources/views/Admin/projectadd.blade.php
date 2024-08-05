@@ -6,6 +6,7 @@
             <div class="page-title-box">
                 <div class="float-end">
                     <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Project</li>
                     </ol>
                 </div>
@@ -32,7 +33,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="telephone" class="col-sm-2 col-form-label text-end ">thumbnail</label>
+                        <label for="telephone" class="col-sm-2 col-form-label text-end ">Thumbnail</label>
                         <div class="col-sm-10">
                             <input name="thumbnail" type="file" class="dropify" data-height="100" />
                         </div>
@@ -44,9 +45,9 @@
                         </div>
                         
                     </div>
-                    <button class="btn btn-success mt-4" style="margin-left: 186px">
+                    <button class="btn btn-success mt-3" style="margin-left: 186px">
                     Submit</button>
-                <a href="{{ route('project_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                <a href="{{ route('project_admin') }}" type="button" class="btn btn-outline-danger mt-3"
                     style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
             
                 </form>

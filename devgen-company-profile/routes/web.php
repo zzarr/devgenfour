@@ -39,9 +39,11 @@ Route::get('/', function () {
 
 Route::get('/home', [LandingPageController::class, 'index'])->middleware('count.visitor');
 
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
-Route::get('/projects/{id}', [ProjectlController::class, 'show'])->middleware('count.project.views')->name('showproject');
+Route::get('home/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('home/projects/{id}', [ProjectlController::class, 'show'])->middleware('count.project.views')->name('showproject');
 
+Route::get('/home/services', [LandingPageController::class, 'services'])->name('services');
+Route::get('/home/contact', [LandingPageController::class, 'contact'])->name('contact');
 // route about coba`
 
 

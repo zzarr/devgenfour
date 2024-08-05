@@ -17,13 +17,13 @@ class LandingPageController extends Controller
     {
         $appSetting = AppSetting::first();
         $projects = Project::all();
-        $aboutUs = AboutUs::first(); 
+        $aboutUs = AboutUs::first();
         $services = Services::all();
         $partners = Partners::all();
         $team = Team::all();
         $numbers = AppSetting::all();
         $choose = Choose::all();
-        
+
 
         return view('home', compact('appSetting', 'projects', 'services', 'partners', 'team', 'numbers', 'aboutUs', 'choose'));
     }
@@ -36,31 +36,24 @@ class LandingPageController extends Controller
         $aboutUs = AboutUs::first();
         $appSetting = AppSetting::first();
         $numbers = AppSetting::all();
-        
+
 
         return view('AboutUs', compact('aboutUs', 'appSetting', 'numbers')); // Nama view harus sesuai dengan nama file view
     }
 
-    public function edit($id)
-    {
-        $settings = AppSetting::find($id);
 
-        return view('admin.app_setting', compact('settings'));
+
+    public function services()
+    {
+        $aboutUs = AboutUs::first();
+        $appSetting = AppSetting::first();
+        return view('Services', compact('aboutUs', 'appSetting'));
     }
 
-    public function update(Request $request, $id)
+    public function contact()
     {
-        $settings = AppSetting::find($id);
-
-        if ($request->hasFile('logo')) {
-            $file = $request->file('logo');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('img'), $filename);
-            $settings->logo = $filename;
-        }
-
-        $settings->update($request->all());
-
-        return redirect()->back()->with('success', 'Pengaturan berhasil diperbarui');
+        $aboutUs = AboutUs::first();
+        $appSetting = AppSetting::first();
+        return view('Contact', compact('aboutUs', 'appSetting'));
     }
 }

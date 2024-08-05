@@ -13,6 +13,7 @@ class CreateAppSettingsTable extends Migration
             $table->string('name_app');
             $table->text('desc');
             $table->string('logo');
+            $table->string('secondary_logo');
             $table->string('no_contact');
             $table->string('email');
             $table->string('instagram');

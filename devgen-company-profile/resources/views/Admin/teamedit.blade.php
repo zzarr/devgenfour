@@ -41,12 +41,7 @@
                         <label for="example-tel-input" class="col-sm-2 col-form-label text-end">Foto</label>
                         <div class="col-sm-10">
                             <input class=" dropify" type="file" name="foto" id="example-tel-input"
-<<<<<<< HEAD
-                                data-default-file="{{ asset('team/' . $team->foto) }}" data-id="{{ $team->id }}" 
-                                data-type="foto" />
-=======
-                                data-default-file="{{ asset('/' . $team->foto) }}" />
->>>>>>> 60a76db1de60db577ac6f449129770d394afec6c
+                                data-default-file="{{ asset('' . $team->foto) }}" />
                         </div>
                     </div>
                     <div class="mb-3 row">

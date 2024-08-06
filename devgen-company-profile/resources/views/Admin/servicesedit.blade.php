@@ -27,7 +27,7 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="icon">Icon</label>
-                            <input type="file" class="dropify" id="icon" name="icon" data-default-file="{{ asset('services/' . $service->icon) }}" />
+                            <input type="file" class="dropify" id="icon" name="icon"  data-id="{{ $service->id }}" data-type="icon" data-default-file="{{ asset('services/' . $service->icon) }}" />
                         </div>
                         <div class="form-group">
                             <label for="title">Title</label>
@@ -40,7 +40,6 @@
                             class="form-control"
                             id="summernote"
                             name="description"
-                            value="{{ $service->description }}"
                             rows="10"
                             required>
                             {{ $service->description }}
@@ -65,7 +64,30 @@
             $('.dropify').dropify();
             $('#summernote').summernote();
 
+        $(document).ready(function() {
+        $('.dropify').on('dropify.afterClear', function(event, element) {
+            var id = $(this).data('id');
+            var type = $(this).data('type');
+            var url = '{{ route("deleteServiceImage") }}';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    type: type
+                },
+                success: function(response) {
+                    console.log('Image deleted successfully');
+                },
+                error: function(xhr) {
+                    console.log('Error deleting image');
+                }
+            });
+          });
         });
+    });
     </script>
 @endpush
 

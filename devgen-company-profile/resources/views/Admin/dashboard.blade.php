@@ -63,13 +63,14 @@
                         <div class="col-auto align-self-center">
                             <div
                                 class="bg-light-alt d-flex justify-content-center align-items-center thumb-md rounded-circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                <i class="ti ti-click"></i>
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round"
                                     class="feather feather-clock align-self-center text-muted icon-sm">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
+                                </svg> -->
                             </div>
                         </div>
                     </div>

@@ -27,10 +27,14 @@ class ProjectController extends Controller
         return datatables()
             ->of($data)
             ->editColumn('description', function ($project) {
-                return strip_tags($project->description); // Menghilangkan <html> tag
-            })
-            ->toJson();
-    }
+                $description = strip_tags($project->description); // Menghilangkan <html> tag
+                if (strlen($description) > 100) {
+                    $description = substr($description, 0, 80) . '...'; //Meringkas deskripsi (bila terlalu panjang)
+                }
+                return $description;
+    })
+    ->toJson();
+}
 
     public function create()
     {
@@ -195,4 +199,7 @@ class ProjectController extends Controller
 
         return response()->json(['success' => 'Image deleted successfully']);
     }
+    
 }
+
+

@@ -89,8 +89,8 @@
                 <div class="form-group mb-3 row">
                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Koordinat maap</label>
                     <div class="col-lg-9 col-xl-8">
-                        <input class="form-control" type="text" value="{{ $settings->gmaap_coordinat }}"
-                            id="gmap_coordinates" name="gmaap_coordinat" placeholder="Latitude, Longitude" required>
+                        <input class="form-control" type="text" value="{{ $settings->gmap_coordinat }}"
+                            id="gmap_coordinates" name="gmap_coordinat" placeholder="Latitude, Longitude" required>
                     </div>
                 </div>
                 <div class="form-group mb-3 row">

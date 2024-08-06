@@ -40,9 +40,9 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th class="column-no">No</th>
-                                        <th>Icon</th>
+                                        <th class="column-img">Icon</th>
                                         <th class="column-title">Title</th>
-                                        <th class="column-desc">Deskripsi</th>
+                                        <th class="column-desc">Description</th>
                                         <th class="column-action">Action</th>
                                     </tr>
                                 </thead>
@@ -83,7 +83,7 @@
                 {
                     targets: 1,
                     render: function(data, type, full, meta) {
-                        return `<img src="/services/${data}" alt="Icon" style="width: 100px; height: 100px; object-fit: cover;">`;
+                        return `<img src="/services/${data}" alt="Icon" class="thumb-lg rounded" style="width: 100px; height: 100px; object-fit: cover;">`;
                     },
                 },
                 {
@@ -197,20 +197,5 @@
 
 
 
-<style>
-    .column-no {
-        width: 50px;
-    }
-
-    .column-action {
-        width: 180px;
-    }
-
-    .column-title {
-        width: 150px;
-    }
-
-    .column-desc {
-        width: 200px;
-    }
-</style>
+@include('Admin.styles.th'); 
+<!-- style table header datatables -->

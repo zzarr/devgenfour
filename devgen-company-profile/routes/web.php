@@ -48,9 +48,6 @@ Route::get('/home/contact', [LandingPageController::class, 'contact'])->name('co
 // route about coba`
 
 
-// route about coba
-
-
 // Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
 Route::get('/AboutUs', [LandingPageController::class, 'about'])->middleware('count.about.us')->name('about-us');
 // landing page end
@@ -79,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/services_edit/{id}', [ServicesController::class, 'edit'])->name('editservices_admin');
     Route::put('/admin/services_update/{id}', [ServicesController::class, 'update'])->name('updateservices_admin');
     Route::delete('/admin/services/{id}', [ServicesController::class, 'destroy'])->name('deleteservices_admin');
+    Route::post('/delete-service-image', [ServicesController::class, 'deleteImage'])->name('deleteServiceImage');
 
     Route::get('admin/choose/datatables', [ChooseController::class, 'datatable'])->name('choose_admin.datatable');
     Route::get('/admin/choose', [ChooseController::class, 'index'])->name('choose_admin');

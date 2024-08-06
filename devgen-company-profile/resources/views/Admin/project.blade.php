@@ -41,7 +41,7 @@
                                     <th>No</th>
                                     <th>Thumbnail</th>
                                     <th>Title</th>
-                                    <th>Description</th>
+                                    <th class="column-desc">Description</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -80,7 +80,7 @@
                     
                     targets: 1,
                     render: function(data, type, full, meta) {
-                        return `<img src="${data}" alt="Thumbnail" height="100">`;
+                        return `<img src="${data}" alt="Thumbnail" class="thumb-lg rounded" style="width: 100px; height: 100px; object-fit: cover;">`;
                     }
                 },
                 {
@@ -182,3 +182,4 @@
 </script>
 @endpush
 
+@include('Admin.styles.th'); 

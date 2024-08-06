@@ -58,7 +58,8 @@ class ServicesController extends Controller
             'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'long_description' => 'nullable|string',
         ]);
     
         // Ensure the directory exists
@@ -74,12 +75,22 @@ class ServicesController extends Controller
         } else {
             return redirect()->route('services_admin')->with('error', 'File upload failed.');
         }
-    
-        // Create the service
+
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $imageFilename = time() . '_' . $imageFile->getClientOriginalName();
+            $imageFile->move(public_path('services'), $imageFilename);
+        } else {
+            $imageFilename = null; 
+        }
+
         Services::create([
             'icon' => $filename,
             'title' => $request->title,
             'description' => $request->description,
+            'image' => $filename,
+            'long_description' => $request->long_description,
+
 
         ]);
     
@@ -159,5 +170,29 @@ class ServicesController extends Controller
         // Return a success response
         return response()->json(['success' => 'Item deleted successfully.']);
     }
-    
+    public function deleteImage(Request $request)
+    {
+        $id = $request->input('id');
+        $type = $request->input('type');
+
+        $service = Services::findOrFail($id);
+
+        if ($type == 'icon') {
+            $iconPath = public_path('services' . $service->icon);
+            if (file_exists($iconPath)) {
+                unlink($iconPath);
+            }
+            $service->icon = null; // Menghapus path dari database
+            $service->save();
+        } elseif ($type == 'image') {
+            $imagePath = public_path('services' . $service->image);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+            $service->image = null; // Menghapus path dari database
+            $service->save();
+        }
+
+        return response()->json(['success' => 'Image deleted successfully']);
+    }
 }

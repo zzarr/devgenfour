@@ -25,7 +25,11 @@ class ChooseController extends Controller
         return datatables()
         ->of($data)
         ->editColumn('description', function ($choose) {
-            return strip_tags($choose->description); // Menghilangkan <html> tag
+            $description = strip_tags($choose->description); // Menghilangkan <p> tag
+            if (strlen($description) > 100) {
+                $description = substr($description, 0, 80) . '...';
+            }
+            return $description;
         })
         ->toJson();
     }
@@ -40,7 +44,7 @@ class ChooseController extends Controller
         $request->validate([
             'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'nullable|string',
         ]);
     
         // Ensure the directory exists
@@ -85,7 +89,7 @@ class ChooseController extends Controller
         $request->validate([
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'nullable|string',
         ]);
     
         $data = $request->except(['_token', '_method', 'icon']);

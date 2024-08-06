@@ -39,7 +39,7 @@
                                 <th>No</th>
                                 <th>Icon</th>
                                 <th>Title</th>
-                                <th>Description</th>
+                                <th class="column-desc">Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -77,7 +77,7 @@
                 {
                     targets: 1,
                     render: function(data, type, full, meta) {
-                        return `<img src="/choose/${data}" alt="Icon" height="100">`;
+                        return `<img src="/choose/${data}" alt="Icon" class="thumb-lg rounded" style="width: 100px; height: 100px; object-fit: cover;">`;
                     },
                 },
                 {
@@ -181,3 +181,4 @@
 @endpush
 
 
+@include('Admin.styles.th'); 

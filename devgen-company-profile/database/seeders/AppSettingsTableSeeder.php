@@ -18,7 +18,7 @@ class AppSettingsTableSeeder extends Seeder
             'email' => 'dummy@app.com',
             'instagram' => 'dummy_instagram',
             'alamat' => '123 Dummy Street',
-            'gmaap_coordinat' => '-6.3997620, 108.2697100',
+            'gmap_coordinat' => '-6.3997620, 108.2697100',
             'created_at' => now(),
             'updated_at' => now(),
 

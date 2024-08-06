@@ -47,32 +47,26 @@
                             required
                         />
                     </div>
-                    <div class="form-group">
+                 <div class="form-group">
                         <label for="description">Description</label>
-                        <input
+                        <textarea 
                             type="text"
                             class="form-control"
-                            id="description"
+                            id="summernote"
                             name="description"
-                            value="{{ $choose->description }}"
-                            required
-                        />
+                            rows="10"
+                            required>
+                            {{ $choose->description }}
+                        </textarea>
                     </div>
-                    <button
-                        class="btn btn-success mt-4"
-                        style="margin-left: 0px"
-                    >
-                        Submit
-                    </button>
-                    <a
-                        href="{{ route('choose_admin') }}"
-                        type="button"
-                        class="btn btn-outline-danger mt-4"
-                        style="margin-left: 5px"
-                        ><i class="ti ti-arrow-back"></i> Cancel</a
-                    >
-                </form>
-            </div>
+                    
+                <button class="btn btn-success mt-4" style="margin-left: 0px">
+                    Submit</button>
+                <a href="{{ route('choose_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+            
+                    </form>
+                </div>
         </div>
     </div>
 </div>
@@ -80,8 +74,11 @@
 <script>
     $(document).ready(function () {
         $(".dropify").dropify();
+        $('#summernote').summernote();
     });
 </script>
 @endpush @push('css')
 <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}" />
+<link href="{{ asset('summer-note/summernote-bs4.min.css') }}" rel="stylesheet">
+
 @endpush

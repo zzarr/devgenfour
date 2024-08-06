@@ -63,4 +63,13 @@ class LandingPageController extends Controller
         $projects = Project::all();
         return view('Project-galery', compact('projects', 'aboutUs', 'appSetting'));
     }
+
+    public function services_detail($id)
+    {
+        $appSetting = AppSetting::first();
+        $services = Services::find($id);
+        $project = Project::find($id);
+
+        return view('services-detail', compact('services', 'appSetting', 'project'));
+    }
 }

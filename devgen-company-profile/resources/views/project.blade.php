@@ -116,6 +116,7 @@
 
 <body>
     @include('layout.navbar')
+
     <div class="page-title-area" style="background-image: url('{{ asset($project->thumbnail) }}')">
         <div class="page-title-area">
             <div class="d-table">

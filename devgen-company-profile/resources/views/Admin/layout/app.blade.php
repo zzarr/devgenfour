@@ -19,7 +19,8 @@
             display: inline;
         }
 
-        body.enlarge-menu .logo-lg {
+        /* Hide the large logo when .left-sidebar is hovered and body has the enlarge-menu class */
+        body.enlarge-menu .left-sidebar:hover .logo-lg {
             display: none;
         }
     </style>
@@ -59,6 +60,7 @@
     <!-- JS -->
     @include('Admin.layout.script-admin')
     @stack('script')
+
 </body>
 
 </html>

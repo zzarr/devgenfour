@@ -43,6 +43,7 @@ Route::get('home/projects', [LandingPageController::class, 'project'])->name('pr
 Route::get('home/projects/{id}', [ProjectlController::class, 'show'])->middleware('count.project.views')->name('showproject');
 
 Route::get('/home/services', [LandingPageController::class, 'services'])->name('services');
+Route::get('/home/services/{id}', [LandingPageController::class, 'services_detail'])->name('services.detail');
 Route::get('/home/contact', [LandingPageController::class, 'contact'])->name('contact');
 // route about coba`
 

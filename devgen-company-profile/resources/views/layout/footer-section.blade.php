@@ -70,7 +70,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
-    var coordinat = "{{ $appSetting->gmaap_coordinat }}";
+    var coordinat = "{{ $appSetting->gmap_coordinat }}";
     var coordinates = coordinat.split(','); 
     var latitude = parseFloat(coordinates[0].trim());
     var longitude = parseFloat(coordinates[1].trim());

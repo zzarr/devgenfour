@@ -153,23 +153,27 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        // Find the service record
         $service = Services::findOrFail($id);
-    
-        // Get the path to the image file
-        $imagePath = public_path('services/' . $service->icon);
-    
-        // Delete the image file if it exists
-        if (file_exists($imagePath)) {
-            unlink($imagePath);
+        
+        if ($service->icon) {
+            $iconPath = public_path('services/' . $service->icon);
+            if (file_exists($iconPath)) {
+                unlink($iconPath);
+            }
         }
     
-        // Delete the service record
+        if ($service->image) {
+            $imagePath = public_path('services/' . $service->image);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+        
         $service->delete();
-    
-        // Return a success response
+        
         return response()->json(['success' => 'Item deleted successfully.']);
     }
+    
     public function deleteImage(Request $request)
     {
         $id = $request->input('id');

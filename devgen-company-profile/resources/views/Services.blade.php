@@ -37,77 +37,22 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-services">
-                        <div class="icon">
-                            <i class="flaticon-it"></i>
-                        </div>
-                        <h3>IT Consultancy</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore facilisis.</p>
-                        <a href="single-services.html" class="read-btn">Read More</a>
-                    </div>
-                </div>
+                @foreach ($services as $service)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-services">
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-services">
-                        <div class="icon">
-                            <i class="flaticon-setting"></i>
-                        </div>
-                        <h3>Web Development</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore facilisis.</p>
-                        <a href="single-services.html" class="read-btn">Read More</a>
-                    </div>
-                </div>
+                            <div class="icon bg-deb0fe">
+                                <img src="{{ asset('services/' . $service->icon) }}" style="width: 40%; height: 40%;">
+                            </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-services">
-                        <div class="icon">
-                            <i class="flaticon-promotion"></i>
-                        </div>
-                        <h3>Digital Marketing</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore facilisis.</p>
-                        <a href="single-services.html" class="read-btn">Read More</a>
-                    </div>
-                </div>
+                            <h3>{{ $service->title }}</h3>
+                            <p>{!! $service->description !!}</p>
+                            <a href="single-services.html" class="read-btn">Read More</a>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-services">
-                        <div class="icon">
-                            <i class="flaticon-cellphone"></i>
-                        </div>
-                        <h3>App Development</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore facilisis.</p>
-                        <a href="single-services.html" class="read-btn">Read More</a>
-                    </div>
-                </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-services">
-                        <div class="icon">
-                            <i class="flaticon-shopping-cart"></i>
                         </div>
-                        <h3>E-commerce Development</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore facilisis.</p>
-                        <a href="single-services.html" class="read-btn">Read More</a>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-services">
-                        <div class="icon">
-                            <i class="flaticon-optimize"></i>
-                        </div>
-                        <h3>IT Solutions</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore facilisis.</p>
-                        <a href="single-services.html" class="read-btn">Read More</a>
-                    </div>
-                </div>
+                @endforeach
 
 
             </div>

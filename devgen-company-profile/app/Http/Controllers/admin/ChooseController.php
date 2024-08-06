@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -11,11 +12,11 @@ class ChooseController extends Controller
     public function index()
     {
         $chooseItems = Choose::all();
-    foreach ($chooseItems as $choose) {
-        // Hapus semua tag HTML
-        $choose->description = strip_tags($choose->description);
-    }
-    return view('Admin.choose', compact('chooseItems')); // inisiasi fungsi untuk menghilangkan <html> tag
+        foreach ($chooseItems as $choose) {
+            // Hapus semua tag HTML
+            $choose->description = strip_tags($choose->description);
+        }
+        return view('Admin.choose', compact('chooseItems')); // inisiasi fungsi untuk menghilangkan <html> tag
     }
 
     public function datatable(Request $request)
@@ -23,15 +24,15 @@ class ChooseController extends Controller
     {
         $data = Choose::query();
         return datatables()
-        ->of($data)
-        ->editColumn('description', function ($choose) {
-            $description = strip_tags($choose->description); // Menghilangkan <p> tag
-            if (strlen($description) > 100) {
-                $description = substr($description, 0, 80) . '...';
-            }
-            return $description;
-        })
-        ->toJson();
+            ->of($data)
+            ->editColumn('description', function ($choose) {
+                $description = strip_tags($choose->description); // Menghilangkan <p> tag
+                if (strlen($description) > 100) {
+                    $description = substr($description, 0, 80) . '...';
+                }
+                return $description;
+            })
+            ->toJson();
     }
 
     public function create()
@@ -46,28 +47,28 @@ class ChooseController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
-    
+
         // Ensure the directory exists
         if (!file_exists(public_path('choose'))) {
             mkdir(public_path('choose'), 0755, true);
         }
-    
+
         // Handle file upload
         if ($request->hasFile('icon')) {
             $file = $request->file('icon');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = 'choose/' . time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('choose'), $filename);
         } else {
             return redirect()->route('choose_admin')->with('error', 'File upload failed.');
         }
-    
+
         // Create the service
         Choose::create([
             'icon' => $filename,
             'title' => $request->title,
             'description' => $request->description,
         ]);
-    
+
         return redirect()->route('choose_admin')->with('success', 'Choose berhasil ditambahkan');
     }
 
@@ -91,18 +92,18 @@ class ChooseController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
-    
+
         $data = $request->except(['_token', '_method', 'icon']);
-    
+
         if ($request->hasFile('icon')) {
             $file = $request->file('icon');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $filename = 'choose/' . time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('choose'), $filename);
             $data['icon'] = $filename;
         } else {
             $data['icon'] = Choose::where('id', $id)->value('icon');
         }
-    
+
         Choose::where('id', $id)->update($data);
 
         return redirect()->route('choose_admin')->with('success', 'Choose berhasil diubah');
@@ -118,9 +119,9 @@ class ChooseController extends Controller
         if ($choose->icon && file_exists($imagePath) && is_file($imagePath)) {
             unlink($imagePath);  
         }
-    
+
         $choose->delete();
-    
+
         return response()->json(['success' => 'Item deleted successfully.']);
     }
     

@@ -41,7 +41,7 @@
                         <label for="example-tel-input" class="col-sm-2 col-form-label text-end">Foto</label>
                         <div class="col-sm-10">
                             <input class=" dropify" type="file" name="foto" id="example-tel-input"
-                                data-default-file="{{ asset('team/' . $team->foto) }}" />
+                                data-default-file="{{ asset('/' . $team->foto) }}" />
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -73,13 +73,13 @@
                                     value="{{ $team->instagram }}" placeholder="Instagram" />
                             </div>
                             <button class="btn btn-success mt-4" style="margin-left: 0px">
-                    Submit</button>
-                <a href="{{ route('team_admin') }}" type="button" class="btn btn-outline-danger mt-4"
-                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+                                Submit</button>
+                            <a href="{{ route('team_admin') }}" type="button" class="btn btn-outline-danger mt-4"
+                                style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
                         </div>
-                        
+
                     </div>
-                    </div>
+                </div>
 
             </div>
         </div>

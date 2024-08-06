@@ -54,7 +54,7 @@ class TeamController extends Controller
         // Jika ada file foto yang diunggah, kelola upload file
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $filename = $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
+            $filename = 'team/' . $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
             $file->move(public_path('team'), $filename);
 
             // Tambahkan nama file ke array data
@@ -115,7 +115,7 @@ class TeamController extends Controller
         // Jika ada file foto yang diunggah, kelola upload file
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $filename = $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
+            $filename = 'team/' . $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
             $file->move(public_path('team'), $filename);
 
             // Tambahkan nama file ke array data
@@ -163,6 +163,5 @@ class TeamController extends Controller
 
         // Return a success response
         return response()->json(['success' => 'Item deleted successfully.']);
-
     }
 }

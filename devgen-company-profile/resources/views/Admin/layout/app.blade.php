@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        .logo-sm {
+            display: none;
+        }
+
+        .logo-lg {
+            display: inline;
+        }
+
+        body.enlarge-menu .logo-sm {
+            display: inline;
+        }
+
+        /* Hide the large logo when .left-sidebar is hovered and body has the enlarge-menu class */
+        body.enlarge-menu .left-sidebar:hover .logo-lg {
+            display: none;
+        }
+    </style>
 
     @include('Admin.layout.head-admin')
 
@@ -42,6 +60,7 @@
     <!-- JS -->
     @include('Admin.layout.script-admin')
     @stack('script')
+
 </body>
 
 </html>

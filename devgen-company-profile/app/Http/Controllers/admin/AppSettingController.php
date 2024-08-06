@@ -71,7 +71,7 @@ class AppSettingController extends Controller
         // Temukan setting dengan ID yang diberikan
         $appSetting = AppSetting::findOrFail($id);
 
-        // Mengumpulkan data dari request, kecuali field '_token', '_method', dan 'logo'
+        // Mengumpulkan data dari request, kecuali field '_token', '_method', 'logo', dan 'secondary_logo'
         $data = $request->except(['_token', '_method', 'logo', 'secondary_logo']);
 
         // Jika ada file logo yang diunggah, kelola upload file
@@ -87,7 +87,7 @@ class AppSettingController extends Controller
             $data['logo'] = $appSetting->logo;
         }
 
-        // Jika ada file logo yang diunggah, kelola upload file
+        // Jika ada file secondary_logo yang diunggah, kelola upload file
         if ($request->hasFile('secondary_logo')) {
             $file = $request->file('secondary_logo');
             $filename = "secondary_logo." . $file->getClientOriginalExtension();
@@ -96,11 +96,9 @@ class AppSettingController extends Controller
             // Tambahkan path lengkap ke array data
             $data['secondary_logo'] = 'img/' . $filename;
         } else {
-            // Jika tidak ada logo yang diunggah, tetap gunakan logo yang sudah ada
+            // Jika tidak ada secondary_logo yang diunggah, tetap gunakan secondary_logo yang sudah ada
             $data['secondary_logo'] = $appSetting->secondary_logo;
         }
-
-
 
         // Update data di database
         $appSetting->update($data);
@@ -108,7 +106,6 @@ class AppSettingController extends Controller
         // Redirect ke route 'app_setting_admin' dengan pesan sukses
         return redirect()->route('app_setting_admin')->with('success', 'Data berhasil diubah');
     }
-
 
     /**
      * Remove the specified resource from storage.

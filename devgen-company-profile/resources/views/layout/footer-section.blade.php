@@ -16,8 +16,9 @@
                         $phoneNumber = '+62' . substr($phoneNumber, 1);
                     }
                 @endphp
-                <p><i class="ti ti-phone"></i> Phone: {{ $phoneNumber }}</p>
-                <p><i class="ti ti-mail"></i> Email: {{ $appSetting->email }}</p>
+                <p><i class="flaticon-phone-call"></i> Phone: {{ $phoneNumber }}</p>
+                <p><i class="flaticon-envelope"></i> Email: {{ $appSetting->email }}</p>
+                <p><i class="flaticon-pin"></i> Address: {{ $appSetting->alamat }}</p>
 
             </div>
             <div class="col-md-3">
@@ -27,7 +28,8 @@
             </div>
             <div class="col-md-3">
                 <h5>Our Location</h5>
-                <p>{{ $appSetting->alamat }}</p>
+                
+                <div id="map" style="height: 150px; width: 75%;"></div>
             </div>
         </div>
     </div>
@@ -64,3 +66,22 @@
         </div>
     </div>
 </div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    var coordinat = "{{ $appSetting->gmaap_coordinat }}";
+    var coordinates = coordinat.split(','); 
+    var latitude = parseFloat(coordinates[0].trim());
+    var longitude = parseFloat(coordinates[1].trim());
+    var map = L.map('map').setView([latitude, longitude], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    var marker = L.marker([latitude, longitude]).addTo(map)
+        .openPopup();
+    marker.on('click', function(e) {
+        window.open(`https://www.google.com/maps?q=${latitude},${longitude}`, '_blank');
+    });
+</script>
+

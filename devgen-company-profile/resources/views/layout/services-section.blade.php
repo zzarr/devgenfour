@@ -20,7 +20,7 @@
                         </div>
 
                     <h3>{{ $services->title }}</h3>
-                    <p>{{ $services->description }}</p>
+                    <p>{!! $services->description !!}</p>
 
 
 

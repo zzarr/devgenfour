@@ -45,4 +45,23 @@ class AboutUsController extends Controller
         // Redirect ke route 'about_admin' dengan pesan sukses
         return redirect()->route('about_admin')->with('success', 'Data berhasil diubah');
     }
+    public function deleteImage(Request $request)
+    {
+        $id = $request->input('id');
+        $type = $request->input('type');
+    
+        $about = AboutUs::findOrFail($id);
+    
+        if ($type == 'image') {
+            $imagePath = public_path('about/' . $about->image);
+            if ($about->image && file_exists($imagePath)) {
+                unlink($imagePath); 
+            }
+            $about->image = null;
+        }
+    
+        $about->save();
+    
+        return response()->json(['success' => 'Image deleted successfully']);
+    }
 }

@@ -34,6 +34,8 @@
                             id="icon"
                             name="icon"
                             data-default-file="{{ asset('choose/' . $choose->icon) }}"
+                            data-id="{{ $choose->id }}" 
+                            data-type="icon"
                         />
                     </div>
                     <div class="form-group">
@@ -70,14 +72,43 @@
         </div>
     </div>
 </div>
-@endsection @push('script')
-<script>
-    $(document).ready(function () {
-        $(".dropify").dropify();
-        $('#summernote').summernote();
+@endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('.dropify').dropify();
+            $('#summernote').summernote();
+
+        $(document).ready(function() {
+        $('.dropify').on('dropify.afterClear', function(event, element) {
+            var id = $(this).data('id');
+            var type = $(this).data('type');
+            var url = '{{ route("deleteChooseIcon") }}';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    type: type
+                },
+                success: function(response) {
+                    console.log('Image deleted successfully');
+                },
+                error: function(xhr) {
+                    console.log('Error deleting image');
+                }
+            });
+          });
+        });
     });
-</script>
-@endpush @push('css')
+    </script>
+@endpush
+
+
+@push('css')
 <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}" />
 <link href="{{ asset('summer-note/summernote-bs4.min.css') }}" rel="stylesheet">
 

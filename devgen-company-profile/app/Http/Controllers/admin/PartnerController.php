@@ -116,6 +116,23 @@ class PartnerController extends Controller
 
         return response()->json(['success' => 'Item deleted successfully.']);
     }
+    public function deleteImage(Request $request)
+{
+    $id = $request->input('id');
+    $type = $request->input('type');
 
-    
+    $partner = Partners::findOrFail($id);
+
+    if ($type == 'image') {
+        $imagePath = public_path('partner/' . $partner->image);
+        if ($partner->image && file_exists($imagePath)) {
+            unlink($imagePath); 
+        }
+        $partner->image = null;
+    }
+
+    $partner->save();
+
+    return response()->json(['success' => 'Image deleted successfully']);
+}
 }

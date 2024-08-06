@@ -41,7 +41,8 @@
                         <label for="example-tel-input" class="col-sm-2 col-form-label text-end">Foto</label>
                         <div class="col-sm-10">
                             <input class=" dropify" type="file" name="foto" id="example-tel-input"
-                                data-default-file="{{ asset('team/' . $team->foto) }}" />
+                                data-default-file="{{ asset('team/' . $team->foto) }}" data-id="{{ $team->id }}" 
+                                data-type="foto" />
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -90,7 +91,30 @@
         $(document).ready(function() {
             $('#summernote').summernote();
             $('.dropify').dropify();
+            $(document).ready(function() {
+        $('.dropify').on('dropify.afterClear', function(event, element) {
+            var id = $(this).data('id');
+            var type = $(this).data('type');
+            var url = '{{ route("deleteTeamImage") }}';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    type: type
+                },
+                success: function(response) {
+                    console.log('Image deleted successfully');
+                },
+                error: function(xhr) {
+                    console.log('Error deleting image');
+                }
+            });
+          });
         });
+    });
     </script>
 @endpush
 

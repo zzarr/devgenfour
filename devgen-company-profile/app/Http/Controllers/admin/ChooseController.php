@@ -111,15 +111,37 @@ class ChooseController extends Controller
     public function destroy($id)
     {
         $choose = Choose::findOrFail($id);
-    
+        
         $imagePath = public_path('choose/' . $choose->icon);
     
-        if (file_exists($imagePath)) {
-            unlink($imagePath);
+        // pengecekan path apakah null atau tidak (jika gambar dihapus oleh dropify afterclear)
+        if ($choose->icon && file_exists($imagePath) && is_file($imagePath)) {
+            unlink($imagePath);  
         }
     
         $choose->delete();
     
         return response()->json(['success' => 'Item deleted successfully.']);
     }
+    
+    public function deleteIcon(Request $request)
+{
+    $id = $request->input('id');
+    $type = $request->input('type');
+
+    $choose = Choose::findOrFail($id);
+
+    if ($type == 'icon') {
+        $iconPath = public_path('choose' . $choose->icon);
+        if ($choose->icon && file_exists($iconPath)) {
+            unlink($iconPath);  
+        }
+        $choose->icon = null; 
+    }
+
+    $choose->save();
+
+    return response()->json(['success' => 'Image deleted successfully']);
+}
+
 }

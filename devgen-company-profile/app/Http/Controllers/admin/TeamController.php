@@ -165,4 +165,25 @@ class TeamController extends Controller
         return response()->json(['success' => 'Item deleted successfully.']);
 
     }
+
+    public function deleteImage(Request $request)
+{
+    $id = $request->input('id');
+    $type = $request->input('type');
+
+    $team = Team::findOrFail($id);
+
+    if ($type == 'foto') {
+        $fotoPath = public_path('team/' . $team->foto);
+        if ($team->foto && file_exists($fotoPath)) {
+            unlink($fotoPath); 
+        }
+        $team->foto = null;
+    }
+
+    $team->save();
+
+    return response()->json(['success' => 'Image deleted successfully']);
+}
+
 }

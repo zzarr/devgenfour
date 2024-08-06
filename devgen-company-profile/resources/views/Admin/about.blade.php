@@ -7,10 +7,10 @@
             <div class="page-title-box">
                 <div class="float-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active">App setting</li>
+                        <li class="breadcrumb-item active">About Us</li>
                     </ol>
                 </div>
-                <h4 class="page-title">App setiing</h4>
+                <h4 class="page-title">About Us</h4>
             </div><!--end page-title-box-->
         </div><!--end col-->
     </div>
@@ -37,6 +37,7 @@
                     <div class="col-lg-9 col-xl-8">
                         <div class="input-group mb-3">
                             <input name="gambar" name="logo" type="file" class="dropify" id="input-file-now-custom-1"
+                            data-id="{{ $about->id }}" data-type="image"
                                 data-height="100" data-default-file="{{ asset($about->image) }}" />
                         </div>
                     </div>
@@ -60,7 +61,30 @@
         $(document).ready(function() {
             $('#summernote').summernote();
             $('.dropify').dropify();
+        $(document).ready(function() {
+        $('.dropify').on('dropify.afterClear', function(event, element) {
+            var id = $(this).data('id');
+            var type = $(this).data('type');
+            var url = '{{ route("deleteAboutImage") }}';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    type: type
+                },
+                success: function(response) {
+                    console.log('Image deleted successfully');
+                },
+                error: function(xhr) {
+                    console.log('Error deleting image');
+                }
+            });
+          });
         });
+    });
     </script>
 @endpush
 

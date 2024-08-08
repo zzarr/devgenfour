@@ -16,26 +16,48 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <form action="{{ route('updatechoose_admin', $choose->id) }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf @method('PUT')
-                        <div class="form-group">
-                            <label for="icon">Icon</label>
-                            <input type="file" class="dropify" id="icon" name="icon"
-                                data-default-file="{{ asset('' . $choose->icon) }}" />
-                        </div>
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title"
-                                value="{{ $choose->title }}" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea type="text" class="form-control" id="summernote" name="description" rows="10" required>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form
+                    action="{{ route('updatechoose_admin', $choose->id) }}"
+                    method="POST"
+                    enctype="multipart/form-data"
+                >
+                    @csrf @method('PUT')
+                    <div class="form-group">
+                        <label for="icon">Icon</label>
+                        <input
+                            type="file"
+                            class="dropify"
+                            id="icon"
+                            name="icon"
+                            data-default-file="{{ asset('' . $choose->icon) }}"
+                            data-id="{{ $choose->id }}" 
+                            data-type="icon"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="title"
+                            name="title"
+                            value="{{ $choose->title }}"
+                            required
+                        />
+                    </div>
+                 <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea 
+                            type="text"
+                            class="form-control"
+                            id="summernote"
+                            name="description"
+                            rows="10"
+                            required>
                             {{ $choose->description }}
                         </textarea>
                         </div>
@@ -50,14 +72,45 @@
             </div>
         </div>
     </div>
-    @endsection @push('script')
+</div>
+@endsection
+
+@push('script')
     <script>
         $(document).ready(function() {
-            $(".dropify").dropify();
+            $('.dropify').dropify();
             $('#summernote').summernote();
+
+        $(document).ready(function() {
+        $('.dropify').on('dropify.afterClear', function(event, element) {
+            var id = $(this).data('id');
+            var type = $(this).data('type');
+            var url = '{{ route("deleteChooseIcon") }}';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    type: type
+                },
+                success: function(response) {
+                    console.log('Image deleted successfully');
+                },
+                error: function(xhr) {
+                    console.log('Error deleting image');
+                }
+            });
+          });
         });
+    });
     </script>
-    @endpush @push('css')
-    <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}" />
-    <link href="{{ asset('summer-note/summernote-bs4.min.css') }}" rel="stylesheet">
+@endpush
+
+
+@push('css')
+<link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}" />
+<link href="{{ asset('summer-note/summernote-bs4.min.css') }}" rel="stylesheet">
+
 @endpush

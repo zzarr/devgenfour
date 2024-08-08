@@ -78,7 +78,7 @@
                         targets: 1,
                         render: function(data, type, full, meta) {
 
-                            return `<img src="/${data}" alt="team" class="thumb-lg rounded">`;
+                            return `<img src="${data}" alt="team" class="thumb-lg rounded">`;
                         }
                     },
                     {

@@ -36,8 +36,9 @@
                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">logo </label>
                     <div class="col-lg-9 col-xl-8">
                         <div class="input-group mb-3">
-                            <input name="logo" type="file" class="dropify" id="input-file-now-custom-1"
-                                data-height="100" data-default-file="{{ asset('' . $settings->logo) }}" />
+                            <input name="logo" type="file" class="dropify" id="input-file-disable-remove"
+                                data-height="100" data-show-remove="false"
+                                data-default-file="{{ asset('' . $settings->logo) }}" />
                         </div>
                     </div>
                 </div>
@@ -46,7 +47,8 @@
                     <div class="col-lg-9 col-xl-8">
                         <div class="input-group mb-3">
                             <input name="secondary_logo" type="file" class="dropify" id="input-file-now-custom-1"
-                                data-height="100" data-default-file="{{ asset('' . $settings->secondary_logo) }}" />
+                                data-height="100" data-show-remove="false"
+                                data-default-file="{{ asset('' . $settings->secondary_logo) }}" />
                         </div>
                     </div>
                 </div>

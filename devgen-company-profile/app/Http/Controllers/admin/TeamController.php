@@ -122,21 +122,21 @@ class TeamController extends Controller
             $data['foto'] = $filename;
         } else {
             // Jika tidak ada foto baru, ambil foto yang lama
-            $data['foto'] = DB::table('teams')->where('id', $id)->value('foto');
+            $data['foto'] = Team::find($id)->foto;
         }
 
         $data['updated_at'] = now();
+        $team = Team::find($id);
 
-        // Update data ke tabel 'teams'
-        DB::table('teams')->where('id', $id)->update([
-            'name' => $data['name'],
-            'jabatan' => $data['jabatan'],
-            'foto' => $data['foto'],
-            'facebook' => $request->facebook,
-            'instagram' => $data['instagram'],
-            'linkedin' => $data['linkedin'],
-            'updated_at' => $data['updated_at'],
-        ]);
+        $team->name = $data['name'];
+        $team->jabatan = $data['jabatan'];
+        $team->foto = $data['foto'];
+        $team->facebook = $request->facebook;
+        $team->instagram = $data['instagram'];
+        $team->linkedin = $data['linkedin'];
+        $team->updated_at = $data['updated_at'];
+
+        $team->save();
 
         // Redirect ke route 'team_admin' dengan pesan sukses
         return redirect()->route('team_admin')->with('success', 'Data berhasil diperbarui');

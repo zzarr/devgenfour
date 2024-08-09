@@ -49,7 +49,7 @@
                     <div class="mb-3 row">
                         <label for="description" class="col-sm-2 col-form-label text-end ">Deskripsi </label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="summernote2" name="description" rows="10" required></textarea>
+                            <textarea class="form-control" id="summernote2" name="long_description" rows="10" required></textarea>
                         </div>
                     </div>
                     <button class="btn btn-success mt-2" style="margin-left: 186px">

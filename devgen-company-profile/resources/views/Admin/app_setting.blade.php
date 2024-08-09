@@ -45,7 +45,7 @@
                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">icon logo</label>
                     <div class="col-lg-9 col-xl-8">
                         <div class="input-group mb-3">
-                            <input name="secondary_logo" type="file" class="dropify" id="input-file-now-custom-1"
+                            <input name="secondary_logo" type="file" class="dropify" data-disable-remove="true" id="input-file-now-custom-1"
                                 data-height="100" data-default-file="{{ asset('' . $settings->secondary_logo) }}" />
                         </div>
                     </div>
@@ -89,8 +89,8 @@
                 <div class="form-group mb-3 row">
                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Koordinat maap</label>
                     <div class="col-lg-9 col-xl-8">
-                        <input class="form-control" type="text" value="{{ $settings->gmaap_coordinat }}"
-                            id="gmap_coordinates" name="gmaap_coordinat" placeholder="Latitude, Longitude" required>
+                        <input class="form-control" type="text" value="{{ $settings->gmap_coordinat }}"
+                            id="gmap_coordinates" name="gmap_coordinat" placeholder="Latitude, Longitude" required>
                     </div>
                 </div>
                 <div class="form-group mb-3 row">
@@ -110,8 +110,11 @@
     <script>
         $(document).ready(function() {
             $('#summernote').summernote();
-            $('.dropify').dropify();
+            $('.dropify').dropify().on('dropify.afterClear', function(event, element) {
+    // Disable remove button pada dropify cuyy
+    $(element.element).find('.dropify-clear').hide();
         });
+    });
     </script>
 @endpush
 

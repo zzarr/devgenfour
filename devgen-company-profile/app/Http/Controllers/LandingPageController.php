@@ -46,7 +46,8 @@ class LandingPageController extends Controller
     {
         $aboutUs = AboutUs::first();
         $appSetting = AppSetting::first();
-        return view('Services', compact('aboutUs', 'appSetting'));
+        $services = Services::all();
+        return view('Services', compact('aboutUs', 'appSetting', 'services'));
     }
 
     public function contact()

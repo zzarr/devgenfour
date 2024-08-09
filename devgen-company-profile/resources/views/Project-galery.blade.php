@@ -19,8 +19,8 @@
                     <div class="page-title-content">
                         <h2>Projects</h2>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li>Projects One</li>
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                            <li>Projects Galery</li>
                         </ul>
                     </div>
                 </div>

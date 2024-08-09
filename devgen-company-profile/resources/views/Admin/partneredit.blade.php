@@ -24,7 +24,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="image">Image</label>
-                            <input type="file" class="dropify" id="image" name="image" data-default-file="{{ asset('' . $partner->image) }}" />
+                            <input name="image" type="file" class="dropify" data-height="300" data-default-file="{{ asset('' . $partner->image) }}" data-id="{{ $partner->id }}" data-type="image" />
                         </div>
                         <div class="form-group">
                             <label for="name">Nama</label>
@@ -46,7 +46,31 @@
     <script>
         $(document).ready(function() {
             $('.dropify').dropify();
+            
+            $(document).ready(function() {
+        $('.dropify').on('dropify.afterClear', function(event, element) {
+            var id = $(this).data('id');
+            var type = $(this).data('type');
+            var url = '{{ route("deletePartnerImage") }}';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    type: type
+                },
+                success: function(response) {
+                    console.log('Image deleted successfully');
+                },
+                error: function(xhr) {
+                    console.log('Error deleting image');
+                }
+            });
+          });
         });
+    });
     </script>
 @endpush
 

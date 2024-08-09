@@ -65,7 +65,7 @@ class AppSettingController extends Controller
             'email' => 'nullable|email|max:255',
             'instagram' => 'nullable|string|max:255',
             'alamat' => 'nullable|string',
-            'gmaap_coordinat' => 'nullable|string',
+            'gmap_coordinat' => 'nullable|string',
         ]);
 
         // Temukan setting dengan ID yang diberikan

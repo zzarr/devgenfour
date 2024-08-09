@@ -54,7 +54,7 @@ class TeamController extends Controller
         // Jika ada file foto yang diunggah, kelola upload file
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $filename = $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
+            $filename = '/team/' . $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
             $file->move(public_path('team'), $filename);
 
             // Tambahkan nama file ke array data
@@ -115,7 +115,7 @@ class TeamController extends Controller
         // Jika ada file foto yang diunggah, kelola upload file
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $filename = $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
+            $filename = '/team/' . $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
             $file->move(public_path('team'), $filename);
 
             // Tambahkan nama file ke array data
@@ -163,6 +163,26 @@ class TeamController extends Controller
 
         // Return a success response
         return response()->json(['success' => 'Item deleted successfully.']);
-
     }
+
+    public function deleteImage(Request $request)
+{
+    $id = $request->input('id');
+    $type = $request->input('type');
+
+    $team = Team::findOrFail($id);
+
+    if ($type == 'foto') {
+        $fotoPath = public_path('team/' . $team->foto);
+        if ($team->foto && file_exists($fotoPath)) {
+            unlink($fotoPath); 
+        }
+        $team->foto = null;
+    }
+
+    $team->save();
+
+    return response()->json(['success' => 'Image deleted successfully']);
+}
+
 }

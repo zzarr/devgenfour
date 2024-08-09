@@ -48,9 +48,6 @@ Route::get('/home/contact', [LandingPageController::class, 'contact'])->name('co
 // route about coba`
 
 
-// route about coba
-
-
 // Route::get('/AboutUs', [LandingPageController::class, 'about'])->name('about-us');
 Route::get('/AboutUs', [LandingPageController::class, 'about'])->middleware('count.about.us')->name('about-us');
 // landing page end
@@ -79,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/services_edit/{id}', [ServicesController::class, 'edit'])->name('editservices_admin');
     Route::put('/admin/services_update/{id}', [ServicesController::class, 'update'])->name('updateservices_admin');
     Route::delete('/admin/services/{id}', [ServicesController::class, 'destroy'])->name('deleteservices_admin');
+    Route::post('/delete-service-image', [ServicesController::class, 'deleteImage'])->name('deleteServiceImage');
 
     Route::get('admin/choose/datatables', [ChooseController::class, 'datatable'])->name('choose_admin.datatable');
     Route::get('/admin/choose', [ChooseController::class, 'index'])->name('choose_admin');
@@ -87,6 +85,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/choose_edit/{id}', [ChooseController::class, 'edit'])->name('editchoose_admin');
     Route::put('/admin/choose_update/{id}', [ChooseController::class, 'update'])->name('updatechoose_admin');
     Route::delete('/admin/choose/{id}', [ChooseController::class, 'destroy'])->name('deletechoose_admin');
+    Route::post('/delete-choose-icon', [ChooseController::class, 'deleteIcon'])->name('deleteChooseIcon');
+
 
     // Route::resource('/admin/choose', ChooseController::class);
 
@@ -97,6 +97,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/partner_edit/{id}', [PartnerController::class, 'edit'])->name('editpartner_admin');
     Route::post('/admin/partner_update/{id}', [PartnerController::class, 'update'])->name('updatepartner_admin');
     Route::delete('/admin/partner/{id}', [PartnerController::class, 'destroy'])->name('deletepartner_admin');
+    Route::post('/delete-partner-image', [PartnerController::class, 'deleteImage'])->name('deletePartnerImage');
 
     Route::get('admin/team/datatables', [TeamController::class, 'datatable'])->name('team_admin.datatable');
     Route::get('/admin/team', [TeamController::class, 'index'])->name('team_admin');
@@ -105,10 +106,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/team_edit/{id}', [TeamController::class, 'edit'])->name('editteam_admin');
     Route::post('/admin/team_update/{id}', [TeamController::class, 'update'])->name('updateteam_admin');
     Route::delete('/admin/team/{id}', [TeamController::class, 'destroy'])->name('deleteteam_admin');
+    Route::post('/delete-team-image', [TeamController::class, 'deleteImage'])->name('deleteTeamImage');
 
     Route::get('/admin/app_setting', [AppSettingController::class, 'index'])->name('app_setting_admin');
     Route::post('/admin/app-settings/{id}', [AppSettingController::class, 'update'])->name('app-settings_update');
 
     Route::get('/admin/about', [AboutUsController::class, 'index'])->name('about_admin');
     Route::post('/admin/about/{id}', [AboutUsController::class, 'update'])->name('about_update');
+    Route::post('/delete-about-image', [AboutUsController::class, 'deleteImage'])->name('deleteAboutImage');
+
 });

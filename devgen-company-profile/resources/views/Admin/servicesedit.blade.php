@@ -27,14 +27,19 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="icon">Icon</label>
-                            <input type="file" class="dropify" id="icon" name="icon"  data-id="{{ $service->id }}" data-type="icon" data-default-file="{{ asset('services/' . $service->icon) }}" />
+                            <input type="file" class="dropify" id="icon" name="icon"  data-id="{{ $service->id }}" data-type="icon" data-default-file="{{ asset('' . $service->icon) }}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Gambar</label>
+                            <input type="file" class="dropify" id="image" name="image"  data-id="{{ $service->id }}" data-type="image" data-default-file="{{ asset('' . $service->image) }}" />
                         </div>
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" class="form-control" id="title" name="title" value="{{ $service->title }}" required>
                         </div>
+
                         <div class="form-group">
-                        <label for="description">Description</label>
+                        <label for="description">Deskripsi Singkat</label>
                         <textarea 
                             type="text"
                             class="form-control"
@@ -45,6 +50,20 @@
                             {{ $service->description }}
                         </textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="long_description">Deskripsi</label>
+                        <textarea 
+                            type="text"
+                            class="form-control"
+                            id="summernote2"
+                            name="long_description"
+                            rows="10"
+                            required>
+                            {{ $service->long_description }}
+                        </textarea>
+                    </div>
+                    
                     
                 <button class="btn btn-success mt-4" style="margin-left: 0px">
                     Submit</button>
@@ -63,6 +82,9 @@
         $(document).ready(function() {
             $('.dropify').dropify();
             $('#summernote').summernote();
+            $('#summernote2').summernote();
+
+            
 
         $(document).ready(function() {
         $('.dropify').on('dropify.afterClear', function(event, element) {

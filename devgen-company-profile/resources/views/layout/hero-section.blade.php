@@ -24,7 +24,7 @@
                     <div class="col-lg-6">
                         <div>
                             <img
-                                src="{{ asset('' . $appSetting->logo) }}"
+                                src="{{ asset('' . $appSetting->secondary_logo) }}"
                                 class="wow zoomIn"
                                 data-wow-delay="0.6s"
                                 alt=""

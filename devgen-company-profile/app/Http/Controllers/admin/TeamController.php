@@ -54,7 +54,7 @@ class TeamController extends Controller
         // Jika ada file foto yang diunggah, kelola upload file
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $filename = $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
+            $filename = '/team/' . $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
             $file->move(public_path('team'), $filename);
 
             // Tambahkan nama file ke array data
@@ -115,28 +115,28 @@ class TeamController extends Controller
         // Jika ada file foto yang diunggah, kelola upload file
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $filename = $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
+            $filename = '/team/' . $request->nama . "_" . time() . "." . $file->getClientOriginalExtension();
             $file->move(public_path('team'), $filename);
 
             // Tambahkan nama file ke array data
             $data['foto'] = $filename;
         } else {
             // Jika tidak ada foto baru, ambil foto yang lama
-            $data['foto'] = DB::table('teams')->where('id', $id)->value('foto');
+            $data['foto'] = Team::find($id)->foto;
         }
 
         $data['updated_at'] = now();
+        $team = Team::find($id);
 
-        // Update data ke tabel 'teams'
-        DB::table('teams')->where('id', $id)->update([
-            'name' => $data['name'],
-            'jabatan' => $data['jabatan'],
-            'foto' => $data['foto'],
-            'facebook' => $request->facebook,
-            'instagram' => $data['instagram'],
-            'linkedin' => $data['linkedin'],
-            'updated_at' => $data['updated_at'],
-        ]);
+        $team->name = $data['name'];
+        $team->jabatan = $data['jabatan'];
+        $team->foto = $data['foto'];
+        $team->facebook = $request->facebook;
+        $team->instagram = $data['instagram'];
+        $team->linkedin = $data['linkedin'];
+        $team->updated_at = $data['updated_at'];
+
+        $team->save();
 
         // Redirect ke route 'team_admin' dengan pesan sukses
         return redirect()->route('team_admin')->with('success', 'Data berhasil diperbarui');
@@ -163,6 +163,26 @@ class TeamController extends Controller
 
         // Return a success response
         return response()->json(['success' => 'Item deleted successfully.']);
-
     }
+
+    public function deleteImage(Request $request)
+{
+    $id = $request->input('id');
+    $type = $request->input('type');
+
+    $team = Team::findOrFail($id);
+
+    if ($type == 'foto') {
+        $fotoPath = public_path('team/' . $team->foto);
+        if ($team->foto && file_exists($fotoPath)) {
+            unlink($fotoPath); 
+        }
+        $team->foto = null;
+    }
+
+    $team->save();
+
+    return response()->json(['success' => 'Image deleted successfully']);
+}
+
 }

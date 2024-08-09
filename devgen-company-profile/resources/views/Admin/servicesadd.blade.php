@@ -1,4 +1,4 @@
-@extends('Admin.layout.app') 
+@extends('Admin.layout.app')
 
 @section('content')
     <!-- Page-Title -->
@@ -29,25 +29,37 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label for="icon-input" class="col-sm-2 col-form-label text-end">Gambar</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="gambar" class="dropify" id="icon-input" data-default-file="" />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label for="title-input" class="col-sm-2 col-form-label text-end">Title</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="title" id="title-input" required />
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="description" class="col-sm-2 col-form-label text-end ">Deskripsi</label>
+                        <label for="description" class="col-sm-2 col-form-label text-end ">Deskripsi singkat</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="summernote" name="description" rows="10" required></textarea>
                         </div>
                     </div>
-                            <button class="btn btn-success mt-2" style="margin-left: 186px">
-                    Submit</button>
-                <a href="{{ route('services_admin') }}" type="button" class="btn btn-outline-danger mt-2"
-                    style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
+                    <div class="mb-3 row">
+                        <label for="description" class="col-sm-2 col-form-label text-end ">Deskripsi </label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="summernote2" name="long_description" rows="10" required></textarea>
                         </div>
                     </div>
+                    <button class="btn btn-success mt-2" style="margin-left: 186px">
+                        Submit</button>
+                    <a href="{{ route('services_admin') }}" type="button" class="btn btn-outline-danger mt-2"
+                        style="margin-left: 5px"><i class="ti ti-arrow-back"></i> Cancel</a>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
     </form>
 @endsection
@@ -57,6 +69,7 @@
         $(document).ready(function() {
             $('.dropify').dropify();
             $('#summernote').summernote();
+            $('#summernote2').summernote();
         });
     </script>
 @endpush

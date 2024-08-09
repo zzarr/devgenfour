@@ -41,7 +41,7 @@
 
 
                         <li class="nav-item">
-                            <a href="{{ url('/home#project-section') }}" class="nav-link" id="projects-link">
+                            <a href="{{ route('projects.galery') }}" class="nav-link" id="projects-link">
                                 Projects
                             </a>
                         </li>

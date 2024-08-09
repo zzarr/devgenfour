@@ -7,7 +7,7 @@
                         <div class="main-banner-content">
                             <h1>{{ $appSetting->name_app }}</h1>
                             <p>
-                                {!! $appSetting->desc !!}
+                                {!! $appSetting->desc !!} 
                             </p>
                             @php
                                 $phoneNumber = $appSetting->no_contact;
@@ -16,8 +16,7 @@
                                 }
                             @endphp
                             <div class="banner-btn">
-                                <a href="https://wa.me/{{ $phoneNumber }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda"
-                                    class="optional-btn">Contact Us</a>
+                                <a href="https://wa.me/{{ $phoneNumber }}?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda" class="optional-btn">Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -34,8 +33,16 @@
     </div>
 
     <div class="banner-shape">
-        <img src="assets/img/home-two/cloud.png" class="white-image" alt="image" />
-        <img src="assets/img/home-two/cloud-2.png" class="black-image" alt="image" />
+        <img
+            src="assets/img/home-two/cloud.png"
+            class="white-image"
+            alt="image"
+        />
+        <img
+            src="assets/img/home-two/cloud-2.png"
+            class="black-image"
+            alt="image"
+        />
     </div>
 
     <div class="default-shape">

@@ -12,8 +12,9 @@
                 <div class="choose-content-wrapper">
                     @foreach($choose as $item)
                         <div class="choose-content">
+                            {{-- penambahan image --}}
                             <div class="icon">
-                                <img src="{{ asset('choose/'. $item->icon) }}" alt="{{ $item->title }}" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+                                <img src="{{ asset(''. $item->icon) }}" alt="{{ $item->title }}" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
                             </div>
                             <div class="text-content">
                                 <h3>{{ $item->title }}</h3>

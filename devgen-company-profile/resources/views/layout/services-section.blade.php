@@ -16,7 +16,7 @@
                 <div class="single-services">
 
                         <div class="icon bg-deb0fe">
-                            <img src="{{ asset('services/' . $services->icon) }}" style="width: 40%; height: 40%;">
+                            <img src="{{ asset('' . $services->icon) }}" style="width: 40%; height: 40%;">
                         </div>
 
                     <h3>{{ $services->title }}</h3>

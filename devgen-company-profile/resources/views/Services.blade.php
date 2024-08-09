@@ -47,7 +47,7 @@
 
                             <h3>{{ $service->title }}</h3>
                             <p>{!! $service->description !!}</p>
-                            <a href="single-services.html" class="read-btn">Read More</a>
+                            <a href="services.detail" class="read-btn">Read More</a>
 
 
                         </div>

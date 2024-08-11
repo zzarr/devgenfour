@@ -6,7 +6,7 @@
                 <img src="{{ asset('img/secondary_logo.png') }}" alt="logo-small" class="logo-sm" style="height:60px">
             </span>
             <span>
-                <img src="{{ asset('img/logo.png') }}" alt="logo-large" class="logo-lg "
+                <img src="{{ asset('img/logo.png') }}" alt="logo-large" class="logo-lg"
                     style="width: auto; height: 60px;">
             </span>
         </a>

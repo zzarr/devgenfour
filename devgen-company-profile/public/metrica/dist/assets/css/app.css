@@ -805,7 +805,7 @@ File: Leftbar
   min-width: 260px;
 }
 .enlarge-menu .left-sidebar:hover .brand .logo .logo-lg {
-  display: inline-block;
+  display: none;
 }
 .enlarge-menu .left-sidebar:hover .brand .logo .logo-light {
   display: none;

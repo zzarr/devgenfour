@@ -21,6 +21,6 @@ class AppSetting extends Model
         'email',
         'instagram',
         'alamat',
-        'gmaap_coordinat',
+        'gmap_coordinat',
     ];
 }

@@ -58,7 +58,6 @@ class ServicesController extends Controller
             'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'long_description' => 'nullable|string',
         ]);

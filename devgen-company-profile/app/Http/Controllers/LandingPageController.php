@@ -36,9 +36,10 @@ class LandingPageController extends Controller
         $aboutUs = AboutUs::first();
         $appSetting = AppSetting::first();
         $numbers = AppSetting::all();
+        $team = Team::all();
 
 
-        return view('AboutUs', compact('aboutUs', 'appSetting', 'numbers')); // Nama view harus sesuai dengan nama file view
+        return view('AboutUs', compact('aboutUs', 'appSetting', 'numbers', 'team')); // Nama view harus sesuai dengan nama file view
     }
 
 
@@ -54,7 +55,7 @@ class LandingPageController extends Controller
     {
         $aboutUs = AboutUs::first();
         $appSetting = AppSetting::first();
-        return view('Contact', compact('aboutUs', 'appSetting'));
+        return view('Contact', compact('aboutUs', 'appSetting',));
     }
 
     public function project()
@@ -74,3 +75,4 @@ class LandingPageController extends Controller
         return view('services-detail', compact('services', 'appSetting', 'project'));
     }
 }
+

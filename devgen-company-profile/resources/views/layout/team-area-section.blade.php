@@ -15,7 +15,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-team">
                         <div class="image">
-                            <img src="{{ asset('team/' . $teams->foto) }}"
+                            <img src="{{ asset('' . $teams->foto) }}"
                                 style="width: 365px; height: 490px; object-fit: cover;">
                         </div>
 

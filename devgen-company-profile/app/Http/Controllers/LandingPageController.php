@@ -74,3 +74,4 @@ class LandingPageController extends Controller
         return view('services-detail', compact('services', 'appSetting', 'project'));
     }
 }
+

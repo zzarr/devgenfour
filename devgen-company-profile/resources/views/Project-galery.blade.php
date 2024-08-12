@@ -12,7 +12,7 @@
 <body>
     @include('layout.navbar')
 
-    <div class="page-title-area item-bg-1">
+    <div class="page-title-area ">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="container">
@@ -32,8 +32,6 @@
         <div class="container-fluid">
             <div class="section-title">
                 <h2>Projects</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt labore et
-                    dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
                 <div class="bar"></div>
             </div>
 

@@ -11,17 +11,10 @@
             display: none;
         }
 
-        .logo-lg {
-            display: inline;
-        }
+
 
         body.enlarge-menu .logo-sm {
             display: inline;
-        }
-
-        /* Hide the large logo when .left-sidebar is hovered and body has the enlarge-menu class */
-        body.enlarge-menu .left-sidebar:hover .logo-lg {
-            display: none;
         }
     </style>
 

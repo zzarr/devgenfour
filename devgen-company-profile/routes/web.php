@@ -32,12 +32,12 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('home'));
 });
 
 // landing page
 
-Route::get('/home', [LandingPageController::class, 'index'])->middleware('count.visitor');
+Route::get('/home', [LandingPageController::class, 'index'])->middleware('count.visitor')->name('home');
 
 Route::get('home/projects', [LandingPageController::class, 'project'])->name('projects.galery');
 Route::get('home/projects/{id}', [ProjectlController::class, 'show'])->middleware('count.project.views')->name('showproject');
@@ -114,5 +114,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/about', [AboutUsController::class, 'index'])->name('about_admin');
     Route::post('/admin/about/{id}', [AboutUsController::class, 'update'])->name('about_update');
     Route::post('/delete-about-image', [AboutUsController::class, 'deleteImage'])->name('deleteAboutImage');
-
 });

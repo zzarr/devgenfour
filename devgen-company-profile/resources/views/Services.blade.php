@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @include('layout.head-landingpage')
-    <title>Document</title>
+    <title>Services</title>
 </head>
 
 <body>
@@ -30,9 +30,8 @@
     <section class="services-section pt-100 pb-100">
         <div class="container">
             <div class="section-title">
-                <h2>IT Agency Services</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt labore et
-                    dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                <h2>Services</h2>
+
                 <div class="bar"></div>
             </div>
 
@@ -47,14 +46,11 @@
 
                             <h3>{{ $service->title }}</h3>
                             <p>{!! $service->description !!}</p>
-                            <a href="{{ route('services.detail' ,['id' => $service->id]) }}" class="read-btn">Read More</a>
-
-
+                            <a href="{{ route('services.detail', ['id' => $service->id]) }}" class="read-btn">Read
+                                More</a>
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
         </div>
 

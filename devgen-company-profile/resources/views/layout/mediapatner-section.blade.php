@@ -3,7 +3,7 @@
         <div class="section-title">
         <h2>Partner</h2>
         </div>
-        <div class="partner-slider owl-carousel owl-theme">
+        <div class="partner-slider owl-carousel owl-theme owl-centered">
             @foreach ($partners as $image)
             <div class="partner-item">
                 <a href="#">

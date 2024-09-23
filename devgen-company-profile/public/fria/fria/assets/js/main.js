@@ -3,14 +3,14 @@ jQuery(function ($) {
 
 	// Header Sticky
 	$(window).on('scroll',function() {
-		if ($(this).scrollTop() > 120){  
+		if ($(this).scrollTop() > 120){
 			$('.navbar-area').addClass("is-sticky");
 		}
 		else{
 			$('.navbar-area').removeClass("is-sticky");
 		}
 	});
-	
+
 	// Mean Menu
 	jQuery('.mean-menu').meanmenu({
 		meanScreenWidth: "991"
@@ -61,14 +61,14 @@ jQuery(function ($) {
 		$(".main-banner-content a").removeClass("animated fadeInDown").css("opacity", "0");
 		$(".banner-image").removeClass("animated slideInUp").css("opacity", "0");
 	});
-	
+
 	$(".home-sliders").on("translated.owl.carousel", function(){
 		$(".main-banner-content span, .main-banner-content h1, .main-banner-content .typewrite").addClass("animated fadeInUp").css("opacity", "1");
 		$(".main-banner-content p").addClass("animated fadeInDown").css("opacity", "1");
 		$(".main-banner-content a").addClass("animated fadeInDown").css("opacity", "1");
 		$(".banner-image").addClass("animated slideInUp").css("opacity", "1");
 	});
-	
+
 
 	// Clients Slider
 	$('.clients-slider').owlCarousel({
@@ -105,7 +105,7 @@ jQuery(function ($) {
 		nav: false,
 		dots: false,
 		smartSpeed: 2000,
-		margin: 30,
+		margin: 0,
 		autoplayHoverPause: true,
 		autoplay: true,
 		responsive: {
@@ -128,7 +128,7 @@ jQuery(function ($) {
 	(function ($) {
 		$('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
 		$('.tab ul.tabs li a').on('click', function (g) {
-			var tab = $(this).closest('.tab'), 
+			var tab = $(this).closest('.tab'),
 			index = $(this).closest('li').index();
 			tab.find('ul.tabs > li').removeClass('current');
 			$(this).closest('li').addClass('current');
@@ -137,7 +137,7 @@ jQuery(function ($) {
 			g.preventDefault();
 		});
 	})(jQuery);
-	
+
 	// Odometer JS
 	$('.odometer').appear(function(e) {
 		var odo = $(".odometer");
@@ -154,7 +154,7 @@ jQuery(function ($) {
 			var scrolled = $(window).scrollTop();
 			if (scrolled > 600) $('.go-top').addClass('active');
 			if (scrolled < 600) $('.go-top').removeClass('active');
-		});  
+		});
 		// Click Event
 		$('.go-top').on('click', function() {
 			$("html, body").animate({ scrollTop: "0" },  500);
@@ -171,7 +171,7 @@ jQuery(function ($) {
 			// Hide The Other Panels
 			$('.accordion-content').not($(this).next()).slideUp('fast');
 			// Removes Active Class From Other Titles
-			$('.accordion-title').not($(this)).removeClass('active');		
+			$('.accordion-title').not($(this)).removeClass('active');
 		});
 	});
 
@@ -220,15 +220,15 @@ jQuery(function ($) {
 		url: "https://envytheme.us20.list-manage.com/subscribe/post?u=60e1ffe2e8a68ce1204cd39a5&amp;id=42d6d188d9", // Your url MailChimp
 		callback: callbackFunction
 	});
-	
-	// Count Time 
+
+	// Count Time
 	function makeTimer() {
-		var endTime = new Date("april  30, 2020 17:00:00 PDT");			
+		var endTime = new Date("april  30, 2020 17:00:00 PDT");
 		var endTime = (Date.parse(endTime)) / 1000;
 		var now = new Date();
 		var now = (Date.parse(now) / 1000);
 		var timeLeft = endTime - now;
-		var days = Math.floor(timeLeft / 86400); 
+		var days = Math.floor(timeLeft / 86400);
 		var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
 		var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
 		var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
@@ -247,7 +247,7 @@ jQuery(function ($) {
 		jQuery(this).find('.progress-content').animate({
 		width:jQuery(this).attr('data-percentage')
 		},2000);
-		
+
 		jQuery(this).find('.progress-number-mark').animate(
 		{left:jQuery(this).attr('data-percentage')},
 		{
@@ -256,7 +256,7 @@ jQuery(function ($) {
 			var data = Math.round(now);
 			jQuery(this).find('.percent').html(data + '%');
 			}
-		});  
+		});
 	});
 
 	// Popup Video
@@ -273,7 +273,7 @@ jQuery(function ($) {
 	(function ($) {
 		$('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
 		$('.tab ul.tabs li a').on('click', function (g) {
-			var tab = $(this).closest('.tab'), 
+			var tab = $(this).closest('.tab'),
 			index = $(this).closest('li').index();
 			tab.find('ul.tabs > li').removeClass('current');
 			$(this).closest('li').addClass('current');
@@ -283,14 +283,14 @@ jQuery(function ($) {
 		});
 	})(jQuery);
 
-	// Count Time 
+	// Count Time
 	function makeTimer() {
 		var endTime = new Date("December 30, 2024 17:00:00 PDT");
 		var endTime = (Date.parse(endTime)) / 1000;
 		var now = new Date();
 		var now = (Date.parse(now) / 1000);
 		var timeLeft = endTime - now;
-		var days = Math.floor(timeLeft / 86400); 
+		var days = Math.floor(timeLeft / 86400);
 		var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
 		var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
 		var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
@@ -332,7 +332,7 @@ jQuery(function ($) {
 
 	// WOW JS
 	$(window).on ('load', function (){
-        if ($(".wow").length) { 
+        if ($(".wow").length) {
             var wow = new WOW({
             boxClass:     'wow',      // animated element css class (default is wow)
             animateClass: 'animated', // animation css class (default is animated)
@@ -343,7 +343,7 @@ jQuery(function ($) {
           wow.init();
         }
     });
-    
+
     // Preloader
     jQuery(window).on('load', function () {
         $('.preloader').fadeOut()

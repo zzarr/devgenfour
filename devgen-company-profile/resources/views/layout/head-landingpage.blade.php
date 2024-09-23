@@ -29,7 +29,29 @@
  <link rel="stylesheet" href="{{ asset('fria/fria/assets/css/responsive.css') }}">
 
  <link rel="stylesheet" href="{{ asset('metrica/dist/assets/css/icons.min.css') }}">
-
+<style>
+    .owl-carousel .owl-item img {
+        display: block;
+        width: auto;
+        max-height: 75px;
+        text-align: center;
+    }
+    .owl-item div.partner-item{
+        display: flex;
+        justify-content: center;
+    }
+    .owl-centered .owl-wrapper {
+    display: table !important;
+    }
+    .owl-centered .owl-item {
+        display: table-cell;
+        float: none;
+        vertical-align: middle;
+    }
+    .owl-centered .owl-item > div {
+        text-align: center;
+    }
+</style>
 
 
 
